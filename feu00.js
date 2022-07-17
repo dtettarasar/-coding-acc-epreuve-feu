@@ -14,10 +14,11 @@ const argTester = () => {
         return false;
     }
 
-    console.log(argument);
+    rectangleObj['column'] = parseInt(argument[0]);
+    rectangleObj['row'] = parseInt(argument[1]);
 
-    //return parseInt(argument[0]);
+    return rectangleObj;
 
 }
 
-argTester();
+console.log(argTester());
