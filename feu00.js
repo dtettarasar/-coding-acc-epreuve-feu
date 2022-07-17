@@ -1,4 +1,4 @@
-//Récupérer l'argument
+//Récupérer les arguments
 const argTester = () => {
 
     const argument = process.argv.slice(2);
@@ -21,4 +21,32 @@ const argTester = () => {
 
 }
 
-console.log(argTester());
+const arg = argTester();
+
+const generateTopBtmBorders = (int) => {
+
+    console.log(int);
+
+
+    const arr = [];
+
+    arr.push("o");
+
+    if (int > 2) {
+
+        for (let i = 0; i < int - 2; i++ ) {
+            arr.push("-");
+        }
+
+    }
+
+    if (int !== 1) {
+        arr.push("o");
+    }
+
+    console.log(arr);
+
+
+}
+
+generateTopBtmBorders(arg.column);
