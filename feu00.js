@@ -8,16 +8,22 @@ const argTester = () => {
 
     const rectangleObj = {};
 
+    const errorMsg = "Veuillez passer deux nombres entiers positifs en argument.\nExemple: node feu00.js 3 4";
+
     if (argument.length !== 2 || !argOneIsNumber || !argTwoIsNumber) {
-        console.log("Veuillez passer deux nombres entiers positifs en argument.");
-        console.log("Exemple: node feu00.js 3 4");
+        console.log(errorMsg);
         return false;
     }
 
     rectangleObj['column'] = parseInt(argument[0]);
     rectangleObj['row'] = parseInt(argument[1]);
 
-    return rectangleObj;
+    if (rectangleObj['column'] === 0 || rectangleObj['row'] === 0) {
+        console.log(errorMsg);
+        return false;
+    } else {
+        return rectangleObj;
+    }
 
 }
 
