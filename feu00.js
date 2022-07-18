@@ -21,8 +21,6 @@ const argTester = () => {
 
 }
 
-const arg = argTester();
-
 const generateBorders = (col, topAndBottom) => {
     
     const arr = [];
@@ -48,6 +46,30 @@ const generateBorders = (col, topAndBottom) => {
 
 }
 
-generateBorders(arg.column, true);
-generateBorders(arg.column, false);
-generateBorders(arg.column, true);
+const main = () => {
+
+    const arg = argTester();
+
+    if (arg) {
+
+        generateBorders(arg.column, true);
+
+        if (arg.row > 2) {
+            
+            for (let i = 0; i < arg.row - 2; i++) {
+                generateBorders(arg.column, false);
+            }
+
+        }
+
+        if (arg.row !== 1) {
+
+            generateBorders(arg.column, true);
+
+        }
+
+    }
+
+}
+
+main();
