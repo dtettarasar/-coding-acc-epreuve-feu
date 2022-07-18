@@ -23,30 +23,31 @@ const argTester = () => {
 
 const arg = argTester();
 
-const generateTopBtmBorders = (int) => {
-
-    console.log(int);
-
-
+const generateBorders = (col, topAndBottom) => {
+    
     const arr = [];
 
-    arr.push("o");
+    const corner = topAndBottom ? "o" : "|";
+    const line = topAndBottom ? "-" : " ";
 
-    if (int > 2) {
+    arr.push(corner);
 
-        for (let i = 0; i < int - 2; i++ ) {
-            arr.push("-");
+    if (col > 2) {
+
+        for (let i = 0; i < col - 2; i++ ) {
+            arr.push(line);
         }
 
     }
 
-    if (int !== 1) {
-        arr.push("o");
+    if (col !== 1) {
+        arr.push(corner);
     }
 
-    console.log(arr);
-
+    console.log(arr.join(''));
 
 }
 
-generateTopBtmBorders(arg.column);
+generateBorders(arg.column, true);
+generateBorders(arg.column, false);
+generateBorders(arg.column, true);
