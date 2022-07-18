@@ -52,6 +52,10 @@ const generateBorders = (col, topAndBottom) => {
 
 }
 
+const generateRect = (col, row) => {
+    // TODO : move instrcution from main to here and modify to create the full array
+}
+
 const main = () => {
 
     const arg = argTester();
