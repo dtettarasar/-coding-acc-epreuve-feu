@@ -1,4 +1,5 @@
-//Récupérer les arguments
+// Afficher un rectangle
+
 const argTester = () => {
 
     const argument = process.argv.slice(2);
