@@ -53,7 +53,23 @@ const generateBorders = (col, topAndBottom) => {
 }
 
 const generateRect = (col, row) => {
-    // TODO : move instrcution from main to here and modify to create the full array
+
+    generateBorders(col, true);
+
+        if (row > 2) {
+            
+            for (let i = 0; i < row - 2; i++) {
+                generateBorders(col, false);
+            }
+
+        }
+
+        if (row !== 1) {
+
+            generateBorders(col, true);
+
+        }
+
 }
 
 const main = () => {
@@ -62,21 +78,7 @@ const main = () => {
 
     if (arg) {
 
-        generateBorders(arg.column, true);
-
-        if (arg.row > 2) {
-            
-            for (let i = 0; i < arg.row - 2; i++) {
-                generateBorders(arg.column, false);
-            }
-
-        }
-
-        if (arg.row !== 1) {
-
-            generateBorders(arg.column, true);
-
-        }
+        generateRect(arg.column, arg.row)
 
     }
 
