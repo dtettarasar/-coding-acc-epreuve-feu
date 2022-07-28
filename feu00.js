@@ -48,27 +48,31 @@ const generateBorders = (col, topAndBottom) => {
         arr.push(corner);
     }
 
-    console.log(arr.join(''));
+    return arr.join('');
 
 }
 
 const generateRect = (col, row) => {
 
-    generateBorders(col, true);
+    const rectArr = [];
 
-        if (row > 2) {
+    rectArr.push(generateBorders(col, true));
+
+    if (row > 2) {
             
-            for (let i = 0; i < row - 2; i++) {
-                generateBorders(col, false);
-            }
-
+        for (let i = 0; i < row - 2; i++) {
+            rectArr.push(generateBorders(col, false));
         }
 
-        if (row !== 1) {
+    }
 
-            generateBorders(col, true);
+    if (row !== 1) {
 
-        }
+        rectArr.push(generateBorders(col, true));
+
+    }
+
+    return rectArr;    
 
 }
 
@@ -78,7 +82,11 @@ const main = () => {
 
     if (arg) {
 
-        generateRect(arg.column, arg.row)
+        const rect = generateRect(arg.column, arg.row);
+
+        for (let i = 0; i < rect.length; i++) {
+            console.log(rect[i]);
+        }
 
     }
 
