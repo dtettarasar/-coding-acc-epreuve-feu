@@ -13,8 +13,43 @@ const argTester = () => {
 
     const strSplit = argument[0].split('');
 
+    for (let i = 0; i < strSplit.length; i++) {
+        
+        const testChar = intPattern.test(strSplit[i]) || findOperators(strSplit[i]);
+        const msgToLog = "char: " + strSplit[i] + " : " + testChar;
+
+        console.log(msgToLog);
+
+    }
+
     console.log(strSplit);
 
 }
+
+const findOperators = (char) => {
+
+    const valueArr = [
+        "+",
+        "-",
+        "*",
+        "/",
+        "%",
+        "(",
+        ")"
+    ]
+
+    for (let i = 0; i < valueArr.length; i++) {
+
+        if (valueArr[i] === char) {
+            return true;
+        }
+
+    }
+
+    return false;
+
+}
+
+// console.log(findOperators("-"));
 
 argTester();
