@@ -5,10 +5,14 @@ const argTester = () => {
     const argument = process.argv.slice(2);
     const errMsg = "erreur argument";
     const intPattern = /^(\+?|-?)[0-9]+$/;
+    const sepPattern = /\S/m;
+    const expArr = [];
 
     if (argument.length !== 1) {
+
         console.log(errMsg);
         return false;
+        
     }
 
     const strSplit = argument[0].split('');
@@ -20,9 +24,20 @@ const argTester = () => {
 
         console.log(msgToLog);
 
+        if (testChar) {
+
+            expArr.push(strSplit[i]);
+
+        } else if (sepPattern.test(strSplit[i])) {
+
+            console.log(errMsg);
+            return false;
+
+        }
+
     }
 
-    console.log(strSplit);
+    console.log(expArr.join(''));
 
 }
 
