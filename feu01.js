@@ -19,8 +19,10 @@ const argTester = () => {
 
     // Vérifier que l'expression ne comporte que des opérateurs et des nombres
     for (let i = 0; i < strSplit.length; i++) {
+
+        const expSpecChars = ["+","-","*","/","%","(",")"];
         
-        const testChar = intPattern.test(strSplit[i]) || findOperators(strSplit[i]);
+        const testChar = intPattern.test(strSplit[i]) || findChars(strSplit[i], expSpecChars);
         const msgToLog = "char: " + strSplit[i] + " : " + testChar;
 
         // console.log(msgToLog);
@@ -47,7 +49,7 @@ const argTester = () => {
 
     }
 
-    console.log(expArr.join(''));
+    console.log(expArr);
 
 }
 
@@ -77,18 +79,8 @@ const checkParenthesis = (array) => {
 
 }
 
-const findOperators = (char) => {
-
-    const valueArr = [
-        "+",
-        "-",
-        "*",
-        "/",
-        "%",
-        "(",
-        ")"
-    ]
-
+const findChars = (char, valueArr) => {
+    
     for (let i = 0; i < valueArr.length; i++) {
 
         if (valueArr[i] === char) {
@@ -100,7 +92,5 @@ const findOperators = (char) => {
     return false;
 
 }
-
-// console.log(findOperators("-"));
 
 argTester();
