@@ -1,11 +1,12 @@
 // Évaluer une expression
 
+const intPattern = /^(\+?|-?)[0-9]+$/;
+const sepPattern = /\S/m;
+
 const argTester = () => {
 
     const argument = process.argv.slice(2);
     const errMsg = "erreur argument: ";
-    const intPattern = /^(\+?|-?)[0-9]+$/;
-    const sepPattern = /\S/m;
     const expArr = [];
 
     if (argument.length !== 1) {
@@ -71,7 +72,7 @@ const argTester = () => {
 
 }
 
-// Vérifier qu'il n'y a pas d'erreur de parenthèses (même nombre de parenthèses ouvrantes et fermantes)
+// Vérifier qu'il n'y a pas d'erreur de parenthèses 
 const checkParenthesis = (array) => {
 
     const openParenthesis = "(";
@@ -83,13 +84,26 @@ const checkParenthesis = (array) => {
     for (let i = 0; i < array.length; i++) {
         
         if (array[i] === openParenthesis) {
+
+            // Vérifier que la parenthèse ouvrante est suivie d'un nombre
+            if (!intPattern.test(array[i+1])) {
+                return false;
+            }
             amountOpPar++;
+
         } else if (array[i] === closeParenthesis) {
+
+            // Vérifier que la parenthèse fermante est précédée d'un nombre
+            if (!intPattern.test(array[i-1])) {
+                return false;
+            }
+
             amountClPar++;
         }
 
     }
-
+    
+    // (même nombre de parenthèses ouvrantes et fermantes)
     if (amountClPar !== amountOpPar) {
         return false;
     } else {
