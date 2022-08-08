@@ -36,7 +36,8 @@ const argTester = () => {
         if (charIsInt) {
             intArr.push(strSplit[i]);
         } else if ((charIsOp || charIsPar) && intArr.length !== 0) {
-            expArr.push(intArr);
+            const finalInt = parseInt(intArr.join(''));
+            expArr.push(finalInt);
             intArr = [];
             expArr.push(strSplit[i]);
         } else if ((charIsOp || charIsPar) && intArr.length == 0) {
@@ -47,7 +48,8 @@ const argTester = () => {
         if (i === strSplit.length - 1) {
 
             if (intArr.length !== 0) {
-                expArr.push(intArr);
+                const finalInt = parseInt(intArr.join(''));
+                expArr.push(finalInt);
                 intArr = [];
             }
 
@@ -71,6 +73,7 @@ const argTester = () => {
 
 }
 
+// Vérifier qu'il n'y a pas d'erreur de parenthèses (même nombre de parenthèses ouvrantes et fermantes)
 const checkParenthesis = (array) => {
 
     const openParenthesis = "(";
