@@ -35,11 +35,11 @@ const argTester = () => {
 
         if (charIsInt) {
             intArr.push(strSplit[i]);
-        } else if (charIsOp && intArr.length !== 0) {
+        } else if ((charIsOp || charIsPar) && intArr.length !== 0) {
             expArr.push(intArr);
             intArr = [];
             expArr.push(strSplit[i]);
-        } else if (charIsPar && intArr.length == 0) {
+        } else if ((charIsOp || charIsPar) && intArr.length == 0) {
             expArr.push(strSplit[i]);
         }
 
@@ -48,7 +48,9 @@ const argTester = () => {
             if (intArr.length !== 0) {
                 expArr.push(intArr);
                 intArr = [];
-            } else if (charIsPar) {
+            } 
+            
+            if (charIsPar) {
                 expArr.push(strSplit[i]);
             }
 
@@ -108,6 +110,7 @@ const argTester = () => {
 
     }*/
 
+    console.log(expArr);
     console.log(expArr.join(''));
 
 }
