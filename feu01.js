@@ -43,60 +43,16 @@ const argTester = () => {
             expArr.push(strSplit[i]);
         }
 
+        
         if (i === strSplit.length - 1) {
 
             if (intArr.length !== 0) {
                 expArr.push(intArr);
                 intArr = [];
-            } 
-            
-            if (charIsPar) {
-                expArr.push(strSplit[i]);
             }
 
         }
-
-        /*
-        if (i === strSplit.length - 1 && intArr.length !== 0) {
-            expArr.push(intArr);
-            intArr = [];
-        } else if (i === strSplit.length - 1 && charIsPar) {
-            console.log("end");
-            expArr.push(strSplit[i]);
-        }*/
-
-
-
-        /*
-        console.log("intArr: " + intArr);
-
-        console.log("i value " + i);
-
-        console.log(strSplit[i]);
-        console.log("int: " + charIsInt);
-        console.log("spec: " + charIsSpec);
-        console.log("-------");
-        */
-
-        // console.log(msgToLog);
-
-        /*
-        if (testChar) {
-
-            if (intPattern.test(strSplit[i])) {
-                intArr.push(strSplit);
-            } else if (intArr.length !== 0) {
-                expArr.push(intArr);
-                expArr.push(strSplit[i]);
-                intArr = [];
-            }
-
-        } else if (sepPattern.test(strSplit[i])) {
-
-            console.log(errMsg + "l'expression ne doit comporter que des opérateurs et des nombres.");
-            return false;
-
-        }*/
+        
 
     }
 
