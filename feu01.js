@@ -3,6 +3,9 @@
 const intPattern = /^(\+?|-?)[0-9]+$/;
 const sepPattern = /\S/m;
 
+const expSpecChars = ["+","-","*","/","%"];
+const parChar = ["(",")"];
+
 const argTester = () => {
 
     const argument = process.argv.slice(2);
@@ -22,15 +25,13 @@ const argTester = () => {
 
     // Vérifier que l'expression ne comporte que des opérateurs et des nombres
     for (let i = 0; i < strSplit.length; i++) {
-
-        const expSpecChars = ["+","-","*","/","%"];
-        const parChar = ["(",")"];
-        
+    
         const testChar = intPattern.test(strSplit[i]) || findChars(strSplit[i], expSpecChars);
 
         const charIsInt = intPattern.test(strSplit[i]);
         const charIsOp = findChars(strSplit[i], expSpecChars);
         const charIsPar = findChars(strSplit[i], parChar);
+        const charIsSpace = sepPattern.test(strSplit[i]);
 
 
         if (charIsInt) {
@@ -59,10 +60,18 @@ const argTester = () => {
     }
 
     const testParenthesis = checkParenthesis(expArr);
+    const testOperators = checkOperators(expArr);
 
     if (!testParenthesis) {
 
         console.log(errMsg + "vérifier les parenthèses.");
+        return false;
+
+    }
+
+    if (!testOperators) {
+
+        console.log(errMsg + "vérifier les opérateurs.");
         return false;
 
     }
@@ -75,8 +84,8 @@ const argTester = () => {
 // Vérifier qu'il n'y a pas d'erreur de parenthèses 
 const checkParenthesis = (array) => {
 
-    const openParenthesis = "(";
-    const closeParenthesis = ")";
+    const openParenthesis = parChar[0];
+    const closeParenthesis = parChar[1];
 
     let amountOpPar = 0;
     let amountClPar = 0;
@@ -85,18 +94,19 @@ const checkParenthesis = (array) => {
         
         if (array[i] === openParenthesis) {
 
-            // Vérifier que la parenthèse ouvrante est suivie d'un nombre
+            /* Vérifier que la parenthèse ouvrante est suivie d'un nombre
             if (!intPattern.test(array[i+1])) {
                 return false;
-            }
+            }*/
+
             amountOpPar++;
 
         } else if (array[i] === closeParenthesis) {
 
-            // Vérifier que la parenthèse fermante est précédée d'un nombre
+            /* Vérifier que la parenthèse fermante est précédée d'un nombre
             if (!intPattern.test(array[i-1])) {
                 return false;
-            }
+            }*/
 
             amountClPar++;
         }
@@ -105,6 +115,34 @@ const checkParenthesis = (array) => {
     
     // (même nombre de parenthèses ouvrantes et fermantes)
     if (amountClPar !== amountOpPar) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+const checkOperators = (array) => {
+
+    let intQty = 0;
+    let opQty = 0;
+
+    for (let i = 0; i < array.length;i++) {
+        
+        // console.log(typeof(array[i]));
+
+        if (typeof(array[i]) === 'number') {
+            intQty++;
+        } else if (typeof(array[i]) === 'string' && findChars(array[i], expSpecChars)) {
+            opQty++;
+        }
+
+    }
+
+    console.log("int: " + intQty);
+    console.log("op: " + opQty);
+
+    if (opQty !== intQty - 1) {
         return false;
     } else {
         return true;
