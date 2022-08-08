@@ -31,7 +31,6 @@ const argTester = () => {
         const charIsOp = findChars(strSplit[i], expSpecChars);
         const charIsPar = findChars(strSplit[i], parChar);
 
-        const msgToLog = "char: " + strSplit[i] + " : " + testChar;
 
         if (charIsInt) {
             intArr.push(strSplit[i]);
@@ -60,13 +59,12 @@ const argTester = () => {
 
     const testParenthesis = checkParenthesis(expArr);
 
-    /*
     if (!testParenthesis) {
 
         console.log(errMsg + "vérifier les parenthèses.");
         return false;
 
-    }*/
+    }
 
     console.log(expArr);
     console.log(expArr.join(''));
