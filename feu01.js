@@ -78,6 +78,7 @@ const argTester = () => {
 
     console.log(expArr);
     console.log(expArr.join(''));
+    convertParenthesis(expArr);
 
 }
 
@@ -122,6 +123,7 @@ const checkParenthesis = (array) => {
 
 }
 
+// Vérifier qu'il n'y a pas d'erreurs d'opérateurs
 const checkOperators = (array) => {
 
     let intQty = 0;
@@ -147,6 +149,37 @@ const checkOperators = (array) => {
     } else {
         return true;
     }
+
+}
+
+// Convertir les section de l'expression entre parenthèse, en sous array
+const convertParenthesis = (array) => {
+
+    const openParenthesis = parChar[0];
+    const closeParenthesis = parChar[1];
+
+    const finalArray = [];
+    let subArray = [];
+    let subArrayOpen = false;
+
+    for (let i = 0; i < array.length; i++) {
+
+        if (array[i] === openParenthesis && !subArrayOpen) {
+            subArrayOpen = true;
+        } else if (array[i] === closeParenthesis && subArrayOpen) {
+            finalArray.push(subArray);
+            subArray = [];
+            subArrayOpen = false;
+        } else if (subArrayOpen) {
+            subArray.push(array[i]);
+        } else {
+            finalArray.push(array[i]);
+        }
+
+    }
+
+    console.log("convertParenthesis:");
+    console.log(finalArray);
 
 }
 
