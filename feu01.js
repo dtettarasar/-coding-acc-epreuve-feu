@@ -76,10 +76,11 @@ const argTester = () => {
 
     }
 
-    console.log(expArr);
-    console.log(expArr.join(''));
-    convertParenthesis(expArr);
+    //console.log(expArr);
+    //console.log(expArr.join(''));
 
+    //test convertParenthesis
+    convertParenthesis(convertParenthesis(convertParenthesis(expArr)));
 }
 
 // Vérifier qu'il n'y a pas d'erreur de parenthèses 
@@ -194,6 +195,11 @@ const convertParenthesis = (array) => {
 
             subArray.push(array[i]);
 
+        } else if (typeof(array[i]) === "object") {
+
+            const convertSubArr = convertParenthesis(array[i]);
+            finalArray.push(convertSubArr);
+
         } else {
 
             finalArray.push(array[i]);
@@ -206,11 +212,17 @@ const convertParenthesis = (array) => {
     /*
     Tant que l'array contient des parenthèses:
     dans la boucle for, si array[i] est également un array, alors faire convert parenthesis sur array[i].
-    Stocker le résultat dans une variable et intégrer cette variable dans finalArray.  
+    Stocker le résultat dans une variable et intégrer cette variable dans finalArray.
+    Si jamais on détecte la présence de parenthèse imbriqué, il faut réexecuter la fonction. sur l'array.    
     */
 
+    
     console.log("convertParenthesis:");
-    console.log(finalArray);
+
+    for (let i = 0; i < finalArray.length; i++) {
+        console.log(finalArray[i]);
+    }
+    
 
     return finalArray;
 
