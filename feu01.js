@@ -162,24 +162,57 @@ const convertParenthesis = (array) => {
     let subArray = [];
     let subArrayOpen = false;
 
+    // Variable pour tracker les parenthèses imbriquées
+    let opParQty = 0;
+    let clParQty = 0;
+
     for (let i = 0; i < array.length; i++) {
 
         if (array[i] === openParenthesis && !subArrayOpen) {
+
             subArrayOpen = true;
-        } else if (array[i] === closeParenthesis && subArrayOpen) {
+
+        } else if (array[i] === openParenthesis && subArrayOpen) {
+
+            opParQty++;
+            subArray.push(array[i]);
+
+        } else if (array[i] === closeParenthesis && subArrayOpen && opParQty === clParQty) {
+
             finalArray.push(subArray);
             subArray = [];
             subArrayOpen = false;
-        } else if (subArrayOpen) {
+            opParQty = 0;
+            clParQty = 0;
+        
+        } else if (array[i] === closeParenthesis && opParQty !== clParQty) {    
+
+            clParQty++;
             subArray.push(array[i]);
+
+        } else if (subArrayOpen) {
+
+            subArray.push(array[i]);
+
         } else {
+
             finalArray.push(array[i]);
+
         }
 
     }
 
+    // TODO : 
+    /*
+    Tant que l'array contient des parenthèses:
+    dans la boucle for, si array[i] est également un array, alors faire convert parenthesis sur array[i].
+    Stocker le résultat dans une variable et intégrer cette variable dans finalArray.  
+    */
+
     console.log("convertParenthesis:");
     console.log(finalArray);
+
+    return finalArray;
 
 }
 
