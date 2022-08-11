@@ -80,7 +80,14 @@ const argTester = () => {
     //console.log(expArr.join(''));
 
     //test convertParenthesis
-    convertParenthesis(convertParenthesis(convertParenthesis(expArr)));
+    //convertParenthesis(convertParenthesis(convertParenthesis(expArr)));
+
+    const arrWithoutPars = convertParenthesis(expArr);
+    
+    for (let i = 0; i < arrWithoutPars.length; i++) {
+        console.log(arrWithoutPars[i]);
+    }
+
 }
 
 // Vérifier qu'il n'y a pas d'erreur de parenthèses 
@@ -96,21 +103,12 @@ const checkParenthesis = (array) => {
         
         if (array[i] === openParenthesis) {
 
-            /* Vérifier que la parenthèse ouvrante est suivie d'un nombre
-            if (!intPattern.test(array[i+1])) {
-                return false;
-            }*/
-
             amountOpPar++;
 
         } else if (array[i] === closeParenthesis) {
 
-            /* Vérifier que la parenthèse fermante est précédée d'un nombre
-            if (!intPattern.test(array[i-1])) {
-                return false;
-            }*/
-
             amountClPar++;
+
         }
 
     }
@@ -142,8 +140,10 @@ const checkOperators = (array) => {
 
     }
 
+    /*
     console.log("int: " + intQty);
     console.log("op: " + opQty);
+    */
 
     if (opQty !== intQty - 1) {
         return false;
@@ -159,13 +159,14 @@ const convertParenthesis = (array) => {
     const openParenthesis = parChar[0];
     const closeParenthesis = parChar[1];
 
-    const finalArray = [];
+    let finalArray = [];
     let subArray = [];
     let subArrayOpen = false;
 
     // Variable pour tracker les parenthèses imbriquées
     let opParQty = 0;
     let clParQty = 0;
+    let subPar = false;
 
     for (let i = 0; i < array.length; i++) {
 
@@ -175,6 +176,7 @@ const convertParenthesis = (array) => {
 
         } else if (array[i] === openParenthesis && subArrayOpen) {
 
+            subPar = true;
             opParQty++;
             subArray.push(array[i]);
 
@@ -216,13 +218,22 @@ const convertParenthesis = (array) => {
     Si jamais on détecte la présence de parenthèse imbriqué, il faut réexecuter la fonction. sur l'array.    
     */
 
-    
-    console.log("convertParenthesis:");
+    //console.log("subPar: " + subPar);
 
+    // Executer la fonction si l'array a encore des parenthèses imbriquées
+    if (subPar) {
+        finalArray = convertParenthesis(finalArray);
+    }
+    
+    /*console.log(finalArray);
+
+    
     for (let i = 0; i < finalArray.length; i++) {
         console.log(finalArray[i]);
     }
-    
+
+    console.log("------");
+    */
 
     return finalArray;
 
