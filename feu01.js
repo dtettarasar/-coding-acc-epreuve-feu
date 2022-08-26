@@ -1,7 +1,7 @@
 // Évaluer une expression
 
 const intPattern = /^(\+?|-?)[0-9]+$/;
-const sepPattern = /\S/m;
+const sepPattern = /\s/m;
 
 const expSpecChars = ["+","-","*","/","%"];
 const parChar = ["(",")"];
@@ -48,6 +48,9 @@ const argTester = () => {
             expArr.push(strSplit[i]);
         } else if ((charIsOp || charIsPar) && intArr.length == 0) {
             expArr.push(strSplit[i]);
+        } else if (!charIsSpace) {
+            console.log(errMsg + "présence de caractères incorrects");
+            return false;
         }
 
         
