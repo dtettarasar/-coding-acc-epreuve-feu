@@ -12,7 +12,12 @@ const argTester = () => {
     const errMsg = "erreur argument: ";
     const expArr = [];
 
-    if (argument.length !== 1) {
+    if (argument.length === 0) {
+        
+        console.log(errMsg + "veuillez passer une chaîne de caractère en argument.");
+        return false;
+
+    } else if (argument.length > 1) {
 
         console.log(errMsg + "il faut passer une seule chaîne de caractère en argument.");
         return false;
