@@ -84,17 +84,9 @@ const argTester = () => {
 
     }
 
-    //console.log(expArr);
-    //console.log(expArr.join(''));
-
-    //test convertParenthesis
-    //convertParenthesis(convertParenthesis(convertParenthesis(expArr)));
-
     const arrWithoutPars = convertParenthesis(expArr);
     
-    for (let i = 0; i < arrWithoutPars.length; i++) {
-        console.log(arrWithoutPars[i]);
-    }
+    return arrWithoutPars;
 
 }
 
@@ -138,8 +130,6 @@ const checkOperators = (array) => {
 
     for (let i = 0; i < array.length;i++) {
         
-        // console.log(typeof(array[i]));
-
         if (typeof(array[i]) === 'number') {
             intQty++;
         } else if (typeof(array[i]) === 'string' && findChars(array[i], expSpecChars)) {
@@ -147,11 +137,6 @@ const checkOperators = (array) => {
         }
 
     }
-
-    /*
-    console.log("int: " + intQty);
-    console.log("op: " + opQty);
-    */
 
     if (opQty !== intQty - 1) {
         return false;
@@ -259,6 +244,16 @@ const findChars = (char, valueArr) => {
 
     return false;
 
-} 
+}
 
-argTester();
+const main = () => {
+
+    const argument = argTester();
+
+    if (argument) {
+        console.log(argument);
+    }
+
+}
+
+main();
