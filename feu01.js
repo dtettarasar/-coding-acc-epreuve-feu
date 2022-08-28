@@ -246,12 +246,34 @@ const findChars = (char, valueArr) => {
 
 }
 
+const calculate = (array, operator) => {
+
+    const copyArr = [];
+
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === operator) {
+            console.log("calcul repéré:")
+            console.log(array[i-1]);
+            console.log(array[i]);
+            console.log(array[i+1]);
+            console.log("----")
+        }
+    }
+
+}
+
+const priorityCalc = (array) => {
+    calculate(array, "*");
+    calculate(array, "/");
+}
+
 const main = () => {
 
     const argument = argTester();
 
     if (argument) {
-        console.log(argument);
+        //priorityCalc(argument);
+        calculate(argument, "*");
     }
 
 }
