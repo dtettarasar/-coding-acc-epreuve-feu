@@ -1,5 +1,10 @@
 // Évaluer une expression
 
+// créer la méthode insert pour l'objet array
+Array.prototype.insert = function ( index, ...items ) {
+    this.splice( index, 0, ...items );
+};
+
 const intPattern = /^(\+?|-?)[0-9]+$/;
 const sepPattern = /\s/m;
 
@@ -251,14 +256,26 @@ const calculate = (array, operator) => {
     const copyArr = [];
 
     for (let i = 0; i < array.length; i++) {
+
         if (array[i] === operator) {
             console.log("calcul repéré:")
             console.log(array[i-1]);
             console.log(array[i]);
             console.log(array[i+1]);
             console.log("----")
+
+            switch (operator) {
+                case "*":
+                    const multiply = array[i-1] * array[i+1];
+                    array.insert(i, multiply);
+                    array.splice(i-1, 1);
+                    array.splice(i, 2);
+                    i++;
+            }
         }
     }
+
+    console.log(array);
 
 }
 
