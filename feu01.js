@@ -251,20 +251,23 @@ const findChars = (char, valueArr) => {
 
 }
 
-const calculate = (array, operator) => {
+const calculate = (array, operatorArr) => {
 
     const copyArr = [];
+    let operatorAmount = 0;
 
     for (let i = 0; i < array.length; i++) {
 
-        if (array[i] === operator) {
-            console.log("calcul repéré:")
+        //console.log("i avant calc:" + array[i]);
+
+        if (operatorArr.includes(array[i])) {
+            console.log("calcul repéré:");
             console.log(array[i-1]);
             console.log(array[i]);
             console.log(array[i+1]);
-            console.log("----")
+            console.log("----");
 
-            switch (operator) {
+            switch (array[i]) {
                 case "*":
                     const multiply = array[i-1] * array[i+1];
                     insertResult(array, i, multiply);
@@ -278,10 +281,30 @@ const calculate = (array, operator) => {
                     insertResult(array, i, modulo);
                     break;
             }
+
+            // décrémenter i pour éviter de sauter des éléments (notamment des opéreteurs)
+            i-=1;
+
+        }
+        //console.log("i après calc:" + array[i]);
+        console.log(array);
+    }
+
+    // tant que l'opérateur est présent dans l'array, on exécute la fonction
+    
+    for (let i = 0; i < array.length; i++) {
+        if (operatorArr.includes(array[i])) {
+            operatorAmount++;
         }
     }
 
-    console.log(array);
+    if (operatorAmount !== 0) {
+        calculate(array, operatorArr);
+    }
+    
+
+    //console.log(array);
+    // console.log(operator + ": " + operatorAmount);
 
 }
 
@@ -309,9 +332,7 @@ const main = () => {
     if (argument) {
         //priorityCalc(argument);
         //calculate(argument, "*");
-        calculate(argument, "*");
-        calculate(argument, "/");
-        calculate(argument, "%");
+        calculate(argument, ["*","/", "%"]);
     }
 
 }
