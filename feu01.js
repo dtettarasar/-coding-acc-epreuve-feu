@@ -267,16 +267,26 @@ const calculate = (array, operatorArr) => {
             console.log(array[i+1]);
             console.log("----");
 
+            // Dans les conditions de calcul ci-dessous : s'assurer que array[i+1] et array[i-1] sont bien des int et pas des arrays. 
+
             switch (array[i]) {
-                case "*":
+                case expSpecChars[0]:
+                    const sum = array[i-1] + array[i+1];
+                    insertResult(array, i, sum);
+                    break;
+                case expSpecChars[1]:
+                    const sub = array[i-1] - array[i+1];
+                    insertResult(array, i, sub);
+                    break;
+                case expSpecChars[2]:
                     const multiply = array[i-1] * array[i+1];
                     insertResult(array, i, multiply);
                     break;
-                case "/":
+                case expSpecChars[3]:
                     const divide = array[i-1] / array[i+1];
                     insertResult(array, i, divide);
                     break;
-                case "%":
+                case expSpecChars[4]:
                     const modulo = array[i-1] % array[i+1];
                     insertResult(array, i, modulo);
                     break;
@@ -333,6 +343,7 @@ const main = () => {
         //priorityCalc(argument);
         //calculate(argument, "*");
         calculate(argument, ["*","/", "%"]);
+        calculate(argument, ["+","-"]);
     }
 
 }
