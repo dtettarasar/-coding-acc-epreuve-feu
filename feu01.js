@@ -267,17 +267,11 @@ const calculate = (array, operator) => {
             switch (operator) {
                 case "*":
                     const multiply = array[i-1] * array[i+1];
-                    array.insert(i, multiply);
-                    array.splice(i-1, 1);
-                    array.splice(i, 2);
-                    i++;
+                    insertResult(array, i, multiply);
                     break;
                 case "/":
                     const divide = array[i-1] / array[i+1];
-                    array.insert(i, divide);
-                    array.splice(i-1, 1);
-                    array.splice(i, 2);
-                    i++;
+                    insertResult(array, i, divide);
                     break;
             }
         }
@@ -287,7 +281,18 @@ const calculate = (array, operator) => {
 
 }
 
+const insertResult = (array, index, result) => {
+    array.insert(index, result);
+    array.splice(index-1, 1);
+    array.splice(index, 2);
+}
+
 const priorityCalc = (array) => {
+
+    // Utiliser une for loop avec expSpecChars pour executer calculate avec chaque opérateur
+
+    // exécuter les divisions, multiplication et modulo tant que les symboles associés sont encore présents dans l'array
+
     calculate(array, "*");
     calculate(array, "/");
 }
@@ -298,6 +303,7 @@ const main = () => {
 
     if (argument) {
         //priorityCalc(argument);
+        //calculate(argument, "*");
         calculate(argument, "*");
         calculate(argument, "/");
     }
