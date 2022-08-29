@@ -273,6 +273,10 @@ const calculate = (array, operator) => {
                     const divide = array[i-1] / array[i+1];
                     insertResult(array, i, divide);
                     break;
+                case "%":
+                    const modulo = array[i-1] % array[i+1];
+                    insertResult(array, i, modulo);
+                    break;
             }
         }
     }
@@ -295,6 +299,7 @@ const priorityCalc = (array) => {
 
     calculate(array, "*");
     calculate(array, "/");
+    calculate(array, "%");
 }
 
 const main = () => {
@@ -306,6 +311,7 @@ const main = () => {
         //calculate(argument, "*");
         calculate(argument, "*");
         calculate(argument, "/");
+        calculate(argument, "%");
     }
 
 }
