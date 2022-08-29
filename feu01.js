@@ -271,6 +271,14 @@ const calculate = (array, operator) => {
                     array.splice(i-1, 1);
                     array.splice(i, 2);
                     i++;
+                    break;
+                case "/":
+                    const divide = array[i-1] / array[i+1];
+                    array.insert(i, divide);
+                    array.splice(i-1, 1);
+                    array.splice(i, 2);
+                    i++;
+                    break;
             }
         }
     }
@@ -291,6 +299,7 @@ const main = () => {
     if (argument) {
         //priorityCalc(argument);
         calculate(argument, "*");
+        calculate(argument, "/");
     }
 
 }
