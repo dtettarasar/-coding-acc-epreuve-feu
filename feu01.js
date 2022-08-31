@@ -45,26 +45,36 @@ const argTester = () => {
 
 
         if (charIsInt) {
+
             intArr.push(strSplit[i]);
+
         } else if ((charIsOp || charIsPar) && intArr.length !== 0) {
+
             const finalInt = parseInt(intArr.join(''));
             expArr.push(finalInt);
             intArr = [];
             expArr.push(strSplit[i]);
+
         } else if ((charIsOp || charIsPar) && intArr.length == 0) {
+
             expArr.push(strSplit[i]);
+
         } else if (!charIsSpace) {
+
             console.log(errMsg + "présence de caractères incorrects");
             return false;
+
         }
 
         
         if (i === strSplit.length - 1) {
 
             if (intArr.length !== 0) {
+
                 const finalInt = parseInt(intArr.join(''));
                 expArr.push(finalInt);
                 intArr = [];
+
             }
 
         }
@@ -216,22 +226,10 @@ const convertParenthesis = (array) => {
     Si jamais on détecte la présence de parenthèse imbriqué, il faut réexecuter la fonction. sur l'array.    
     */
 
-    //console.log("subPar: " + subPar);
-
     // Executer la fonction si l'array a encore des parenthèses imbriquées
     if (subPar) {
         finalArray = convertParenthesis(finalArray);
     }
-    
-    /*console.log(finalArray);
-
-    
-    for (let i = 0; i < finalArray.length; i++) {
-        console.log(finalArray[i]);
-    }
-
-    console.log("------");
-    */
 
     return finalArray;
 
@@ -253,23 +251,20 @@ const findChars = (char, valueArr) => {
 
 const calculate = (array, operatorArr) => {
 
-    const copyArr = [];
-    let operatorAmount = 0;
-
     for (let i = 0; i < array.length; i++) {
 
-        //console.log("i avant calc:" + array[i]);
-
         if (operatorArr.includes(array[i])) {
-            /*
+            
             console.log("calcul repéré:");
             console.log(array[i-1] + " array? => " + Array.isArray(array[i-1]));
             console.log(array[i]);
             console.log(array[i+1] + " array? => " + Array.isArray(array[i+1]));
             console.log("----");
-            */
+            
 
             // Dans les conditions de calcul ci-dessous : s'assurer que array[i+1] et array[i-1] sont bien des int et pas des arrays. 
+
+            //Array.isArray(array[i-1]) === false && Array.isArray(array[i+1]) === false
 
             switch (array[i]) {
                 case expSpecChars[0]:
@@ -302,26 +297,10 @@ const calculate = (array, operatorArr) => {
         //console.log(array);
     }
 
-    // tant que l'opérateur est présent dans l'array, on exécute la fonction
-    
-    for (let i = 0; i < array.length; i++) {
-        if (operatorArr.includes(array[i])) {
-            operatorAmount++;
-        }
-    }
-
-    if (operatorAmount !== 0) {
-        calculate(array, operatorArr);
-    }
-    
-
-    //console.log(array);
-
     return array;
 
-    // console.log(operator + ": " + operatorAmount);
-
 }
+
 
 const insertResult = (array, index, result) => {
     array.insert(index, result);
@@ -330,10 +309,6 @@ const insertResult = (array, index, result) => {
 }
 
 const fullCalc = (array) => {
-
-    // Utiliser une for loop avec expSpecChars pour executer calculate avec chaque opérateur
-
-    // exécuter les divisions, multiplication et modulo tant que les symboles associés sont encore présents dans l'array
 
     const firstCalc = calculate(array, ["*","/", "%"]);
     const finalCalc = calculate(firstCalc, ["+","-"]);
