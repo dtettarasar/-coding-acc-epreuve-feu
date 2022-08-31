@@ -261,11 +261,13 @@ const calculate = (array, operatorArr) => {
         //console.log("i avant calc:" + array[i]);
 
         if (operatorArr.includes(array[i])) {
+            /*
             console.log("calcul repéré:");
-            console.log(array[i-1]);
+            console.log(array[i-1] + " array? => " + Array.isArray(array[i-1]));
             console.log(array[i]);
-            console.log(array[i+1]);
+            console.log(array[i+1] + " array? => " + Array.isArray(array[i+1]));
             console.log("----");
+            */
 
             // Dans les conditions de calcul ci-dessous : s'assurer que array[i+1] et array[i-1] sont bien des int et pas des arrays. 
 
@@ -297,7 +299,7 @@ const calculate = (array, operatorArr) => {
 
         }
         //console.log("i après calc:" + array[i]);
-        console.log(array);
+        //console.log(array);
     }
 
     // tant que l'opérateur est présent dans l'array, on exécute la fonction
@@ -314,6 +316,9 @@ const calculate = (array, operatorArr) => {
     
 
     //console.log(array);
+
+    return array;
+
     // console.log(operator + ": " + operatorAmount);
 
 }
@@ -324,15 +329,17 @@ const insertResult = (array, index, result) => {
     array.splice(index, 2);
 }
 
-const priorityCalc = (array) => {
+const fullCalc = (array) => {
 
     // Utiliser une for loop avec expSpecChars pour executer calculate avec chaque opérateur
 
     // exécuter les divisions, multiplication et modulo tant que les symboles associés sont encore présents dans l'array
 
-    calculate(array, "*");
-    calculate(array, "/");
-    calculate(array, "%");
+    const firstCalc = calculate(array, ["*","/", "%"]);
+    const finalCalc = calculate(firstCalc, ["+","-"]);
+
+    console.log(finalCalc);
+
 }
 
 const main = () => {
@@ -340,10 +347,7 @@ const main = () => {
     const argument = argTester();
 
     if (argument) {
-        //priorityCalc(argument);
-        //calculate(argument, "*");
-        calculate(argument, ["*","/", "%"]);
-        calculate(argument, ["+","-"]);
+        fullCalc(argument);
     }
 
 }
