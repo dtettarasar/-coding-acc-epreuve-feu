@@ -251,15 +251,31 @@ const findChars = (char, valueArr) => {
 
 const calculate = (array, operatorArr) => {
 
+    // première boucle pour gérer les calculs entre parenthèses
+    for (let i = 0; i < array.length; i++) {
+
+        if (Array.isArray(array[i])) {
+            /*
+            console.log("array trouvé");
+            console.log(array[i]);
+            console.log(fullCalc(array[i]));
+            */
+            const arrResult = fullCalc(array[i]);
+            array[i] = arrResult;
+        }
+
+    }
+
     for (let i = 0; i < array.length; i++) {
 
         if (operatorArr.includes(array[i])) {
-            
+            /*
             console.log("calcul repéré:");
             console.log(array[i-1] + " array? => " + Array.isArray(array[i-1]));
             console.log(array[i]);
             console.log(array[i+1] + " array? => " + Array.isArray(array[i+1]));
             console.log("----");
+            */
             
 
             // Dans les conditions de calcul ci-dessous : s'assurer que array[i+1] et array[i-1] sont bien des int et pas des arrays. 
@@ -313,7 +329,11 @@ const fullCalc = (array) => {
     const firstCalc = calculate(array, ["*","/", "%"]);
     const finalCalc = calculate(firstCalc, ["+","-"]);
 
-    console.log(finalCalc);
+    //console.log(finalCalc);
+
+    if (finalCalc.length === 1) {
+        return finalCalc[0];
+    }
 
 }
 
@@ -322,7 +342,7 @@ const main = () => {
     const argument = argTester();
 
     if (argument) {
-        fullCalc(argument);
+        console.log(fullCalc(argument));
     }
 
 }
