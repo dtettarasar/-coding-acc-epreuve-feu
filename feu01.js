@@ -82,6 +82,8 @@ const argTester = () => {
 
     }
 
+    console.log(expArr);
+
     const testParenthesis = checkParenthesis(expArr);
     const testOperators = checkOperators(expArr);
 
@@ -159,6 +161,13 @@ const checkOperators = (array) => {
         return true;
     }
 
+}
+
+const checkNegNum = (array) => {
+    /*
+    si deux opérateurs se suivent et que l'op numéro 2 est un moins, si l'element suivant le signe moins est un nombre 
+    alors on calcule nombre * -1, on remplace nombre par nombre *-1 dans l'array et on retire le signe moins de l'array
+    */
 }
 
 // Convertir les section de l'expression entre parenthèse, en sous array
@@ -255,11 +264,6 @@ const calculate = (array, operatorArr) => {
     for (let i = 0; i < array.length; i++) {
 
         if (Array.isArray(array[i])) {
-            /*
-            console.log("array trouvé");
-            console.log(array[i]);
-            console.log(fullCalc(array[i]));
-            */
             const arrResult = fullCalc(array[i]);
             array[i] = arrResult;
         }
@@ -269,18 +273,6 @@ const calculate = (array, operatorArr) => {
     for (let i = 0; i < array.length; i++) {
 
         if (operatorArr.includes(array[i])) {
-            /*
-            console.log("calcul repéré:");
-            console.log(array[i-1] + " array? => " + Array.isArray(array[i-1]));
-            console.log(array[i]);
-            console.log(array[i+1] + " array? => " + Array.isArray(array[i+1]));
-            console.log("----");
-            */
-            
-
-            // Dans les conditions de calcul ci-dessous : s'assurer que array[i+1] et array[i-1] sont bien des int et pas des arrays. 
-
-            //Array.isArray(array[i-1]) === false && Array.isArray(array[i+1]) === false
 
             switch (array[i]) {
                 case expSpecChars[0]:
@@ -309,8 +301,6 @@ const calculate = (array, operatorArr) => {
             i-=1;
 
         }
-        //console.log("i après calc:" + array[i]);
-        //console.log(array);
     }
 
     return array;
@@ -328,8 +318,6 @@ const fullCalc = (array) => {
 
     const firstCalc = calculate(array, ["*","/", "%"]);
     const finalCalc = calculate(firstCalc, ["+","-"]);
-
-    //console.log(finalCalc);
 
     if (finalCalc.length === 1) {
         return finalCalc[0];
