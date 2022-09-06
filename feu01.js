@@ -167,6 +167,7 @@ const checkNegNum = (array) => {
     /*
     si deux opérateurs se suivent et que l'op numéro 2 est un moins, si l'element suivant le signe moins est un nombre 
     alors on calcule nombre * -1, on remplace nombre par nombre *-1 dans l'array et on retire le signe moins de l'array
+    Executer cette fonction avant checkOperators.
     */
 }
 
