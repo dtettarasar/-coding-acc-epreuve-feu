@@ -108,8 +108,10 @@ const strInStr = (fullStr, sampleStr) => {
 
     const fullStrArr = fullStr.split('');
     const sampleStrArr = sampleStr.split('');
+    /*
     console.log("fullStrArr: " + fullStrArr);
     console.log("sampleStrArr: " + sampleStrArr);
+    */
 
     for (let i = 0; i < fullStrArr.length;i++) {
 
@@ -127,13 +129,12 @@ const strInStr = (fullStr, sampleStr) => {
 
             if (testComparison) {
                 return i;
-            } else {
-                return false;
-            }
-
+            } 
         }
 
     }
+
+    return false;
 
 }
 
@@ -152,13 +153,11 @@ const main = () => {
 
     if (argObj) {
         console.log(argObj);
-        //console.log(argObj.fileOneValue);
-        //console.log("fileTwo first line: " + argObj.fileTwoValue[0]);
-        //findValInBoard(argObj.fileOneValue, argObj.fileTwoValue[0]);
+        findValInBoard(argObj.fileOneValue, argObj.fileTwoValue[0]);
     }
 
 }
 
-console.log(strInStr("123456789\r", "123\r"));
+//console.log(strInStr("123456789\r", "123\r"));
 
 main();
