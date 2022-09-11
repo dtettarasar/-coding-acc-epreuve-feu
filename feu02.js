@@ -64,9 +64,19 @@ const getTxtArr = (file) => {
 
     try {
 
-        const fs = require('fs');
+        const txtArr = [];
+
         const readline = require('readline');
-        const txtArr = fs.readFileSync(file, 'utf8').split('\n');
+        const fs = require('fs');
+        const data = fs.readFileSync(file, 'utf8');
+
+        // split the contents by new line
+        const lines = data.split(/\r?\n/);
+
+        lines.forEach((line) => {
+            txtArr.push(line);
+        });
+
         return txtArr;
 
     } catch (error) {
