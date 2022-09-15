@@ -138,11 +138,24 @@ const strInStr = (fullStr, sampleStr) => {
 
 }
 
-const findValInBoard = (board, valToFind) => {
+const findValInBoard = (board, valuesToFind) => {
 
     for (let i = 0; i < board.length; i++) {
         console.log(board[i]);
-        console.log(strInStr(board[i], valToFind));
+        findFirstValue = strInStr(board[i], valuesToFind[0]);
+        console.log(findFirstValue);
+
+        if (findFirstValue) {
+            console.log("found first Value");
+
+            for (let j = 1; j < valuesToFind.length; j++) {
+                console.log(valuesToFind[j]);
+            }
+
+        }
+
+        console.log("------");
+
     }
 
 }
@@ -153,7 +166,7 @@ const main = () => {
 
     if (argObj) {
         console.log(argObj);
-        findValInBoard(argObj.fileOneValue, argObj.fileTwoValue[0]);
+        findValInBoard(argObj.fileOneValue, argObj.fileTwoValue);
     }
 
 }
