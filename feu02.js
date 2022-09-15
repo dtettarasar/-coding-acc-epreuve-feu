@@ -142,15 +142,28 @@ const findValInBoard = (board, valuesToFind) => {
 
     for (let i = 0; i < board.length; i++) {
         console.log(board[i]);
-        findFirstValue = strInStr(board[i], valuesToFind[0]);
+        const findFirstValue = strInStr(board[i], valuesToFind[0]);
         console.log(findFirstValue);
 
-        if (findFirstValue) {
+        if (findFirstValue || findFirstValue === 0) {
+            console.log("---");
             console.log("found first Value");
+            console.log("following values");
 
             for (let j = 1; j < valuesToFind.length; j++) {
                 console.log(valuesToFind[j]);
+                console.log(board[i + j]);
+                const valueToTest = valuesToFind[j];
+                const boardElemToTest = board[i + j];
+
+                if (valueToTest && boardElemToTest) {
+                    const findFollowingValue = strInStr(board[i + j],valuesToFind[j]);
+                    console.log(findFollowingValue);
+                }
+                
             }
+
+            console.log("---");
 
         }
 
