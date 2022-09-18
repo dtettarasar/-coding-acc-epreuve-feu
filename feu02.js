@@ -166,14 +166,17 @@ const strInStrArr = (fullStr, sampleStr) => {
             const testComparison = arrComparison(fullStrExtract, sampleStrArr);
 
             if (testComparison) {
-                // return i;
-                console.log(i);
+                indexArr.push(i);
             } 
         }
 
     }
 
-    return false;
+    if (indexArr.length !== 0) {
+        return indexArr;
+    } else {
+        return false;
+    }
 
 }
 
@@ -235,6 +238,18 @@ const findValInBoard = (board, valuesToFind) => {
 
 }
 
+const findValInBoardArr = (board, valuesToFind) => {
+    /*todo : reproduire la function findValInBoard, mais en utilisant strInSTrArr*/
+
+    for (let i = 0; i < board.length; i++) {
+        console.log(board[i]);
+        console.log(valuesToFind[0]);
+        const findFirstValue = strInStrArr(board[i], valuesToFind[0]);
+        console.log(findFirstValue);
+    }
+
+}
+
 const main = () => {
 
     const argObj = argTester();
@@ -246,8 +261,6 @@ const main = () => {
 
 }
 
-//console.log(strInStr("123456789\r", "123\r"));
-
 // main();
 
 const test = () => {
@@ -256,6 +269,7 @@ const test = () => {
 
     if (argObj) {
         console.log(argObj);
+        findValInBoardArr(argObj.fileOneValue, argObj.fileTwoValue);
     }
 
 }
