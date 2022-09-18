@@ -238,8 +238,18 @@ const findValInBoard = (board, valuesToFind) => {
 
 }
 
+const checkFollowingValues = () => {
+    //Todo
+    /*
+    - prendre en argument num de col et de row, board et form à trouver
+    - à partir des coordonnées : vérifier que les lignes suivant la première ligne de la forme, sont bien retrouvées dans le plateau
+    - return true ou false à la fin du process
+    */
+}
+
 const findValInBoardArr = (board, valuesToFind) => {
     /*todo : reproduire la function findValInBoard, mais en utilisant strInSTrArr*/
+    // adpater le process pour que les espaces soient ignorés, dans le plateau et dans la forme à trouver
 
     for (let i = 0; i < board.length; i++) {
         console.log(board[i]);
