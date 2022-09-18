@@ -249,12 +249,21 @@ const checkFollowingValues = () => {
 
 const findValInBoardArr = (board, valuesToFind) => {
     /*todo : reproduire la function findValInBoard, mais en utilisant strInSTrArr*/
-    // adpater le process pour que les espaces soient ignorés, dans le plateau et dans la forme à trouver
+    // adapter le process pour que les espaces soient ignorés, dans le plateau et dans la forme à trouver
 
     for (let i = 0; i < board.length; i++) {
         console.log(board[i]);
         console.log(valuesToFind[0]);
         const findFirstValue = strInStrArr(board[i], valuesToFind[0]);
+        console.log("findFirstValue");
+        /*
+        findFirstValue, récupère toutes les colonnes potentielles à partir desquelles, on retrouve la première ligne, 
+        de la forme à trouver. Tester checkFollowingValues(), avec en paramètre 
+        - col sera chaque valeur dans findFirstValue
+        - row sera i
+        - board 
+        - valuesToFind 
+        */
         console.log(findFirstValue);
     }
 
