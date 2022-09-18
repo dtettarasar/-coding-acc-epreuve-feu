@@ -138,6 +138,45 @@ const strInStr = (fullStr, sampleStr) => {
 
 }
 
+// Vérifie si la deuxième string est bien présente dans la première
+/* dans cett version, la fonction doit retourner un array de tous les indices possibles,
+Permettant d'identifier le sampleStr dans la fullStr */ 
+const strInStrArr = (fullStr, sampleStr) => {
+
+    const fullStrArr = fullStr.split('');
+    const sampleStrArr = sampleStr.split('');
+    const indexArr = [];
+    /*
+    console.log("fullStrArr: " + fullStrArr);
+    console.log("sampleStrArr: " + sampleStrArr);
+    */
+
+    for (let i = 0; i < fullStrArr.length;i++) {
+
+        if (fullStrArr[i] === sampleStrArr[0]) {
+
+            const fullStrExtract = [];
+
+            for (let j = 0; j < sampleStrArr.length; j++) {
+
+                fullStrExtract.push(fullStrArr[i + j]);
+
+            }
+
+            const testComparison = arrComparison(fullStrExtract, sampleStrArr);
+
+            if (testComparison) {
+                // return i;
+                console.log(i);
+            } 
+        }
+
+    }
+
+    return false;
+
+}
+
 const findValInBoard = (board, valuesToFind) => {
 
     for (let i = 0; i < board.length; i++) {
@@ -209,4 +248,16 @@ const main = () => {
 
 //console.log(strInStr("123456789\r", "123\r"));
 
-main();
+// main();
+
+const test = () => {
+
+    const argObj = argTester();
+
+    if (argObj) {
+        console.log(argObj);
+    }
+
+}
+
+test();
