@@ -149,6 +149,7 @@ const findValInBoard = (board, valuesToFind) => {
         if (findFirstValue || findFirstValue === 0) {
 
             const valObj = {};
+            let allValFound = true;
 
             console.log("---");
             console.log("found first Value");
@@ -166,20 +167,22 @@ const findValInBoard = (board, valuesToFind) => {
                     const findFollowingValue = strInStr(board[i + j],valuesToFind[j]);
                     console.log("findFollowingValue: " + findFollowingValue);
                     
-                    /*
+                    
                     if (findFollowingValue !== findFirstValue) {
-                        break;
+                        allValFound = false;
                     }
-                    */
+                    
 
                 }
                 
             }
 
-            valObj.line = i;
-            valObj.col = findFirstValue;
-
-            console.log(valObj);
+            if (allValFound) {
+                valObj.line = i;
+                valObj.col = findFirstValue;
+                console.log("allValFound: " + allValFound);
+                console.log(valObj);
+            }
 
             console.log("---");
 
