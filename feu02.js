@@ -88,6 +88,8 @@ const getTxtArr = (file) => {
 
 // Comparer deux arrays
 const arrComparison = (arrOne, arrTwo) => {
+    
+    // Adapter la fonction pour que la comparaison ne prenne pas en compte un espace (si arrTwo[i] === " ") et que arrOne est un autre char, la comparaison doit quand même retourner true
 
     if (arrOne.length === arrTwo.length) {
 
