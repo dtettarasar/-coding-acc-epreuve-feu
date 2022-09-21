@@ -240,13 +240,61 @@ const findValInBoard = (board, valuesToFind) => {
 
 }
 
-const checkFollowingValues = () => {
+const checkFollowingValues = (board, valuesToFind, col, row) => {
     //Todo
     /*
     - prendre en argument num de col et de row, board et form à trouver
     - à partir des coordonnées : vérifier que les lignes suivant la première ligne de la forme, sont bien retrouvées dans le plateau
     - return true ou false à la fin du process
     */
+
+   const valObj = {};
+   let allValFound = true;
+
+   /*
+   console.log("---");
+   console.log("found first Value");
+   console.log("row:");
+   console.log(row);
+   console.log("col:");
+   console.log(col);
+   console.log("following values");
+   */
+
+   for (let j = 1; j < valuesToFind.length; j++) {
+    // console.log(valuesToFind[j]);
+    // console.log(board[row + j]);
+    const valueToTest = valuesToFind[j];
+    const boardElemToTest = board[row + j];
+
+        if (valueToTest && boardElemToTest) {
+            const findFollowingValue = strInStr(board[row + j],valuesToFind[j]);
+            // console.log("findFollowingValue: " + findFollowingValue);
+            
+            
+            if (findFollowingValue !== col) {
+                allValFound = false;
+            }
+            
+
+        }
+    
+    }
+
+    if (allValFound) {
+        valObj.row = row;
+        valObj.col = col;
+        /*
+        console.log("allValFound: " + allValFound);
+        console.log(valObj);
+        */
+       return valObj;
+    }
+
+    //console.log("---");
+
+    return false;
+
 }
 
 const findValInBoardArr = (board, valuesToFind) => {
@@ -260,7 +308,6 @@ const findValInBoardArr = (board, valuesToFind) => {
         const findFirstValue = strInStrArr(board[i], valuesToFind[0]);
 
         if (findFirstValue !== false) {
-            console.log("findFirstValue");
             /*
             findFirstValue, récupère toutes les colonnes potentielles à partir desquelles, on retrouve la première ligne, 
             de la forme à trouver. Tester checkFollowingValues(), avec en paramètre 
@@ -269,7 +316,10 @@ const findValInBoardArr = (board, valuesToFind) => {
             - board 
             - valuesToFind 
             */
-            console.log(findFirstValue);
+
+            const followingValues = checkFollowingValues(board, valuesToFind, findFirstValue[0], i);
+            console.log(followingValues);
+
         }
         
     }
