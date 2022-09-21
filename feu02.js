@@ -254,20 +254,26 @@ const findValInBoardArr = (board, valuesToFind) => {
     // adapter le process pour que les espaces soient ignorés, dans le plateau et dans la forme à trouver
 
     for (let i = 0; i < board.length; i++) {
+        console.log("---");
         console.log(board[i]);
         console.log(valuesToFind[0]);
         const findFirstValue = strInStrArr(board[i], valuesToFind[0]);
-        console.log("findFirstValue");
-        /*
-        findFirstValue, récupère toutes les colonnes potentielles à partir desquelles, on retrouve la première ligne, 
-        de la forme à trouver. Tester checkFollowingValues(), avec en paramètre 
-        - col sera chaque valeur dans findFirstValue
-        - row sera i
-        - board 
-        - valuesToFind 
-        */
-        console.log(findFirstValue);
+
+        if (findFirstValue !== false) {
+            console.log("findFirstValue");
+            /*
+            findFirstValue, récupère toutes les colonnes potentielles à partir desquelles, on retrouve la première ligne, 
+            de la forme à trouver. Tester checkFollowingValues(), avec en paramètre 
+            - col sera chaque valeur dans findFirstValue
+            - row sera i
+            - board 
+            - valuesToFind 
+            */
+            console.log(findFirstValue);
+        }
+        
     }
+    console.log("---");
 
 }
 
