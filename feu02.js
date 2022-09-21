@@ -106,14 +106,16 @@ const arrComparison = (arrOne, arrTwo) => {
 }
 
 // Vérifie si la deuxième string est bien présente dans la première
+
 const strInStr = (fullStr, sampleStr) => {
 
     const fullStrArr = fullStr.split('');
     const sampleStrArr = sampleStr.split('');
+
     /*
     console.log("fullStrArr: " + fullStrArr);
     console.log("sampleStrArr: " + sampleStrArr);
-    */
+    */    
 
     for (let i = 0; i < fullStrArr.length;i++) {
 
@@ -141,7 +143,7 @@ const strInStr = (fullStr, sampleStr) => {
 }
 
 // Vérifie si la deuxième string est bien présente dans la première
-/* dans cett version, la fonction doit retourner un array de tous les indices possibles,
+/* dans cette version, la fonction doit retourner un array de tous les indices possibles,
 Permettant d'identifier le sampleStr dans la fullStr */ 
 const strInStrArr = (fullStr, sampleStr) => {
 
@@ -178,64 +180,6 @@ const strInStrArr = (fullStr, sampleStr) => {
         return indexArr;
     } else {
         return false;
-    }
-
-}
-
-const findValInBoard = (board, valuesToFind) => {
-
-    for (let i = 0; i < board.length; i++) {
-        console.log(board[i]);
-        console.log(valuesToFind[0]);
-        const findFirstValue = strInStr(board[i], valuesToFind[0]);
-        console.log(findFirstValue);
-
-        if (findFirstValue || findFirstValue === 0) {
-
-            const valObj = {};
-            let allValFound = true;
-
-            console.log("---");
-            console.log("found first Value");
-            console.log("line: " + i);
-            console.log("col: " + findFirstValue);
-            console.log("following values");
-
-            for (let j = 1; j < valuesToFind.length; j++) {
-                console.log(valuesToFind[j]);
-                console.log(board[i + j]);
-                const valueToTest = valuesToFind[j];
-                const boardElemToTest = board[i + j];
-
-                if (valueToTest && boardElemToTest) {
-                    const findFollowingValue = strInStr(board[i + j],valuesToFind[j]);
-                    console.log("findFollowingValue: " + findFollowingValue);
-                    
-                    
-                    if (findFollowingValue !== findFirstValue) {
-                        allValFound = false;
-                    }
-                    
-
-                }
-                
-            }
-
-            if (allValFound) {
-                valObj.line = i;
-                valObj.col = findFirstValue;
-                console.log("allValFound: " + allValFound);
-                console.log(valObj);
-            }
-
-            console.log("---");
-
-            //return valObj;
-
-        }
-
-        console.log("------");
-
     }
 
 }
