@@ -119,7 +119,7 @@ const strInStr = (fullStr, sampleStr) => {
 
     for (let i = 0; i < fullStrArr.length;i++) {
 
-        if (fullStrArr[i] === sampleStrArr[0]) {
+        if (fullStrArr[i] === sampleStrArr[0] || sampleStrArr[0] === " ") {
 
             const fullStrExtract = [];
 
@@ -242,7 +242,6 @@ const checkFollowingValues = (board, valuesToFind, col, row) => {
 }
 
 const findValInBoard = (board, valuesToFind) => {
-    /*todo : reproduire la function findValInBoard, mais en utilisant strInSTrArr*/
     // adapter le process pour que les espaces soient ignorés, dans le plateau et dans la forme à trouver
 
     for (let i = 0; i < board.length; i++) {
@@ -296,11 +295,13 @@ const test = () => {
     }
     */
 
-    const testFunc = arrComparison(['1',"1"], [" ", "1"]);
+    const testFunc = arrComparison(['3',"1"], [" ", "1"]);
     console.log(testFunc);
+
+    console.log(strInStr("2331", " 1"));
 
 }
 
-test();
+//test();
 
-//main();
+main();
