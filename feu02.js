@@ -261,8 +261,12 @@ const findValInBoard = (board, valuesToFind) => {
             - valuesToFind 
             */
 
-            const followingValues = checkFollowingValues(board, valuesToFind, findFirstValue[0], i);
-            console.log(followingValues);
+            console.log(findFirstValue);
+
+            for (let j = 0; j < findFirstValue.length; j++) {
+                const followingValues = checkFollowingValues(board, valuesToFind, findFirstValue[j], i);
+                console.log(followingValues);
+            }          
 
         }
         
@@ -297,6 +301,6 @@ const test = () => {
 
 }
 
-//test();
+test();
 
-main();
+//main();
