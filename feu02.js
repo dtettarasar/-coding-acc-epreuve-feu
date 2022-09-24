@@ -241,7 +241,7 @@ const checkFollowingValues = (board, valuesToFind, col, row) => {
 
 }
 
-const findValInBoardArr = (board, valuesToFind) => {
+const findValInBoard = (board, valuesToFind) => {
     /*todo : reproduire la function findValInBoard, mais en utilisant strInSTrArr*/
     // adapter le process pour que les espaces soient ignorés, dans le plateau et dans la forme à trouver
 
@@ -282,7 +282,7 @@ const main = () => {
 
 }
 
-// main();
+main();
 
 const test = () => {
 
@@ -295,4 +295,4 @@ const test = () => {
 
 }
 
-test();
+//test();
