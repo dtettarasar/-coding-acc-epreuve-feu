@@ -95,7 +95,7 @@ const arrComparison = (arrOne, arrTwo) => {
 
         for (let i = 0; i < arrOne.length; i++) {
 
-            if (arrOne[i] !== arrTwo[i]) {
+            if (arrOne[i] !== arrTwo[i] && arrOne[i] !== " " && arrTwo[i] !== " ") {
                 return false;
             }
 
@@ -282,17 +282,21 @@ const main = () => {
 
 }
 
-main();
-
 const test = () => {
 
-    const argObj = argTester();
-
+    //const argObj = argTester();
+    /*
     if (argObj) {
         console.log(argObj);
         findValInBoardArr(argObj.fileOneValue, argObj.fileTwoValue);
     }
+    */
+
+    const testFunc = arrComparison(['1',"1"], [" ", "1"]);
+    console.log(testFunc);
 
 }
 
 //test();
+
+main();
