@@ -82,7 +82,7 @@ const getTxtArr = (file) => {
     } catch (error) {
 
         return false;
-        
+
     }
 
 }
@@ -256,10 +256,16 @@ const main = () => {
     const argObj = argTester();
 
     if (argObj) {
-        console.log(argObj);
+        //console.log(argObj);
         const result = findValInBoard(argObj.fileOneValue, argObj.fileTwoValue);
-        console.log("result");
-        console.log(result);
+
+        if (result) {
+            console.log("Trouvé !");
+            console.log("Coordonnées : " + result.col + "," + result.row);
+        } else {
+            console.log("Introuvable");
+        }
+
     }
 
 }
