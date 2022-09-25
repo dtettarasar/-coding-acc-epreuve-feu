@@ -80,8 +80,9 @@ const getTxtArr = (file) => {
         return txtArr;
 
     } catch (error) {
-        // console.log("Erreur : ce fichier n'existe pas (Vérifier le chemin du fichier. Formats lisibles : " + fileFormats + ").");
+
         return false;
+        
     }
 
 }
@@ -111,11 +112,6 @@ const strInStr = (fullStr, sampleStr) => {
 
     const fullStrArr = fullStr.split('');
     const sampleStrArr = sampleStr.split('');
-
-    /*
-    console.log("fullStrArr: " + fullStrArr);
-    console.log("sampleStrArr: " + sampleStrArr);
-    */    
 
     for (let i = 0; i < fullStrArr.length;i++) {
 
@@ -150,10 +146,6 @@ const strInStrArr = (fullStr, sampleStr) => {
     const fullStrArr = fullStr.split('');
     const sampleStrArr = sampleStr.split('');
     const indexArr = [];
-    /*
-    console.log("fullStrArr: " + fullStrArr);
-    console.log("sampleStrArr: " + sampleStrArr);
-    */
 
     for (let i = 0; i < fullStrArr.length;i++) {
 
@@ -185,7 +177,7 @@ const strInStrArr = (fullStr, sampleStr) => {
 }
 
 const checkFollowingValues = (board, valuesToFind, col, row) => {
-    //Todo
+
     /*
     - prendre en argument num de col et de row, board et form à trouver
     - à partir des coordonnées : vérifier que les lignes suivant la première ligne de la forme, sont bien retrouvées dans le plateau
@@ -195,26 +187,14 @@ const checkFollowingValues = (board, valuesToFind, col, row) => {
    const valObj = {};
    let allValFound = true;
 
-   /*
-   console.log("---");
-   console.log("found first Value");
-   console.log("row:");
-   console.log(row);
-   console.log("col:");
-   console.log(col);
-   console.log("following values");
-   */
-
    for (let j = 1; j < valuesToFind.length; j++) {
-    // console.log(valuesToFind[j]);
-    // console.log(board[row + j]);
+
     const valueToTest = valuesToFind[j];
     const boardElemToTest = board[row + j];
 
         if (valueToTest && boardElemToTest) {
+
             const findFollowingValue = strInStr(board[row + j],valuesToFind[j]);
-            // console.log("findFollowingValue: " + findFollowingValue);
-            
             
             if (findFollowingValue !== col) {
                 allValFound = false;
@@ -226,16 +206,11 @@ const checkFollowingValues = (board, valuesToFind, col, row) => {
     }
 
     if (allValFound) {
-        valObj.row = row;
         valObj.col = col;
-        /*
-        console.log("allValFound: " + allValFound);
-        console.log(valObj);
-        */
-       return valObj;
+        valObj.row = row;
+        return valObj;
     }
 
-    //console.log("---");
 
     return false;
 
@@ -245,10 +220,9 @@ const findValInBoard = (board, valuesToFind) => {
     // adapter le process pour que les espaces soient ignorés, dans le plateau et dans la forme à trouver
 
     for (let i = 0; i < board.length; i++) {
-        console.log("---");
-        console.log(board[i]);
-        console.log(valuesToFind[0]);
+
         const findFirstValue = strInStrArr(board[i], valuesToFind[0]);
+        let followingValues = null;
 
         if (findFirstValue !== false) {
             /*
@@ -260,17 +234,20 @@ const findValInBoard = (board, valuesToFind) => {
             - valuesToFind 
             */
 
-            console.log(findFirstValue);
-
             for (let j = 0; j < findFirstValue.length; j++) {
-                const followingValues = checkFollowingValues(board, valuesToFind, findFirstValue[j], i);
-                console.log(followingValues);
+                followingValues = checkFollowingValues(board, valuesToFind, findFirstValue[j], i);
+                
+                if (followingValues) {
+                    return followingValues;
+                }
+
             }          
 
         }
         
     }
-    console.log("---");
+
+    return false;
 
 }
 
@@ -280,28 +257,11 @@ const main = () => {
 
     if (argObj) {
         console.log(argObj);
-        findValInBoard(argObj.fileOneValue, argObj.fileTwoValue);
+        const result = findValInBoard(argObj.fileOneValue, argObj.fileTwoValue);
+        console.log("result");
+        console.log(result);
     }
 
 }
-
-const test = () => {
-
-    //const argObj = argTester();
-    /*
-    if (argObj) {
-        console.log(argObj);
-        findValInBoardArr(argObj.fileOneValue, argObj.fileTwoValue);
-    }
-    */
-
-    const testFunc = arrComparison(['3',"1"], [" ", "1"]);
-    console.log(testFunc);
-
-    console.log(strInStr("2331", " 1"));
-
-}
-
-//test();
 
 main();
