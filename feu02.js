@@ -251,6 +251,27 @@ const findValInBoard = (board, valuesToFind) => {
 
 }
 
+const boardResult = (board) => {
+
+    const boardResult = [];
+
+    console.log(board);
+
+    
+    for (let i = 0; i < board.length; i++) {
+
+        const boardRow = board[i].split('');
+        console.log(boardRow);
+
+        for (let j = 0; j < boardRow.length; j++) {
+            console.log(boardRow[j]);
+        }
+        
+    }
+    
+
+}
+
 const main = () => {
 
     const argObj = argTester();
@@ -262,6 +283,7 @@ const main = () => {
         if (result) {
             console.log("Trouvé !");
             console.log("Coordonnées : " + result.col + "," + result.row);
+            boardResult(argObj.fileOneValue);
         } else {
             console.log("Introuvable");
         }
