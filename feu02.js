@@ -262,6 +262,12 @@ const boardResult = (board, valuesToFind, colLimit, rowLimit) => {
     const boardResult = [];
     const rowToSpare = [];
 
+    const dashRow = [];
+
+    for (let i = 0; i < board[0].length;i++) {
+        dashRow.push("-");
+    }
+
     //ajouter la première ligne à ne pas changer
     //rowToSpare.push(rowLimit);
 
@@ -283,17 +289,34 @@ const boardResult = (board, valuesToFind, colLimit, rowLimit) => {
     
     for (let i = 0; i < board.length; i++) {
 
-        const boardRow = board[i].split('');
-        boardResult.push(boardRow);
-        //console.log(boardRow);
+        if (rowToSpare.includes(i)) {
 
+            const boardRow = board[i].split('');
+            boardResult.push(boardRow);
+
+        } else {
+            /*
+            const dashRow = [];
+
+            for (let j = 0; j < board[i].length;j++) {
+                dashRow.push("-");
+            }*/
+
+            boardResult.push(dashRow);
+
+        }
+
+        //console.log(boardRow);
+        /*
         for (let j = 0; j < boardRow.length; j++) {
             //console.log(boardRow[j]);
         }
+        */
         
     }
 
-    //console.log(boardResult);
+    console.log("boardResult");
+    console.log(boardResult);
     
 
 }
