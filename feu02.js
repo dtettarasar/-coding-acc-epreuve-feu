@@ -251,23 +251,49 @@ const findValInBoard = (board, valuesToFind) => {
 
 }
 
-const boardResult = (board) => {
+const boardResult = (board, valuesToFind, colLimit, rowLimit) => {
+
+    /* 
+    La fonction doit récupérer le plateau avec les tirets.
+    on va passer le plateau en argument et en fonction des coordonnées et des dimensions de la forme à trouver
+    nous allons convertir les nombres inutiles en tirets
+    */
 
     const boardResult = [];
+    const rowToSpare = [];
 
+    //ajouter la première ligne à ne pas changer
+    //rowToSpare.push(rowLimit);
+
+    //ajouter les lignes suivantes à ne pas changer
+    for (let i = 0; i < valuesToFind.length; i++) {
+        //console.log(i + rowLimit);
+        rowToSpare.push(i + rowLimit);
+    }
+
+    console.log("rowToSpare");
+    console.log(rowToSpare);
+
+    console.log("valuesToFind");
+    console.log(valuesToFind);
+
+    console.log("board");
     console.log(board);
 
     
     for (let i = 0; i < board.length; i++) {
 
         const boardRow = board[i].split('');
-        console.log(boardRow);
+        boardResult.push(boardRow);
+        //console.log(boardRow);
 
         for (let j = 0; j < boardRow.length; j++) {
-            console.log(boardRow[j]);
+            //console.log(boardRow[j]);
         }
         
     }
+
+    //console.log(boardResult);
     
 
 }
@@ -283,7 +309,7 @@ const main = () => {
         if (result) {
             console.log("Trouvé !");
             console.log("Coordonnées : " + result.col + "," + result.row);
-            boardResult(argObj.fileOneValue);
+            boardResult(argObj.fileOneValue, argObj.fileTwoValue, result.col, result.row);
         } else {
             console.log("Introuvable");
         }
