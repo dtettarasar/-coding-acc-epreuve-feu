@@ -294,10 +294,18 @@ const boardResult = (board, valuesToFind, colLimit, rowLimit) => {
         if (rowToSpare.includes(i)) {
 
             const boardRow = board[i].split('');
+            const valToFindRow = valuesToFind[i - rowLimit].split('');
+            
+            /*
+            console.log("valuesToFind row:")
+            console.log(valToFindRow);
+            console.log("boardRow");
+            console.log(boardRow);
+            */
 
             for (let j = 0; j < boardRow.length; j++) {
 
-                if (j < colLimit || j >= colLimit + valToFindRowLgh) {
+                if (j < colLimit || j >= colLimit + valToFindRowLgh || valToFindRow[j - colLimit] === " ") {
                     boardRow[j] = "-";
                 }
 
