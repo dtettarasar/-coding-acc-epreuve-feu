@@ -343,7 +343,11 @@ const main = () => {
             console.log("Coordonnées : " + result.col + "," + result.row);
             const boardResult = getBoardResult(argObj.fileOneValue, argObj.fileTwoValue, result.col, result.row);
 
-            console.log(boardResult);
+            // console.log(boardResult);
+
+            for (let i = 0; i < boardResult.length; i++) {
+                console.log(boardResult[i].join(''));
+            }
 
         } else {
             console.log("Introuvable");
