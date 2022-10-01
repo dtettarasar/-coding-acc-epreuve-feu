@@ -262,6 +262,8 @@ const boardResult = (board, valuesToFind, colLimit, rowLimit) => {
     const boardResult = [];
     const rowToSpare = [];
 
+    valToFindRowLgh = valuesToFind[0].length;
+
     const dashRow = [];
 
     for (let i = 0; i < board[0].length;i++) {
@@ -292,26 +294,22 @@ const boardResult = (board, valuesToFind, colLimit, rowLimit) => {
         if (rowToSpare.includes(i)) {
 
             const boardRow = board[i].split('');
+
+            for (let j = 0; j < boardRow.length; j++) {
+
+                if (j < colLimit || j >= colLimit + valToFindRowLgh) {
+                    boardRow[j] = "-";
+                }
+
+            }
+
             boardResult.push(boardRow);
 
         } else {
-            /*
-            const dashRow = [];
-
-            for (let j = 0; j < board[i].length;j++) {
-                dashRow.push("-");
-            }*/
 
             boardResult.push(dashRow);
 
         }
-
-        //console.log(boardRow);
-        /*
-        for (let j = 0; j < boardRow.length; j++) {
-            //console.log(boardRow[j]);
-        }
-        */
         
     }
 
