@@ -251,7 +251,7 @@ const findValInBoard = (board, valuesToFind) => {
 
 }
 
-const boardResult = (board, valuesToFind, colLimit, rowLimit) => {
+const getBoardResult = (board, valuesToFind, colLimit, rowLimit) => {
 
     /* 
     La fonction doit récupérer le plateau avec les tirets.
@@ -279,6 +279,7 @@ const boardResult = (board, valuesToFind, colLimit, rowLimit) => {
         rowToSpare.push(i + rowLimit);
     }
 
+    /*
     console.log("rowToSpare");
     console.log(rowToSpare);
 
@@ -287,6 +288,7 @@ const boardResult = (board, valuesToFind, colLimit, rowLimit) => {
 
     console.log("board");
     console.log(board);
+    */
 
     
     for (let i = 0; i < board.length; i++) {
@@ -321,9 +323,10 @@ const boardResult = (board, valuesToFind, colLimit, rowLimit) => {
         
     }
 
-    console.log("boardResult");
-    console.log(boardResult);
+    // console.log("boardResult");
+    // console.log(boardResult);
     
+    return boardResult;
 
 }
 
@@ -338,7 +341,10 @@ const main = () => {
         if (result) {
             console.log("Trouvé !");
             console.log("Coordonnées : " + result.col + "," + result.row);
-            boardResult(argObj.fileOneValue, argObj.fileTwoValue, result.col, result.row);
+            const boardResult = getBoardResult(argObj.fileOneValue, argObj.fileTwoValue, result.col, result.row);
+
+            console.log(boardResult);
+
         } else {
             console.log("Introuvable");
         }
