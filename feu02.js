@@ -270,26 +270,12 @@ const getBoardResult = (board, valuesToFind, colLimit, rowLimit) => {
         dashRow.push("-");
     }
 
-    //ajouter la première ligne à ne pas changer
-    //rowToSpare.push(rowLimit);
-
     //ajouter les lignes suivantes à ne pas changer
     for (let i = 0; i < valuesToFind.length; i++) {
-        //console.log(i + rowLimit);
+
         rowToSpare.push(i + rowLimit);
+
     }
-
-    /*
-    console.log("rowToSpare");
-    console.log(rowToSpare);
-
-    console.log("valuesToFind");
-    console.log(valuesToFind);
-
-    console.log("board");
-    console.log(board);
-    */
-
     
     for (let i = 0; i < board.length; i++) {
 
@@ -298,17 +284,12 @@ const getBoardResult = (board, valuesToFind, colLimit, rowLimit) => {
             const boardRow = board[i].split('');
             const valToFindRow = valuesToFind[i - rowLimit].split('');
             
-            /*
-            console.log("valuesToFind row:")
-            console.log(valToFindRow);
-            console.log("boardRow");
-            console.log(boardRow);
-            */
-
             for (let j = 0; j < boardRow.length; j++) {
 
                 if (j < colLimit || j >= colLimit + valToFindRowLgh || valToFindRow[j - colLimit] === " ") {
+
                     boardRow[j] = "-";
+
                 }
 
             }
@@ -322,10 +303,7 @@ const getBoardResult = (board, valuesToFind, colLimit, rowLimit) => {
         }
         
     }
-
-    // console.log("boardResult");
-    // console.log(boardResult);
-    
+ 
     return boardResult;
 
 }
@@ -335,15 +313,13 @@ const main = () => {
     const argObj = argTester();
 
     if (argObj) {
-        //console.log(argObj);
+
         const result = findValInBoard(argObj.fileOneValue, argObj.fileTwoValue);
 
         if (result) {
             console.log("Trouvé !");
             console.log("Coordonnées : " + result.col + "," + result.row);
             const boardResult = getBoardResult(argObj.fileOneValue, argObj.fileTwoValue, result.col, result.row);
-
-            // console.log(boardResult);
 
             for (let i = 0; i < boardResult.length; i++) {
                 console.log(boardResult[i].join(''));
