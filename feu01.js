@@ -36,13 +36,10 @@ const argTester = () => {
     // Vérifier que l'expression ne comporte que des opérateurs et des nombres
     for (let i = 0; i < strSplit.length; i++) {
     
-        const testChar = intPattern.test(strSplit[i]) || findChars(strSplit[i], expSpecChars);
-
         const charIsInt = intPattern.test(strSplit[i]);
         const charIsOp = findChars(strSplit[i], expSpecChars);
         const charIsPar = findChars(strSplit[i], parChar);
         const charIsSpace = sepPattern.test(strSplit[i]);
-
 
         if (charIsInt) {
 
@@ -82,12 +79,9 @@ const argTester = () => {
 
     }
 
-    //console.log(expArr);
-
     expArr = checkNegNum(expArr);
 
     const testParenthesis = checkParenthesis(expArr);
-   
     const testOperators = checkOperators(expArr);
 
     if (!testParenthesis) {
@@ -103,8 +97,6 @@ const argTester = () => {
         return false;
 
     }
-
-    console.log(expArr);
 
     const arrWithoutPars = convertParenthesis(expArr);
     
@@ -355,7 +347,7 @@ const main = () => {
     const argument = argTester();
 
     if (argument) {
-        //console.log(fullCalc(argument));
+        console.log(fullCalc(argument));
     }
 
 }
