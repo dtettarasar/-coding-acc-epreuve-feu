@@ -180,7 +180,9 @@ const checkNegNum = (array) => {
         findSegSymb = array[i] === '-' && Number.isInteger(array[i+1]) && findChars(array[i - 1], expSpecChars)
 
         if (findSegSymb) {
+            
             console.log(array[i] + array[i+1]);
+            
         }
 
     }
