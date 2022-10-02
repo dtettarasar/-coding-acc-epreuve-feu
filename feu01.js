@@ -15,7 +15,7 @@ const argTester = () => {
 
     const argument = process.argv.slice(2);
     const errMsg = "erreur argument: ";
-    const expArr = [];
+    let expArr = [];
 
     if (argument.length === 0) {
         
@@ -84,7 +84,7 @@ const argTester = () => {
 
     //console.log(expArr);
 
-    checkNegNum(expArr);
+    expArr = checkNegNum(expArr);
 
     const testParenthesis = checkParenthesis(expArr);
    
@@ -103,6 +103,8 @@ const argTester = () => {
         return false;
 
     }
+
+    console.log(expArr);
 
     const arrWithoutPars = convertParenthesis(expArr);
     
@@ -167,25 +169,29 @@ const checkOperators = (array) => {
 }
 
 const checkNegNum = (array) => {
+
     /*
     si deux opérateurs se suivent et que l'op numéro 2 est un moins, si l'element suivant le signe moins est un nombre 
     alors on calcule nombre * -1, on remplace nombre par nombre *-1 dans l'array et on retire le signe moins de l'array
     Executer cette fonction avant checkOperators.
     */
 
-    console.log(array);
-
     for (let i = 0; i < array.length; i++) {
 
         findSegSymb = array[i] === '-' && Number.isInteger(array[i+1]) && findChars(array[i - 1], expSpecChars)
 
         if (findSegSymb) {
-            
-            console.log(array[i] + array[i+1]);
+
+            const negInt = array[i+1] *-1;
+
+            array.insert(i, negInt);
+            array.splice(i+1, 2);
             
         }
 
     }
+
+    return array;
 
 }
 
