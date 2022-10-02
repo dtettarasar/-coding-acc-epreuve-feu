@@ -244,14 +244,6 @@ const convertParenthesis = (array) => {
 
     }
 
-    // TODO : 
-    /*
-    Tant que l'array contient des parenthèses:
-    dans la boucle for, si array[i] est également un array, alors faire convert parenthesis sur array[i].
-    Stocker le résultat dans une variable et intégrer cette variable dans finalArray.
-    Si jamais on détecte la présence de parenthèse imbriqué, il faut réexecuter la fonction. sur l'array.    
-    */
-
     // Executer la fonction si l'array a encore des parenthèses imbriquées
     if (subPar) {
         finalArray = convertParenthesis(finalArray);
