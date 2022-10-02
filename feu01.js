@@ -82,9 +82,12 @@ const argTester = () => {
 
     }
 
-    console.log(expArr);
+    //console.log(expArr);
+
+    checkNegNum(expArr);
 
     const testParenthesis = checkParenthesis(expArr);
+   
     const testOperators = checkOperators(expArr);
 
     if (!testParenthesis) {
@@ -169,6 +172,19 @@ const checkNegNum = (array) => {
     alors on calcule nombre * -1, on remplace nombre par nombre *-1 dans l'array et on retire le signe moins de l'array
     Executer cette fonction avant checkOperators.
     */
+
+    console.log(array);
+
+    for (let i = 0; i < array.length; i++) {
+
+        findSegSymb = array[i] === '-' && Number.isInteger(array[i+1]) && findChars(array[i - 1], expSpecChars)
+
+        if (findSegSymb) {
+            console.log(array[i] + array[i+1]);
+        }
+
+    }
+
 }
 
 // Convertir les section de l'expression entre parenthèse, en sous array
@@ -331,7 +347,7 @@ const main = () => {
     const argument = argTester();
 
     if (argument) {
-        console.log(fullCalc(argument));
+        //console.log(fullCalc(argument));
     }
 
 }
