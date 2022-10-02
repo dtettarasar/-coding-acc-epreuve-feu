@@ -170,7 +170,7 @@ const checkNegNum = (array) => {
 
     for (let i = 0; i < array.length; i++) {
 
-        findSegSymb = array[i] === '-' && Number.isInteger(array[i+1]) && findChars(array[i - 1], expSpecChars)
+        findSegSymb = array[i] === '-' && Number.isInteger(array[i+1]) && findChars(array[i - 1], expSpecChars);
 
         if (findSegSymb) {
 
