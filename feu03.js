@@ -41,6 +41,11 @@ const argTester = () => {
         return false;
     }
 
+    if (boardValue.length !== 9) {
+        console.log("Erreur : le fichier texte doit comporter 9 lignes.");
+        return false;
+    }
+
     console.log(boardValue);
 
 }
