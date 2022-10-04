@@ -36,6 +36,11 @@ const argTester = () => {
 
     const boardValue = getTxtArr(boardFilePath);
 
+    if (!boardValue) {
+        console.log("Erreur : le fichier n'existe pas (Vérifier le chemin du fichier. Format(s) lisible(s) : " + fileFormats + ").");
+        return false;
+    }
+
     console.log(boardValue);
 
 }
