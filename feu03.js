@@ -34,6 +34,10 @@ const argTester = () => {
 
     console.log(boardFilePath);
 
+    const boardValue = getTxtArr(boardFilePath);
+
+    console.log(boardValue);
+
 }
 
 const checkFileFormat = (filePath, formatArr) => {
@@ -47,6 +51,34 @@ const checkFileFormat = (filePath, formatArr) => {
     }
 
     return false;
+
+}
+
+// Récupérer les valeurs texte des fichiers
+const getTxtArr = (file) => {
+
+    try {
+
+        const txtArr = [];
+
+        const readline = require('readline');
+        const fs = require('fs');
+        const data = fs.readFileSync(file, 'utf8');
+
+        // split the contents by new line
+        const lines = data.split(/\r?\n/);
+
+        lines.forEach((line) => {
+            txtArr.push(line);
+        });
+
+        return txtArr;
+
+    } catch (error) {
+
+        return false;
+
+    }
 
 }
 
