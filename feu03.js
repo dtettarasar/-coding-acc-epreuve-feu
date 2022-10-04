@@ -48,6 +48,15 @@ const argTester = () => {
 
     console.log(boardValue);
 
+    for (let i = 0; i < boardValue.length; i++) {
+
+        if (boardValue[i].length !== 9) {
+            console.log("Erreur : chaque ligne du fichier doit comporter 9 lignes.");
+            return false;
+        }
+        
+    }
+
 }
 
 const checkFileFormat = (filePath, formatArr) => {
