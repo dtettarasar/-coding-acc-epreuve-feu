@@ -12,6 +12,8 @@ const argTester = () => {
     const argument = process.argv.slice(2);
     const errorMsg = "erreur";
     const fileFormats = [".txt", ".md"];
+    const linePattern = /^([0-9]|[.]){9}$/;
+
     let boardFilePath = null;
 
     if (argument.length !== 1) {
@@ -51,7 +53,10 @@ const argTester = () => {
     for (let i = 0; i < boardValue.length; i++) {
 
         if (boardValue[i].length !== 9) {
-            console.log("Erreur : chaque ligne du fichier doit comporter 9 lignes.");
+            console.log("Erreur : chaque ligne du fichier doit comporter 9 caractères.");
+            return false;
+        } else if (!linePattern.test(boardValue[i])) {
+            console.log("Erreur: une ou plusieurs lignes comportent des erreurs de caractère");
             return false;
         }
         
