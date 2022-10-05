@@ -13,6 +13,7 @@ const argTester = () => {
     const errorMsg = "erreur";
     const fileFormats = [".txt", ".md"];
     const linePattern = /^([0-9]|[.]){9}$/;
+    const boardArr = [];
 
     let boardFilePath = null;
 
@@ -34,8 +35,6 @@ const argTester = () => {
         return false;
     }
 
-    console.log(boardFilePath);
-
     const boardValue = getTxtArr(boardFilePath);
 
     if (!boardValue) {
@@ -48,19 +47,21 @@ const argTester = () => {
         return false;
     }
 
-    console.log(boardValue);
-
     for (let i = 0; i < boardValue.length; i++) {
 
         if (boardValue[i].length !== 9) {
             console.log("Erreur : chaque ligne du fichier doit comporter 9 caractères.");
             return false;
         } else if (!linePattern.test(boardValue[i])) {
-            console.log("Erreur: une ou plusieurs lignes comportent des erreurs de caractère");
+            console.log("Erreur: une ou plusieurs lignes du fichier comportent des erreurs de caractère");
             return false;
+        } else {
+            boardArr.push(boardValue[i].split(''));
         }
         
     }
+
+    return boardArr;
 
 }
 
