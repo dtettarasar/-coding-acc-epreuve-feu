@@ -107,4 +107,11 @@ const getTxtArr = (file) => {
 
 }
 
-argTester();
+const main = () => {
+    const argument = argTester();
+    if (argument) {
+        console.log(argument);
+    }
+}
+
+main();
