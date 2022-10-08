@@ -124,17 +124,32 @@ const getCaseData = (fileArray) => {
 
         for (let j = 0; j < fileArray[i].length; j++) {
 
-            
+            const caseObj = {};
 
+            /*
             console.log("value: ");
             console.log(fileArray[i][j]);
             console.log("id: ");
             console.log(id);
             console.log("-----");
+            */
+
+            caseObj.id = id;
+
+            if (fileArray[i][j] === ".") {
+                caseObj.value = null;
+            } else {
+                caseObj.value = parseInt(fileArray[i][j]);
+            }
+
+            caseData.push(caseObj);
+
             id++;
         }
 
     }
+
+    console.log(caseData);
 
 }
 
