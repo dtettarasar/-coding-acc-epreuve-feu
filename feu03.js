@@ -110,8 +110,32 @@ const getTxtArr = (file) => {
 const main = () => {
     const argument = argTester();
     if (argument) {
-        console.log(argument);
+        getCaseData(argument);
     }
+}
+
+const getCaseData = (fileArray) => {
+
+    const caseData = [];
+
+    let id = 0;
+    
+    for (let i = 0; i < fileArray.length; i++) {
+
+        for (let j = 0; j < fileArray[i].length; j++) {
+
+            
+
+            console.log("value: ");
+            console.log(fileArray[i][j]);
+            console.log("id: ");
+            console.log(id);
+            console.log("-----");
+            id++;
+        }
+
+    }
+
 }
 
 main();
