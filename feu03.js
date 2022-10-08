@@ -135,6 +135,8 @@ const getCaseData = (fileArray) => {
             */
 
             caseObj.id = id;
+            caseObj.row = i + 1;
+            caseObj.col = j + 1;
 
             if (fileArray[i][j] === ".") {
                 caseObj.value = null;
