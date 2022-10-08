@@ -114,6 +114,147 @@ const main = () => {
     }
 }
 
+const getCaseArea = (caseId) => {
+
+    const areaData = [
+        {
+            idArr:  [
+                0,
+                1,
+                2,
+                9,
+                10,
+                11,
+                18,
+                19,
+                20
+            ],
+            areaValue: 1
+        },
+        {
+            idArr:  [
+                3,
+                4,
+                5,
+                12,
+                13,
+                14,
+                21,
+                22,
+                23
+            ],
+            areaValue: 2
+        },
+        {
+            idArr:  [
+                6,
+                7,
+                8,
+                15,
+                16,
+                17,
+                24,
+                25,
+                26
+            ],
+            areaValue: 3
+        },
+        {
+            idArr:  [
+                27,
+                28,
+                29,
+                36,
+                37,
+                38,
+                45,
+                46,
+                47
+            ],
+            areaValue: 4
+        },
+        {
+            idArr:  [
+                30,
+                31,
+                32,
+                39,
+                40,
+                41,
+                48,
+                49,
+                50
+            ],
+            areaValue: 5
+        },
+        {
+            idArr:  [
+                33,
+                34,
+                35,
+                42,
+                43,
+                44,
+                51,
+                52,
+                53
+            ],
+            areaValue: 6
+        },
+        {
+            idArr:  [
+                54,
+                55,
+                56,
+                63,
+                64,
+                65,
+                72,
+                73,
+                74
+            ],
+            areaValue: 7
+        },
+        {
+            idArr:  [
+                57,
+                58,
+                59,
+                66,
+                67,
+                68,
+                75,
+                76,
+                77
+            ],
+            areaValue: 8
+        },
+        {
+            idArr:  [
+                60,
+                61,
+                62,
+                69,
+                70,
+                71,
+                78,
+                79,
+                80
+            ],
+            areaValue: 9
+        }
+    ]
+
+    for (let i = 0; i < areaData.length; i++) {
+
+        if (areaData[i].idArr.includes(caseId)) {
+            return areaData[i].areaValue;
+        }
+
+    }
+
+}
+
 const getCaseData = (fileArray) => {
 
     const caseData = [];
@@ -128,6 +269,7 @@ const getCaseData = (fileArray) => {
             caseObj.id = id;
             caseObj.row = i + 1;
             caseObj.col = j + 1;
+            caseObj.area = getCaseArea(caseObj.id);
 
             if (fileArray[i][j] === ".") {
                 caseObj.value = null;
@@ -148,3 +290,4 @@ const getCaseData = (fileArray) => {
 }
 
 main();
+
