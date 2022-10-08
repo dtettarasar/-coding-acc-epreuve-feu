@@ -259,28 +259,33 @@ const getCaseData = (fileArray) => {
 
     const caseData = [];
 
-    let id = 0;
+    let idVal = 0;
     
     for (let i = 0; i < fileArray.length; i++) {
 
         for (let j = 0; j < fileArray[i].length; j++) {
 
-            const caseObj = {};
-            caseObj.id = id;
-            caseObj.row = i + 1;
-            caseObj.col = j + 1;
-            caseObj.area = getCaseArea(caseObj.id);
+            const caseObj = {
+                id: idVal,
+                row: i + 1,
+                col: j + 1,
+                area: getCaseArea(idVal)
+            };
 
             if (fileArray[i][j] === ".") {
+
                 caseObj.value = null;
                 caseObj.possibleValues = [];
+
             } else {
+
                 caseObj.value = parseInt(fileArray[i][j]);
+                
             }
 
             caseData.push(caseObj);
 
-            id++;
+            idVal++;
         }
 
     }
