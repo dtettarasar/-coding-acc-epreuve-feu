@@ -131,6 +131,7 @@ const getCaseData = (fileArray) => {
 
             if (fileArray[i][j] === ".") {
                 caseObj.value = null;
+                caseObj.possibleValues = [];
             } else {
                 caseObj.value = parseInt(fileArray[i][j]);
             }
