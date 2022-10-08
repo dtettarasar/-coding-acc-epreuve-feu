@@ -125,15 +125,6 @@ const getCaseData = (fileArray) => {
         for (let j = 0; j < fileArray[i].length; j++) {
 
             const caseObj = {};
-
-            /*
-            console.log("value: ");
-            console.log(fileArray[i][j]);
-            console.log("id: ");
-            console.log(id);
-            console.log("-----");
-            */
-
             caseObj.id = id;
             caseObj.row = i + 1;
             caseObj.col = j + 1;
