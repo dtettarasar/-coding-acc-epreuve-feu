@@ -107,13 +107,6 @@ const getTxtArr = (file) => {
 
 }
 
-const main = () => {
-    const argument = argTester();
-    if (argument) {
-        getCaseData(argument);
-    }
-}
-
 const getCaseArea = (caseId) => {
 
     const areaData = [
@@ -220,6 +213,13 @@ const getCaseData = (fileArray) => {
 
     console.log(caseData);
 
+}
+
+const main = () => {
+    const argument = argTester();
+    if (argument) {
+        getCaseData(argument);
+    }
 }
 
 main();
