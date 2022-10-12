@@ -242,14 +242,46 @@ const getNullCaseId = (caseDataArr) => {
 
 }
 
+getTakenValues = (caseId, caseDataArr) => {
+
+    const takenValues = [];
+
+    console.log(caseDataArr[caseId]);
+
+    for (let i = 0; i < caseDataArr.length; i++) {
+
+        if (caseDataArr[caseId].row === caseDataArr[i].row && caseDataArr[i].value !== null) {
+            
+            takenValues.push(caseDataArr[i].value);
+
+        }
+
+    }
+
+    console.log(takenValues);
+
+}
+
 const main = () => {
     const argument = argTester();
     if (argument) {
+
         const caseData = getCaseData(argument);
         // console.log(caseData);
-        console.log("nullCase id:");
+        // console.log("nullCase id:");
         let nullCaseIdArr = getNullCaseId(caseData);
-        console.log(nullCaseIdArr);
+        // console.log(nullCaseIdArr);
+        // console.log("------");
+        /*
+        for (let i = 0; i < nullCaseIdArr.length; i++) {
+
+            getTakenValues(nullCaseIdArr[i], caseData);
+
+        }
+        */
+
+       getTakenValues(nullCaseIdArr[0], caseData);
+
     }
 }
 
