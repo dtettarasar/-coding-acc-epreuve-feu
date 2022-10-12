@@ -211,14 +211,45 @@ const getCaseData = (fileArray) => {
 
     }
 
-    console.log(caseData);
+    // console.log(caseData);
+
+    return caseData;
+
+}
+
+const getNullCaseId = (caseDataArr) => {
+
+    const nullCaseIdArr = [];
+    
+    for (let i = 0; i < caseDataArr.length; i++) {
+
+        if (caseDataArr[i].value === null) {
+            nullCaseIdArr.push(caseDataArr[i].id);
+        }
+
+    }
+
+    /*
+    console.log(nullCaseIdArr);
+
+    for (let i = 0; i < nullCaseIdArr.length; i++) {
+        console.log(caseDataArr[nullCaseIdArr[i]]);
+    }
+    */
+
+    return nullCaseIdArr;
+    
 
 }
 
 const main = () => {
     const argument = argTester();
     if (argument) {
-        getCaseData(argument);
+        const caseData = getCaseData(argument);
+        // console.log(caseData);
+        console.log("nullCase id:");
+        let nullCaseIdArr = getNullCaseId(caseData);
+        console.log(nullCaseIdArr);
     }
 }
 
