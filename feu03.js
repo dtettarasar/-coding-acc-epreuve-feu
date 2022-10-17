@@ -250,7 +250,11 @@ getTakenValues = (caseId, caseDataArr) => {
 
     for (let i = 0; i < caseDataArr.length; i++) {
 
-        if (caseDataArr[caseId].row === caseDataArr[i].row && caseDataArr[i].value !== null) {
+        const sameRow = caseDataArr[caseId].row === caseDataArr[i].row && caseDataArr[i].value !== null;
+        const sameCol = caseDataArr[caseId].col === caseDataArr[i].col && caseDataArr[i].value !== null;
+        const sameArea = caseDataArr[caseId].area === caseDataArr[i].area && caseDataArr[i].value !== null;
+
+        if (sameRow || sameCol || sameArea) {
             
             takenValues.push(caseDataArr[i].value);
 
@@ -258,6 +262,7 @@ getTakenValues = (caseId, caseDataArr) => {
 
     }
 
+    console.log("taken values");
     console.log(takenValues);
 
 }
