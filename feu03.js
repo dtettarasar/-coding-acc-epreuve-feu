@@ -246,7 +246,7 @@ getTakenValues = (caseId, caseDataArr) => {
 
     const takenValues = [];
 
-    console.log(caseDataArr[caseId]);
+    //console.log(caseDataArr[caseId]);
 
     for (let i = 0; i < caseDataArr.length; i++) {
 
@@ -285,8 +285,27 @@ const getPossibleValues = (arr) => {
         }
 
     }
+    /*
     console.log("possible Values");
     console.log(possibleValues);
+    */
+    return possibleValues;
+
+}
+
+const updatePossibleValues = (caseIdArr, caseDataArr) => {
+
+    for (let i = 0; i < caseIdArr.length; i++) {
+        const caseObj = caseDataArr[caseIdArr[i]];
+        const takenValues = getTakenValues(caseObj.id, caseDataArr);
+        caseObj.possibleValues = getPossibleValues(takenValues);
+        
+        console.log(caseObj);
+        /*
+        console.log(takenValues);
+        console.log("----");
+        */
+    }
 
 }
 
@@ -307,12 +326,13 @@ const main = () => {
 
         }
         */
-
-       const testTakenVal = getTakenValues(nullCaseIdArr[0], caseData);
-       console.log(testTakenVal);
+    
+       //const testTakenVal = getTakenValues(nullCaseIdArr[0], caseData);
+       //console.log(testTakenVal);
         
-       getPossibleValues(testTakenVal);
+       //getPossibleValues(testTakenVal);
 
+       updatePossibleValues(nullCaseIdArr, caseData);
 
     }
 }
