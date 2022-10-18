@@ -274,6 +274,22 @@ getTakenValues = (caseId, caseDataArr) => {
 
 }
 
+const getPossibleValues = (arr) => {
+
+    const possibleValues = [];
+
+    for (let i = 1; i <= 9; i++) {
+
+        if (!arr.includes(i)) {
+            possibleValues.push(i);
+        }
+
+    }
+    console.log("possible Values");
+    console.log(possibleValues);
+
+}
+
 const main = () => {
     const argument = argTester();
     if (argument) {
@@ -292,7 +308,11 @@ const main = () => {
         }
         */
 
-       console.log(getTakenValues(nullCaseIdArr[0], caseData));
+       const testTakenVal = getTakenValues(nullCaseIdArr[0], caseData);
+       console.log(testTakenVal);
+        
+       getPossibleValues(testTakenVal);
+
 
     }
 }
