@@ -262,8 +262,15 @@ getTakenValues = (caseId, caseDataArr) => {
 
     }
 
-    console.log("taken values");
-    console.log(takenValues);
+    const uniqueTakenValues = [];
+
+    takenValues.forEach((item) => {
+        if (!uniqueTakenValues.includes(item)) {
+            uniqueTakenValues.push(item);
+        }
+    });
+
+    return uniqueTakenValues;
 
 }
 
@@ -285,7 +292,7 @@ const main = () => {
         }
         */
 
-       getTakenValues(nullCaseIdArr[0], caseData);
+       console.log(getTakenValues(nullCaseIdArr[0], caseData));
 
     }
 }
