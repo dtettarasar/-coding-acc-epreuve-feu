@@ -211,8 +211,6 @@ const getCaseData = (fileArray) => {
 
     }
 
-    // console.log(caseData);
-
     return caseData;
 
 }
@@ -229,24 +227,13 @@ const getNullCaseId = (caseDataArr) => {
 
     }
 
-    /*
-    console.log(nullCaseIdArr);
-
-    for (let i = 0; i < nullCaseIdArr.length; i++) {
-        console.log(caseDataArr[nullCaseIdArr[i]]);
-    }
-    */
-
     return nullCaseIdArr;
-    
 
 }
 
 getTakenValues = (caseId, caseDataArr) => {
 
     const takenValues = [];
-
-    //console.log(caseDataArr[caseId]);
 
     for (let i = 0; i < caseDataArr.length; i++) {
 
@@ -265,9 +252,13 @@ getTakenValues = (caseId, caseDataArr) => {
     const uniqueTakenValues = [];
 
     takenValues.forEach((item) => {
+
         if (!uniqueTakenValues.includes(item)) {
+
             uniqueTakenValues.push(item);
+
         }
+
     });
 
     return uniqueTakenValues;
@@ -281,14 +272,13 @@ const getPossibleValues = (arr) => {
     for (let i = 1; i <= 9; i++) {
 
         if (!arr.includes(i)) {
+
             possibleValues.push(i);
+
         }
 
     }
-    /*
-    console.log("possible Values");
-    console.log(possibleValues);
-    */
+
     return possibleValues;
 
 }
@@ -296,15 +286,11 @@ const getPossibleValues = (arr) => {
 const updatePossibleValues = (caseIdArr, caseDataArr) => {
 
     for (let i = 0; i < caseIdArr.length; i++) {
+
         const caseObj = caseDataArr[caseIdArr[i]];
         const takenValues = getTakenValues(caseObj.id, caseDataArr);
         caseObj.possibleValues = getPossibleValues(takenValues);
         
-        // console.log(caseObj);
-        /*
-        console.log(takenValues);
-        console.log("----");
-        */
     }
 
 }
@@ -312,47 +298,36 @@ const updatePossibleValues = (caseIdArr, caseDataArr) => {
 const updateCaseValue = (caseIdArr, caseDataArr) => {
 
     for (let i = 0; i < caseIdArr.length; i++) {
+
         const caseObj = caseDataArr[caseIdArr[i]];
 
         if (caseObj.possibleValues.length === 1) {
+
             caseObj.value = caseObj.possibleValues[0];
+            delete caseObj.possibleValues;
+
         }
 
-        //console.log(caseObj);
     }
 
 }
 
 const main = () => {
+
     const argument = argTester();
+
     if (argument) {
 
         const caseData = getCaseData(argument);
-        // console.log(caseData);
-        // console.log("nullCase id:");
         let nullCaseIdArr = getNullCaseId(caseData);
-        // console.log(nullCaseIdArr);
-        // console.log("------");
-        /*
-        for (let i = 0; i < nullCaseIdArr.length; i++) {
-
-            getTakenValues(nullCaseIdArr[i], caseData);
-
-        }
-        */
-    
-       //const testTakenVal = getTakenValues(nullCaseIdArr[0], caseData);
-       //console.log(testTakenVal);
-        
-       //getPossibleValues(testTakenVal);
 
         while(nullCaseIdArr.length !== 0) {
+
             updatePossibleValues(nullCaseIdArr, caseData);
             updateCaseValue(nullCaseIdArr, caseData);
             nullCaseIdArr = getNullCaseId(caseData);
-        }
 
-        
+        }
 
         console.log(caseData);
 
