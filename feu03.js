@@ -318,7 +318,7 @@ const updateCaseValue = (caseIdArr, caseDataArr) => {
             caseObj.value = caseObj.possibleValues[0];
         }
 
-        console.log(caseObj);
+        //console.log(caseObj);
     }
 
 }
@@ -346,8 +346,15 @@ const main = () => {
         
        //getPossibleValues(testTakenVal);
 
-       updatePossibleValues(nullCaseIdArr, caseData);
-       updateCaseValue(nullCaseIdArr, caseData);
+        while(nullCaseIdArr.length !== 0) {
+            updatePossibleValues(nullCaseIdArr, caseData);
+            updateCaseValue(nullCaseIdArr, caseData);
+            nullCaseIdArr = getNullCaseId(caseData);
+        }
+
+        
+
+        console.log(caseData);
 
     }
 }
