@@ -302,6 +302,27 @@ const updatePossibleValues = (caseIdArr, caseDataArr) => {
 
 }
 
+const printBoard = (caseDataArr) => {
+
+    let rowArr = []
+
+    for (let i = 0; i < caseDataArr.length; i++) {
+
+        const caseObj = caseDataArr[i];
+
+        rowArr.push(caseObj.value);
+
+        if (rowArr.length === 9) {
+
+            console.log(rowArr.join(''));
+            rowArr = [];
+            
+        } 
+
+    }
+
+}
+
 const main = () => {
 
     const argument = argTester();
@@ -318,7 +339,7 @@ const main = () => {
 
         }
 
-        console.log(caseData);
+        printBoard(caseData);
 
     }
 }
