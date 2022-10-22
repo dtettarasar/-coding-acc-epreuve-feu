@@ -290,16 +290,6 @@ const updatePossibleValues = (caseIdArr, caseDataArr) => {
         const caseObj = caseDataArr[caseIdArr[i]];
         const takenValues = getTakenValues(caseObj.id, caseDataArr);
         caseObj.possibleValues = getPossibleValues(takenValues);
-        
-    }
-
-}
-
-const updateCaseValue = (caseIdArr, caseDataArr) => {
-
-    for (let i = 0; i < caseIdArr.length; i++) {
-
-        const caseObj = caseDataArr[caseIdArr[i]];
 
         if (caseObj.possibleValues.length === 1) {
 
@@ -307,7 +297,7 @@ const updateCaseValue = (caseIdArr, caseDataArr) => {
             delete caseObj.possibleValues;
 
         }
-
+        
     }
 
 }
@@ -324,7 +314,6 @@ const main = () => {
         while(nullCaseIdArr.length !== 0) {
 
             updatePossibleValues(nullCaseIdArr, caseData);
-            updateCaseValue(nullCaseIdArr, caseData);
             nullCaseIdArr = getNullCaseId(caseData);
 
         }
