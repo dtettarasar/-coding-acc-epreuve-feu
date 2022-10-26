@@ -6,6 +6,8 @@ const argTester = () => {
     const errorMsg = "Erreur: ";
     const fileFormats = [".txt", ".md"];
 
+    const boardObj = {}; 
+
     if (argument.length !== 1) {
 
         console.log(errorMsg + "Veuillez passer le chemin du fichier en argument.");
@@ -37,6 +39,7 @@ const argTester = () => {
 
     const boardSettings = boardValue[0].split('');
 
+    // checker les infos du plateau
     console.log("boardSettings");
     console.log(boardSettings);
 
@@ -47,7 +50,19 @@ const argTester = () => {
         return false;
     }
 
-    console.log(boardValue);
+    const boardLine = parseInt(boardSettings[0]);
+    // console.log(boardLine);
+
+    if (!boardLine) {
+        console.log("Erreur: assurez-vous que la première ligne du fichier comporte en premier, le nombre de ligne du plateau");
+        return false;
+    } else {
+        boardObj.lineNum = boardLine;
+    }
+
+    // console.log(boardValue);
+
+    console.log(boardObj);
 
 }
 
