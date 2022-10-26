@@ -60,6 +60,10 @@ const argTester = () => {
         boardObj.lineNum = boardLine;
     }
 
+    boardObj.voidChar = boardSettings[1];
+    boardObj.obsChar = boardSettings[2];
+    boardObj.fillChar = boardSettings[3];
+
     // console.log(boardValue);
 
     console.log(boardObj);
