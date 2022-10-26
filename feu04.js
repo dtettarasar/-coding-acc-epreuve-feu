@@ -64,6 +64,13 @@ const argTester = () => {
     boardObj.obsChar = boardSettings[2];
     boardObj.fillChar = boardSettings[3];
 
+    console.log(boardValue.length);
+
+    if (boardValue.length - 1 !== boardObj.lineNum) {
+        console.log("Erreur: le nombre de lignes du plateau ne correspond pas à celui spécifié dans les informations en première ligne du fichier.");
+        return false;
+    }
+
     // console.log(boardValue);
 
     console.log(boardObj);
