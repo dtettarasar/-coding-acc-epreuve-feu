@@ -35,6 +35,18 @@ const argTester = () => {
 
     }
 
+    const boardSettings = boardValue[0].split('');
+
+    console.log("boardSettings");
+    console.log(boardSettings);
+
+    if (boardSettings.length !== 4) {
+        console.log("Erreur: la première ligne du fichier doit contenir les 4 informations pour lire le plateau");
+        console.log("- nombre de lignes du plateau");
+        console.log('- caractères pour “vide”, “obstacle” et “plein”');
+        return false;
+    }
+
     console.log(boardValue);
 
 }
