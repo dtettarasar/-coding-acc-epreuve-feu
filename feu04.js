@@ -37,25 +37,24 @@ const argTester = () => {
 
     }
 
-    const boardSettings = fileValue[0].split('');
+    const boardSettings = fileValue[0];
 
     // checker les infos du plateau
-    console.log("boardSettings");
-    console.log(boardSettings);
+    const boardInfoPattern = /^[1-9][0-9]*\D{3}$/g;
+    const testBoardInfos = boardInfoPattern.test(boardSettings);
 
-    //TODO : adapter le process si le nombre de ligne est supérieur à 10.
-    /*
-        il faut passer par une regex, pour vérifier que la str commence par un int supérieur ou égale à 0, suivi de 3 char différents d'un int
-    */
-    if (boardSettings.length !== 4) {
+    console.log(testBoardInfos);
+   
+    if (!testBoardInfos) {
         console.log("Erreur: la première ligne du fichier doit contenir les 4 informations pour lire le plateau");
         console.log("- nombre de lignes du plateau");
         console.log('- caractères pour “vide”, “obstacle” et “plein”');
         return false;
     }
 
+    /*
+
     const boardLine = parseInt(boardSettings[0]);
-    // console.log(boardLine);
 
     if (!boardLine) {
         console.log("Erreur: assurez-vous que la première ligne du fichier comporte en premier, le nombre de ligne du plateau");
@@ -73,7 +72,7 @@ const argTester = () => {
     if (fileValue.length - 1 !== boardObj.lineNum) {
         console.log("Erreur: le nombre de lignes du plateau ne correspond pas à celui spécifié dans les informations en première ligne du fichier.");
         return false;
-    }
+    }*/
 
     // console.log(fileValue);
 
