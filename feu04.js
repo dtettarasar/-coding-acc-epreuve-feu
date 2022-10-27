@@ -42,9 +42,12 @@ const argTester = () => {
     // checker les infos du plateau
     const boardInfoPattern = /^[1-9][0-9]*\D{3}$/g;
     const testBoardInfos = boardInfoPattern.test(boardSettings);
+    const boardSettingsArr = boardSettings.split('');
+    console.log("boardSettingsArr");
+    console.log(boardSettingsArr);
 
-    console.log(testBoardInfos);
-   
+    const lineNumArr = [];
+    
     if (!testBoardInfos) {
         console.log("Erreur: la première ligne du fichier doit contenir les 4 informations pour lire le plateau");
         console.log("- nombre de lignes du plateau");
@@ -52,27 +55,27 @@ const argTester = () => {
         return false;
     }
 
-    /*
-
-    const boardLine = parseInt(boardSettings[0]);
-
-    if (!boardLine) {
-        console.log("Erreur: assurez-vous que la première ligne du fichier comporte en premier, le nombre de ligne du plateau");
-        return false;
-    } else {
-        boardObj.lineNum = boardLine;
+    for (let i = 0; i < boardSettingsArr.length -3; i++) {
+        lineNumArr.push(boardSettingsArr[i]);
     }
+   
+    const boardLine = parseInt(lineNumArr.join(''));
+    boardObj.lineNum = boardLine;
+    
+    /*
 
     boardObj.voidChar = boardSettings[1];
     boardObj.obsChar = boardSettings[2];
     boardObj.fillChar = boardSettings[3];
+    */
 
-    console.log(fileValue.length);
+
+    //console.log(fileValue.length);
 
     if (fileValue.length - 1 !== boardObj.lineNum) {
         console.log("Erreur: le nombre de lignes du plateau ne correspond pas à celui spécifié dans les informations en première ligne du fichier.");
         return false;
-    }*/
+    }
 
     // console.log(fileValue);
 
