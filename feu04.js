@@ -70,8 +70,21 @@ const argTester = () => {
         return false;
     }
 
+    const lineLength = fileValue[1].length;
+
     for (let i = 1; i < fileValue.length; i++) {
-        boardObj.value.push(fileValue[i].split(''));
+
+        if (fileValue[i].length !== lineLength) {
+            
+            console.log("Erreur : les lignes du plateau ne sont pas de la même longueur.");
+            return false;
+
+        } else {
+
+            boardObj.value.push(fileValue[i].split(''));
+
+        }
+
     }
 
     for (let i = 0; i < boardObj.value.length; i++) {
