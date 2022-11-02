@@ -45,11 +45,6 @@ const argTester = () => {
     const testBoardInfos = boardInfoPattern.test(boardSettings);
     const boardSettingsArr = boardSettings.split('');
 
-    /*
-    console.log("boardSettingsArr");
-    console.log(boardSettingsArr);
-    */
-
     const lineNumArr = [];
     
     if (!testBoardInfos) {
@@ -76,7 +71,7 @@ const argTester = () => {
     }
 
     for (let i = 1; i < fileValue.length; i++) {
-        boardObj.value.push(fileValue[i]);
+        boardObj.value.push(fileValue[i].split(''));
     }
 
     console.log(boardObj);
