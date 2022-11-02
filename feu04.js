@@ -70,11 +70,11 @@ const argTester = () => {
         return false;
     }
 
-    const lineLength = fileValue[1].length;
+    boardObj.lineLength = fileValue[1].length;
 
     for (let i = 1; i < fileValue.length; i++) {
 
-        if (fileValue[i].length !== lineLength) {
+        if (fileValue[i].length !== boardObj.lineLength) {
             
             console.log("Erreur : les lignes du plateau ne sont pas de la même longueur.");
             return false;
