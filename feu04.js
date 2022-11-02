@@ -6,7 +6,8 @@ const argTester = () => {
     const errorMsg = "Erreur: ";
     const fileFormats = [".txt", ".md"];
 
-    const boardObj = {}; 
+    const boardObj = {};
+    boardObj.value = [];
 
     if (argument.length !== 1) {
 
@@ -43,8 +44,11 @@ const argTester = () => {
     const boardInfoPattern = /^[1-9][0-9]*\D{3}$/g;
     const testBoardInfos = boardInfoPattern.test(boardSettings);
     const boardSettingsArr = boardSettings.split('');
+
+    /*
     console.log("boardSettingsArr");
     console.log(boardSettingsArr);
+    */
 
     const lineNumArr = [];
     
@@ -69,6 +73,10 @@ const argTester = () => {
     if (fileValue.length - 1 !== boardObj.lineNum) {
         console.log("Erreur: le nombre de lignes du plateau ne correspond pas à celui spécifié dans les informations en première ligne du fichier.");
         return false;
+    }
+
+    for (let i = 1; i < fileValue.length; i++) {
+        boardObj.value.push(fileValue[i]);
     }
 
     console.log(boardObj);
