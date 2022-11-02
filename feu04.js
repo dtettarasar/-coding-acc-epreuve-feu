@@ -74,6 +74,16 @@ const argTester = () => {
         boardObj.value.push(fileValue[i].split(''));
     }
 
+    for (let i = 0; i < boardObj.value.length; i++) {
+
+        for (let j = 0; j < boardObj.value[i].length; j++) {
+            if (boardObj.value[i][j] !== boardObj.voidChar && boardObj.value[i][j] !== boardObj.obsChar) {
+                console.log("Erreur: le plateau ne doit être composé que des caractères vides et obstacles, spécifiés en première ligne");
+                return false;
+            }
+        }
+    }
+
     console.log(boardObj);
 
 }
