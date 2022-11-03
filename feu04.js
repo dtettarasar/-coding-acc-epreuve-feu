@@ -97,7 +97,9 @@ const argTester = () => {
         }
     }
 
-    console.log(boardObj);
+    // console.log(boardObj);
+
+    return boardObj;
 
 }
 
@@ -145,4 +147,13 @@ const getTxtArr = (file) => {
 
 }
 
-argTester();
+const main = () => {
+
+    const boardObj = argTester();
+
+    if (boardObj) {
+        console.log(boardObj);
+    }
+}
+
+main();
