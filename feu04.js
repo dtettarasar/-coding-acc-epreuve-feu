@@ -81,12 +81,17 @@ const argTester = () => {
 
         } else {
 
-            boardObj.value.push(fileValue[i].split(''));
+            for (let j = 0; j < fileValue[i].length; j++) {
+                console.log(fileValue[i][j]);
+            }
+
+            //boardObj.value.push(fileValue[i].split(''));
 
         }
 
     }
 
+    /*
     for (let i = 0; i < boardObj.value.length; i++) {
 
         for (let j = 0; j < boardObj.value[i].length; j++) {
@@ -96,6 +101,7 @@ const argTester = () => {
             }
         }
     }
+    */
 
     // console.log(boardObj);
 
