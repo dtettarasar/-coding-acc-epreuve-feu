@@ -59,22 +59,24 @@ const argTester = () => {
     }
    
     const boardLine = parseInt(lineNumArr.join(''));
-    boardObj.lineNum = boardLine;
+    boardObj.rowNum = boardLine;
 
     boardObj.voidChar = boardSettings[boardSettingsArr.length -3];
     boardObj.obsChar = boardSettings[boardSettingsArr.length -2];
     boardObj.fillChar = boardSettings[boardSettingsArr.length -1];
 
-    if (fileValue.length - 1 !== boardObj.lineNum) {
+    if (fileValue.length - 1 !== boardObj.rowNum) {
         console.log("Erreur: le nombre de lignes du plateau ne correspond pas à celui spécifié dans les informations en première ligne du fichier.");
         return false;
     }
 
-    boardObj.lineLength = fileValue[1].length;
+    boardObj.colNum = fileValue[1].length;
+
+    let caseId = 0;
 
     for (let i = 1; i < fileValue.length; i++) {
 
-        if (fileValue[i].length !== boardObj.lineLength) {
+        if (fileValue[i].length !== boardObj.colNum) {
             
             console.log("Erreur : les lignes du plateau ne sont pas de la même longueur.");
             return false;
@@ -82,7 +84,12 @@ const argTester = () => {
         } else {
 
             for (let j = 0; j < fileValue[i].length; j++) {
-                console.log(fileValue[i][j]);
+                console.log("caseId: " + caseId);
+                console.log("row: " + (i - 1));
+                console.log("col: " + j);
+                console.log("value: " + fileValue[i][j]);
+                console.log("----");
+                caseId++;
             }
 
             //boardObj.value.push(fileValue[i].split(''));
