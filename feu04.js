@@ -84,11 +84,16 @@ const argTester = () => {
         } else {
 
             for (let j = 0; j < fileValue[i].length; j++) {
-                console.log("caseId: " + caseId);
-                console.log("row: " + (i - 1));
-                console.log("col: " + j);
-                console.log("value: " + fileValue[i][j]);
-                console.log("----");
+
+                const caseObj = {
+                    id: caseId,
+                    row: i - 1,
+                    col: j,
+                    value: fileValue[i][j]
+                };
+
+                boardObj.value.push(caseObj);
+
                 caseId++;
             }
 
