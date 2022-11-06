@@ -89,7 +89,7 @@ const argTester = () => {
                     id: caseId,
                     row: i - 1,
                     col: j,
-                    value: fileValue[i][j]
+                    caseValue: fileValue[i][j]
                 };
 
                 boardObj.value.push(caseObj);
@@ -99,7 +99,7 @@ const argTester = () => {
 
             //boardObj.value.push(fileValue[i].split(''));
 
-        }
+        }   
 
     }
 
@@ -114,6 +114,16 @@ const argTester = () => {
         }
     }
     */
+
+    for (let i = 0; i < boardObj.value.length; i++) {
+        // console.log(boardObj.value[i]);
+
+        if (boardObj.value[i].caseValue !== boardObj.voidChar && boardObj.value[i].caseValue !== boardObj.obsChar) {
+            console.log("Erreur: le plateau ne doit être composé que des caractères vides et obstacles, spécifiés en première ligne");
+            return false;
+        }
+
+    }
 
     // console.log(boardObj);
 
