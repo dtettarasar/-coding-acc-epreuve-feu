@@ -110,6 +110,8 @@ const argTester = () => {
 
     }
 
+    boardObj.getCaseObj = (caseId) => {return boardObj.value[caseId]};
+
     return boardObj;
 
 }
@@ -163,7 +165,8 @@ const main = () => {
     const boardObj = argTester();
 
     if (boardObj) {
-        console.log(boardObj);
+        // console.log(boardObj);
+        //console.log(boardObj.getCaseObj(67));
     }
 }
 
