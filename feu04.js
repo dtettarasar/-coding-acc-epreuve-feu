@@ -110,17 +110,27 @@ const argTester = () => {
 
     }
 
+    // création de méthodes pour manipuler des données dans l'objet du plateau
+
     boardObj.getCaseObj = (caseId) => {return boardObj.value[caseId]};
 
-    boardObj.getSqrEndId = (SqrStartId, dimension) => {
+    boardObj.getSqrEndId = (sqrStartId, dimension) => {
 
-        const startCaseObj = boardObj.getCaseObj(SqrStartId);
+        if (dimension === 0) {
+            return false;
+        }
+
+        const startCaseObj = boardObj.getCaseObj(sqrStartId);
         const endCaseCol = startCaseObj.col - 1 + dimension;
         const endCaseRow = startCaseObj.row - 1 + dimension;
-        console.log(startCaseObj);
 
-        console.log("endCaseCol: " + endCaseCol);
-        console.log("endCaseRow: " + endCaseRow);
+        for (let i = sqrStartId; i < boardObj.value.length; i++) {
+
+            if (boardObj.value[i].col === endCaseCol && boardObj.value[i].row === endCaseRow) {
+                return boardObj.value[i].id;
+            }
+
+        }
 
     }
 
@@ -177,9 +187,9 @@ const main = () => {
     const boardObj = argTester();
 
     if (boardObj) {
-        console.log(boardObj);
+        //console.log(boardObj);
         //console.log(boardObj.getCaseObj(67));
-        boardObj.getSqrEndId(96, 4);
+        console.log(boardObj.getSqrEndId(0, 2));
     }
 }
 
