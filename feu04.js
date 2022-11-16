@@ -72,6 +72,9 @@ const argTester = () => {
 
     boardObj.colNum = fileValue[1].length;
 
+    // identifier la dimension potentielle max d'un carré, en fonction de la longueur des côtés du plateau.    
+    boardObj.maxDimension = boardObj.rowNum >= boardObj.colNum ? boardObj.colNum : boardObj.rowNum;
+
     let caseId = 0;
 
     for (let i = 1; i < fileValue.length; i++) {
@@ -187,9 +190,9 @@ const main = () => {
     const boardObj = argTester();
 
     if (boardObj) {
-        //console.log(boardObj);
+        console.log(boardObj);
         //console.log(boardObj.getCaseObj(67));
-        console.log(boardObj.getSqrEndId(0, 2));
+        //console.log(boardObj.getSqrEndId(0, 2));
     }
 }
 
