@@ -198,9 +198,8 @@ const main = () => {
     const boardObj = argTester();
 
     if (boardObj) {
-        //console.log(boardObj);
-        //console.log(boardObj.getCaseObj(67));
-        console.log(boardObj.getSqrCasesId(0, 3));
+        console.log(boardObj);
+        //console.log(boardObj.getSqrCasesId(0, 3));
     }
 }
 
