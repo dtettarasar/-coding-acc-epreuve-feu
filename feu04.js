@@ -140,8 +140,26 @@ const argTester = () => {
     boardObj.getSqrCasesId = (sqrStartId, dimension) => {
 
         const sqrEndId = boardObj.getSqrEndId(sqrStartId, dimension);
-        console.log("square end id: ");
-        console.log(boardObj.value[sqrEndId]);
+        const startCase = boardObj.getCaseObj(sqrStartId);
+        const endCase = boardObj.getCaseObj(sqrEndId);
+
+        console.log("square start case: ");
+        console.log(startCase);
+        console.log("square end case: ");
+        console.log(endCase);
+
+        console.log("for loop");
+        for (let i = sqrStartId; i <= sqrEndId; i++) {
+
+            const caseToCheck = boardObj.getCaseObj(i);
+            const checkCaseRow = caseToCheck.row >= startCase.row && caseToCheck.row <= endCase.row;
+            const checkCaseCol = caseToCheck.col >= startCase.col && caseToCheck.col <= endCase.col;
+
+            if (checkCaseRow && checkCaseCol) {
+                console.log(caseToCheck);
+            }
+
+        }
 
     }
 
@@ -198,8 +216,8 @@ const main = () => {
     const boardObj = argTester();
 
     if (boardObj) {
-        console.log(boardObj);
-        //console.log(boardObj.getSqrCasesId(0, 3));
+        //console.log(boardObj);
+        console.log(boardObj.getSqrCasesId(1, 3));
     }
 }
 
