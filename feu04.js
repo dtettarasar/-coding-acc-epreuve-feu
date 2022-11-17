@@ -142,6 +142,7 @@ const argTester = () => {
         const sqrEndId = boardObj.getSqrEndId(sqrStartId, dimension);
         const startCase = boardObj.getCaseObj(sqrStartId);
         const endCase = boardObj.getCaseObj(sqrEndId);
+        const caseIdArr = [];
 
         console.log("square start case: ");
         console.log(startCase);
@@ -157,9 +158,12 @@ const argTester = () => {
 
             if (checkCaseRow && checkCaseCol) {
                 console.log(caseToCheck);
+                caseIdArr.push(caseToCheck.id);                
             }
 
         }
+
+        return caseIdArr;
 
     }
 
@@ -217,7 +221,8 @@ const main = () => {
 
     if (boardObj) {
         //console.log(boardObj);
-        console.log(boardObj.getSqrCasesId(1, 3));
+        console.log("sqrCasesId");
+        console.log(boardObj.getSqrCasesId(0, 3));
     }
 }
 
