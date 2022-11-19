@@ -165,6 +165,18 @@ const argTester = () => {
         const sqrCasesIds = boardObj.getSqrCasesId(sqrStartId, dimension);
         console.log(sqrCasesIds);
 
+        for (let i = 0; i < sqrCasesIds.length; i++) {
+            const caseToCheck = boardObj.getCaseObj(sqrCasesIds[i]);
+            console.log(caseToCheck);
+
+            if (caseToCheck.caseValue === boardObj.obsChar) {
+                return false;
+            }
+
+        }
+
+        return true;
+
     }
 
     return boardObj;
@@ -222,7 +234,7 @@ const main = () => {
     if (boardObj) {
         //console.log(boardObj);
         console.log("sqrCasesId");
-        boardObj.isValidSquare(0, 2);
+        console.log(boardObj.isValidSquare(0, 3));
     }
 }
 
