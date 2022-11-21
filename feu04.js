@@ -179,6 +179,16 @@ const argTester = () => {
 
     }
 
+    boardObj.getMaxDimension = (caseId) => {
+
+        const caseToCheck = boardObj.getCaseObj(caseId);
+
+        console.log("--------");
+        console.log("getMaxDimension");
+        console.log(boardObj.maxDimension);
+        console.log(caseToCheck);
+    }
+
     return boardObj;
 
 }
@@ -235,6 +245,7 @@ const main = () => {
         //console.log(boardObj);
         console.log("sqrCasesId");
         console.log(boardObj.isValidSquare(0, 3));
+        boardObj.getMaxDimension(0);
     }
 }
 
