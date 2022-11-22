@@ -204,7 +204,6 @@ const argTester = () => {
 
         return false;
 
-        //boardObj.isValidSquare(0, 3);
     }
 
     return boardObj;
