@@ -162,7 +162,11 @@ const argTester = () => {
 
     boardObj.isValidSquare = (sqrStartId, dimension) => {
 
+        console.log("isValidSquare");
+
         const sqrCasesIds = boardObj.getSqrCasesId(sqrStartId, dimension);
+
+        console.log("sqrCasesIds");
         console.log(sqrCasesIds);
 
         for (let i = 0; i < sqrCasesIds.length; i++) {
@@ -183,21 +187,25 @@ const argTester = () => {
 
         const caseToCheck = boardObj.getCaseObj(caseId);
 
+        
         console.log("--------");
         console.log("getMaxDimension");
         console.log(boardObj.maxDimension);
         console.log(caseToCheck);
         console.log("--------");
+        
 
         for (let i = boardObj.maxDimension; i >= 1; i--) {
             const testValidSquare = boardObj.isValidSquare(caseId, i);
+            
             console.log(i);
             console.log('testValidSquare');
             console.log(testValidSquare);
             console.log("--------");
+            
 
             if (testValidSquare) {
-                console.log("Max Dimension value:");
+                //console.log("Max Dimension value:");
                 return i;
             }
         }
@@ -205,6 +213,14 @@ const argTester = () => {
         return false;
 
     }
+
+    
+    for (let i = 0; i < boardObj.value.length; i++) {
+        //boardObj.value[i].maxDimension = boardObj.getMaxDimension(boardObj.value[i].id);
+        //console.log(boardObj.value[i].id);
+        console.log(boardObj.value[i]);
+    }
+    
 
     return boardObj;
 
@@ -260,9 +276,10 @@ const main = () => {
 
     if (boardObj) {
         //console.log(boardObj);
-        console.log("sqrCasesId");
+        //console.log("sqrCasesId");
         //console.log(boardObj.isValidSquare(0, 3));
-        console.log(boardObj.getMaxDimension(0));
+        //console.log(boardObj.value[21]);
+        console.log(boardObj.getMaxDimension(227));
     }
 }
 
