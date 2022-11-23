@@ -147,6 +147,7 @@ const argTester = () => {
         for (let i = sqrStartId; i <= sqrEndId; i++) {
 
             const caseToCheck = boardObj.getCaseObj(i);
+            console.log(caseToCheck);
             const checkCaseRow = caseToCheck.row >= startCase.row && caseToCheck.row <= endCase.row;
             const checkCaseCol = caseToCheck.col >= startCase.col && caseToCheck.col <= endCase.col;
 
@@ -154,6 +155,11 @@ const argTester = () => {
                 caseIdArr.push(caseToCheck.id);                
             }
 
+        }
+
+        if (caseIdArr.length === 0) {
+            console.log("empty arr");
+            return false;
         }
 
         return caseIdArr;
@@ -165,6 +171,10 @@ const argTester = () => {
         console.log("isValidSquare");
 
         const sqrCasesIds = boardObj.getSqrCasesId(sqrStartId, dimension);
+
+        if (!sqrCasesIds) {
+            return false;
+        }
 
         console.log("sqrCasesIds");
         console.log(sqrCasesIds);
@@ -277,9 +287,13 @@ const main = () => {
     if (boardObj) {
         //console.log(boardObj);
         //console.log("sqrCasesId");
-        //console.log(boardObj.isValidSquare(0, 3));
+        console.log("-------");
+        console.log("board's max dimension");
+        console.log(boardObj.maxDimension);
+        console.log("test get sqrCaseId");
+        console.log(boardObj.getSqrCasesId(20, 9));
         //console.log(boardObj.value[21]);
-        console.log(boardObj.getMaxDimension(227));
+        //console.log(boardObj.getMaxDimension(227));
     }
 }
 
