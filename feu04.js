@@ -147,7 +147,7 @@ const argTester = () => {
         for (let i = sqrStartId; i <= sqrEndId; i++) {
 
             const caseToCheck = boardObj.getCaseObj(i);
-            console.log(caseToCheck);
+            //console.log(caseToCheck);
             const checkCaseRow = caseToCheck.row >= startCase.row && caseToCheck.row <= endCase.row;
             const checkCaseCol = caseToCheck.col >= startCase.col && caseToCheck.col <= endCase.col;
 
@@ -158,7 +158,7 @@ const argTester = () => {
         }
 
         if (caseIdArr.length === 0) {
-            console.log("empty arr");
+            //console.log("empty arr");
             return false;
         }
 
@@ -168,7 +168,7 @@ const argTester = () => {
 
     boardObj.isValidSquare = (sqrStartId, dimension) => {
 
-        console.log("isValidSquare");
+        //console.log("isValidSquare");
 
         const sqrCasesIds = boardObj.getSqrCasesId(sqrStartId, dimension);
 
@@ -176,12 +176,12 @@ const argTester = () => {
             return false;
         }
 
-        console.log("sqrCasesIds");
-        console.log(sqrCasesIds);
+        //console.log("sqrCasesIds");
+        //console.log(sqrCasesIds);
 
         for (let i = 0; i < sqrCasesIds.length; i++) {
             const caseToCheck = boardObj.getCaseObj(sqrCasesIds[i]);
-            console.log(caseToCheck);
+            //console.log(caseToCheck);
 
             if (caseToCheck.caseValue === boardObj.obsChar) {
                 return false;
@@ -198,24 +198,27 @@ const argTester = () => {
         const caseToCheck = boardObj.getCaseObj(caseId);
 
         if (caseToCheck.caseValue === boardObj.obsChar) {
-            return false;
+            return 0;
         }
 
-        
+        /*
         console.log("--------");
         console.log("getMaxDimension");
         console.log(boardObj.maxDimension);
         console.log(caseToCheck);
         console.log("--------");
+        */
         
 
         for (let i = boardObj.maxDimension; i >= 1; i--) {
             const testValidSquare = boardObj.isValidSquare(caseId, i);
             
+            /*
             console.log(i);
             console.log('testValidSquare');
             console.log(testValidSquare);
             console.log("--------");
+            */
             
 
             if (testValidSquare) {
@@ -224,13 +227,13 @@ const argTester = () => {
             }
         }
 
-        return false;
+        return 0;
 
     }
 
     
     for (let i = 0; i < boardObj.value.length; i++) {
-        //boardObj.value[i].maxDimension = boardObj.getMaxDimension(boardObj.value[i].id);
+        boardObj.value[i].maxDimension = boardObj.getMaxDimension(boardObj.value[i].id);
         //console.log(boardObj.value[i].id);
         console.log(boardObj.value[i]);
     }
@@ -291,13 +294,13 @@ const main = () => {
     if (boardObj) {
         //console.log(boardObj);
         //console.log("sqrCasesId");
-        console.log("-------");
-        console.log("board's max dimension");
-        console.log(boardObj.maxDimension);
+        //console.log("-------");
+        //console.log("board's max dimension");
+        //console.log(boardObj.maxDimension);
         //console.log("test get sqrCaseId");
         //console.log(boardObj.getSqrCasesId(20, 9));
-        console.log("test max dimension");
-        console.log(boardObj.getMaxDimension(13));
+        //console.log("test max dimension");
+        //console.log(boardObj.getMaxDimension(112));
         //console.log(boardObj.value[21]);
         //console.log(boardObj.getMaxDimension(227));
     }
