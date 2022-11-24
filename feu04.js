@@ -197,6 +197,10 @@ const argTester = () => {
 
         const caseToCheck = boardObj.getCaseObj(caseId);
 
+        if (caseToCheck.caseValue === boardObj.obsChar) {
+            return false;
+        }
+
         
         console.log("--------");
         console.log("getMaxDimension");
@@ -290,8 +294,10 @@ const main = () => {
         console.log("-------");
         console.log("board's max dimension");
         console.log(boardObj.maxDimension);
-        console.log("test get sqrCaseId");
-        console.log(boardObj.getSqrCasesId(20, 9));
+        //console.log("test get sqrCaseId");
+        //console.log(boardObj.getSqrCasesId(20, 9));
+        console.log("test max dimension");
+        console.log(boardObj.getMaxDimension(13));
         //console.log(boardObj.value[21]);
         //console.log(boardObj.getMaxDimension(227));
     }
