@@ -241,13 +241,17 @@ const argTester = () => {
 
     }
 
+    boardObj.printBoard = () => {
+
+        for (let i = 0; i < boardObj.value.length; i++) {
+            console.log(boardObj.value[i]);
+        }
+
+    }
+
     boardObj.getAllMaxDimension();
 
-    
-    for (let i = 0; i < boardObj.value.length; i++) {
-        console.log(boardObj.value[i]);
-    }
-    
+    boardObj.printBoard();
 
     return boardObj;
 
