@@ -243,8 +243,41 @@ const argTester = () => {
 
     boardObj.printBoard = () => {
 
+        const mainArr = [];
+        let rowTracker = boardObj.value[0].row;
+        let rowArr = [];
+
         for (let i = 0; i < boardObj.value.length; i++) {
-            console.log(boardObj.value[i]);
+            
+
+            if (rowTracker !== boardObj.value[i].row) {
+                /*
+                console.log("rowArr");
+                console.log(rowArr);
+                */
+                mainArr.push(rowArr);
+                rowArr = [];
+                //console.log("---------");
+                rowTracker++;
+            }
+
+            //console.log(boardObj.value[i]);
+            rowArr.push(boardObj.value[i].caseValue);
+
+        }
+
+        /*
+        console.log("rowArr");
+        console.log(rowArr);
+        */
+        mainArr.push(rowArr);
+        rowArr = [];
+        //console.log("---------");
+
+        for (let i = 0; i < mainArr.length; i++) {
+
+            console.log(mainArr[i].join(''));
+            
         }
 
     }
@@ -306,6 +339,9 @@ const main = () => {
     const boardObj = argTester();
 
     if (boardObj) {
+
+        //console.log(boardObj);
+
         //console.log(boardObj);
         //console.log("sqrCasesId");
         //console.log("-------");
