@@ -231,10 +231,20 @@ const argTester = () => {
 
     }
 
+    boardObj.getAllMaxDimension = () => {
+
+        for (let i = 0; i < boardObj.value.length; i++) {
+
+            boardObj.value[i].maxDimension = boardObj.getMaxDimension(boardObj.value[i].id);
+
+        }
+
+    }
+
+    boardObj.getAllMaxDimension();
+
     
     for (let i = 0; i < boardObj.value.length; i++) {
-        boardObj.value[i].maxDimension = boardObj.getMaxDimension(boardObj.value[i].id);
-        //console.log(boardObj.value[i].id);
         console.log(boardObj.value[i]);
     }
     
