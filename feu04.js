@@ -310,7 +310,20 @@ const argTester = () => {
 
     }
 
-    boardObj.printBoard();
+    boardObj.getBiggestSquare = () => {
+
+        for (let i = boardObj.maxDimension; i !== 0; i--) {
+            const test = boardObj.getFirstSquare(i);
+            if (test) {
+                return test;
+            }
+        }
+
+        return false;
+
+    }
+
+    //boardObj.printBoard();
 
     return boardObj;
 
@@ -366,10 +379,21 @@ const main = () => {
 
     if (boardObj) {
 
+        /*
         boardObj.printAllData();
         console.log("-----");
         console.log("biggest square ID");
-        console.log(boardObj.getFirstSquare(10));
+        console.log(boardObj.getFirstSquare(3));
+        */
+
+        console.log("max dimension");
+        console.log(boardObj.maxDimension);
+        console.log("-------");
+        console.log("Biggest Square Fire Case ID");
+        console.log(boardObj.getBiggestSquare());
+        console.log("-------");
+        console.log("AllData");
+        boardObj.printAllData();
         
 
         //console.log(boardObj);
