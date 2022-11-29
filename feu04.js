@@ -282,7 +282,33 @@ const argTester = () => {
 
     }
 
-    boardObj.getAllMaxDimension();
+    boardObj.printAllData = () => {
+
+        boardObj.getAllMaxDimension();
+
+        for (let i = 0; i < boardObj.value.length; i++) {
+            console.log(boardObj.value[i]);
+        }
+
+    }
+
+    boardObj.getFirstSquare = (dimensionToTest) => {
+
+        boardObj.getAllMaxDimension();
+
+        for (let i = 0; i < boardObj.value.length; i++) {
+
+            if (boardObj.value[i].maxDimension === dimensionToTest) {
+
+                return boardObj.value[i].id;
+
+            }
+
+        }
+
+        return false;
+
+    }
 
     boardObj.printBoard();
 
@@ -339,6 +365,12 @@ const main = () => {
     const boardObj = argTester();
 
     if (boardObj) {
+
+        boardObj.printAllData();
+        console.log("-----");
+        console.log("biggest square ID");
+        console.log(boardObj.getFirstSquare(10));
+        
 
         //console.log(boardObj);
 
