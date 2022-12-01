@@ -325,6 +325,23 @@ const argTester = () => {
 
     }
 
+    boardObj.writeBiggestSquare = () => {
+
+        const firstCaseId = boardObj.getBiggestSquare();
+        const firstCaseObj = boardObj.getCaseObj(firstCaseId);
+
+        if (!firstCaseObj) {
+            return false;
+        }
+
+        console.log(firstCaseObj);
+
+        const squareCaseIds = boardObj.getSqrCasesId(firstCaseId, firstCaseObj.maxDimension);
+        console.log("squareCaseIds:");
+        console.log(squareCaseIds);
+
+    }
+
     //boardObj.printBoard();
 
     return boardObj;
@@ -381,40 +398,15 @@ const main = () => {
 
     if (boardObj) {
 
-        /*
-        boardObj.printAllData();
-        console.log("-----");
-        console.log("biggest square ID");
-        console.log(boardObj.getFirstSquare(3));
-        */
-
         console.log("max dimension");
         console.log(boardObj.maxDimension);
         console.log("-------");
-        /*
-        console.log("biggest square ID");
-        console.log(boardObj.getFirstSquare(7));
-        */
-        console.log("Biggest Square Fire Case ID");
-        console.log(boardObj.getBiggestSquare());
+        console.log("Biggest Square First Case ID");
+        console.log(boardObj.writeBiggestSquare());
         console.log("-------");
         console.log("AllData");
         boardObj.printAllData();
-        
 
-        //console.log(boardObj);
-
-        //console.log(boardObj);
-        //console.log("sqrCasesId");
-        //console.log("-------");
-        //console.log("board's max dimension");
-        //console.log(boardObj.maxDimension);
-        //console.log("test get sqrCaseId");
-        //console.log(boardObj.getSqrCasesId(20, 9));
-        //console.log("test max dimension");
-        //console.log(boardObj.getMaxDimension(112));
-        //console.log(boardObj.value[21]);
-        //console.log(boardObj.getMaxDimension(227));
     }
 }
 
