@@ -147,7 +147,6 @@ const argTester = () => {
         for (let i = sqrStartId; i <= sqrEndId; i++) {
 
             const caseToCheck = boardObj.getCaseObj(i);
-            //console.log(caseToCheck);
             const checkCaseRow = caseToCheck.row >= startCase.row && caseToCheck.row <= endCase.row;
             const checkCaseCol = caseToCheck.col >= startCase.col && caseToCheck.col <= endCase.col;
 
@@ -158,7 +157,6 @@ const argTester = () => {
         }
 
         if (caseIdArr.length === 0) {
-            //console.log("empty arr");
             return false;
         }
 
@@ -168,20 +166,15 @@ const argTester = () => {
 
     boardObj.isValidSquare = (sqrStartId, dimension) => {
 
-        //console.log("isValidSquare");
-
         const sqrCasesIds = boardObj.getSqrCasesId(sqrStartId, dimension);
 
         if (!sqrCasesIds) {
             return false;
         }
 
-        //console.log("sqrCasesIds");
-        //console.log(sqrCasesIds);
 
         for (let i = 0; i < sqrCasesIds.length; i++) {
             const caseToCheck = boardObj.getCaseObj(sqrCasesIds[i]);
-            //console.log(caseToCheck);
 
             if (caseToCheck.caseValue === boardObj.obsChar) {
                 return false;
@@ -201,28 +194,11 @@ const argTester = () => {
             return 0;
         }
 
-        /*
-        console.log("--------");
-        console.log("getMaxDimension");
-        console.log(boardObj.maxDimension);
-        console.log(caseToCheck);
-        console.log("--------");
-        */
-        
-
         for (let i = boardObj.maxDimension; i >= 1; i--) {
+
             const testValidSquare = boardObj.isValidSquare(caseId, i);
-            
-            /*
-            console.log(i);
-            console.log('testValidSquare');
-            console.log(testValidSquare);
-            console.log("--------");
-            */
-            
 
             if (testValidSquare) {
-                //console.log("Max Dimension value:");
                 return i;
             }
         }
@@ -251,28 +227,19 @@ const argTester = () => {
             
 
             if (rowTracker !== boardObj.value[i].row) {
-                /*
-                console.log("rowArr");
-                console.log(rowArr);
-                */
+
                 mainArr.push(rowArr);
                 rowArr = [];
-                //console.log("---------");
+
                 rowTracker++;
             }
 
-            //console.log(boardObj.value[i]);
             rowArr.push(boardObj.value[i].caseValue);
 
         }
 
-        /*
-        console.log("rowArr");
-        console.log(rowArr);
-        */
         mainArr.push(rowArr);
         rowArr = [];
-        //console.log("---------");
 
         for (let i = 0; i < mainArr.length; i++) {
 
@@ -313,12 +280,12 @@ const argTester = () => {
     boardObj.getBiggestSquare = () => {
 
         for (let i = boardObj.maxDimension; i !== 0; i--) {
-            //console.log("dimension tested");
-            //console.log(i);
+
             const test = boardObj.getFirstSquare(i);
             if (test || test === 0) {
                 return test;
             }
+
         }
 
         return false;
@@ -334,21 +301,14 @@ const argTester = () => {
             return false;
         }
 
-        console.log(firstCaseObj);
-
         const squareCaseIds = boardObj.getSqrCasesId(firstCaseId, firstCaseObj.maxDimension);
-        console.log("squareCaseIds:");
-        console.log(squareCaseIds);
 
         for (let i = 0; i < squareCaseIds.length; i++) {
             const caseToCheck = boardObj.getCaseObj(squareCaseIds[i]);
             caseToCheck.caseValue = boardObj.fillChar;
-            console.log(caseToCheck);
         }
 
     }
-
-    //boardObj.printBoard();
 
     return boardObj;
 
@@ -404,15 +364,7 @@ const main = () => {
 
     if (boardObj) {
 
-        console.log("max dimension");
-        console.log(boardObj.maxDimension);
-        console.log("-------");
-        console.log("Biggest Square First Case ID");
-        console.log(boardObj.writeBiggestSquare());
-        console.log("-------");
-        //console.log("AllData");
-        //boardObj.printAllData();
-        console.log('Board:')
+        boardObj.writeBiggestSquare()
         boardObj.printBoard();
 
     }
