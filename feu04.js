@@ -340,6 +340,12 @@ const argTester = () => {
         console.log("squareCaseIds:");
         console.log(squareCaseIds);
 
+        for (let i = 0; i < squareCaseIds.length; i++) {
+            const caseToCheck = boardObj.getCaseObj(squareCaseIds[i]);
+            caseToCheck.caseValue = boardObj.fillChar;
+            console.log(caseToCheck);
+        }
+
     }
 
     //boardObj.printBoard();
@@ -404,8 +410,10 @@ const main = () => {
         console.log("Biggest Square First Case ID");
         console.log(boardObj.writeBiggestSquare());
         console.log("-------");
-        console.log("AllData");
-        boardObj.printAllData();
+        //console.log("AllData");
+        //boardObj.printAllData();
+        console.log('Board:')
+        boardObj.printBoard();
 
     }
 }
