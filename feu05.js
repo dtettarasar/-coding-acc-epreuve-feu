@@ -26,6 +26,17 @@ const argTester = () => {
 
     }
 
+    const fileValue = getTxtArr(filePath);
+
+    if (!fileValue) {
+
+        console.log("Erreur : le fichier n'existe pas (Vérifier le chemin du fichier).");
+        return false;
+
+    }
+
+    console.log(fileValue);
+
 }
 
 const checkFileFormat = (filePath, formatArr) => {
