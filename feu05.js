@@ -20,6 +20,22 @@ const argTester = () => {
 
 }
 
+const checkFileFormat = (filePath, formatArr) => {
+
+    for (let i = 0; i < formatArr.length; i++) {
+
+        if (filePath.endsWith(formatArr[i])) {
+
+            return filePath;
+
+        }
+
+    }
+
+    return false;
+
+}
+
 // Récupérer les valeurs texte des fichiers
 const getTxtArr = (file) => {
 
