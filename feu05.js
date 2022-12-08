@@ -36,6 +36,8 @@ const argTester = () => {
     }
 
     console.log(fileValue);
+    const boardSettings = fileValue[0];
+    console.log(boardSettings);
 
 }
 
