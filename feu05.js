@@ -18,6 +18,14 @@ const argTester = () => {
 
     }
 
+    // Check les formats de fichiers 
+    if (!checkFileFormat(filePath, fileFormats)) {
+
+        console.log(errorMsg + "Vérifier le chemin et le format du fichier. (Format(s) lisible(s) : " + fileFormats + ").");
+        return false;
+
+    }
+
 }
 
 const checkFileFormat = (filePath, formatArr) => {
