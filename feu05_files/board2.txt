@@ -1,0 +1,13 @@
+12x12X_oab
+____________
+_XXXXX_____b
+_________XXX
+_XXXX__XX__X
+bXXX___XXXXX
+XX_________X
+_XXX__XXX__X
+___XXXX___X_
+XXXXX_______
+a___X__XXXXX
+__X_________
+XXXXXXXXXXXX

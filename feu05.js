@@ -37,7 +37,15 @@ const argTester = () => {
 
     console.log(fileValue);
     const boardSettings = fileValue[0];
+
+    // checker les infos du plateau
+    const boardInfoPattern = /^[1-9][0-9]*x[1-9][0-9]*.{5}$/g;
+    const testBoardInfos = boardInfoPattern.test(boardSettings);
+    
+
+    
     console.log(boardSettings);
+    console.log(testBoardInfos);
 
 }
 
