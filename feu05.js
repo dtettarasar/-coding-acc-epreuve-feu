@@ -42,7 +42,13 @@ const argTester = () => {
     const boardInfoPattern = /^[1-9][0-9]*x[1-9][0-9]*.{5}$/g;
     const testBoardInfos = boardInfoPattern.test(boardSettings);
     
-
+    if (!testBoardInfos) {
+        console.log("Assurez-vous que la première ligne du fichier contienne les informations, en respectant le format demandé.");
+        console.log("Dimension du plateau: Lignes x Colonnes");
+        console.log("Suivi de 5 caractères: plein, vide, chemin, entrée et sortie du labyrinthe.");
+        console.log("Exemple: 10x10* o12");
+        return false;
+    }
     
     console.log(boardSettings);
     console.log(testBoardInfos);
