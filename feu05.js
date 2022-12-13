@@ -6,6 +6,8 @@ const argTester = () => {
     const errorMsg = "Erreur: ";
     const fileFormats = [".txt", ".md"];
 
+    const boardObj = {};
+
     if (argument.length !== 1) {
 
         console.log(errorMsg + "Veuillez passer le chemin du fichier en argument.");
@@ -52,6 +54,16 @@ const argTester = () => {
     
     console.log(boardSettings);
     console.log(testBoardInfos);
+
+    const boardSettingsArr = boardSettings.split('');
+
+    const lineNumArr = [];
+
+    for (let i = 0; i < boardSettingsArr.length -5; i++) {
+        lineNumArr.push(boardSettingsArr[i]);
+    }
+
+    console.log(lineNumArr.join(''));
 
 }
 
