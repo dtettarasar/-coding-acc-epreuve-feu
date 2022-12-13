@@ -53,7 +53,7 @@ const argTester = () => {
     }
     
     console.log(boardSettings);
-    console.log(testBoardInfos);
+    //console.log(testBoardInfos);
 
     const boardSettingsArr = boardSettings.split('');
 
@@ -63,7 +63,12 @@ const argTester = () => {
         lineNumArr.push(boardSettingsArr[i]);
     }
 
-    console.log(lineNumArr.join(''));
+    const dimensionArr = lineNumArr.join('').split("x");
+    boardObj.rowNum = parseInt(dimensionArr[0]);
+    boardObj.colNum = parseInt(dimensionArr[1]);
+
+    console.log(boardObj);
+
 
 }
 
