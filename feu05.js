@@ -72,6 +72,11 @@ const argTester = () => {
     boardObj.voidChar = boardSettings[boardSettingsArr.length -4];
     boardObj.fillChar = boardSettings[boardSettingsArr.length -5];
 
+    if (fileValue.length - 1 !== boardObj.rowNum) {
+        console.log("Erreur: le nombre de lignes du plateau ne correspond pas à celui spécifié dans les informations en première ligne du fichier.");
+        return false;
+    }
+
     console.log(boardObj);
 
 
