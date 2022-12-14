@@ -66,6 +66,11 @@ const argTester = () => {
     const dimensionArr = lineNumArr.join('').split("x");
     boardObj.rowNum = parseInt(dimensionArr[0]);
     boardObj.colNum = parseInt(dimensionArr[1]);
+    boardObj.endChar = boardSettings[boardSettingsArr.length -1];
+    boardObj.startChar = boardSettings[boardSettingsArr.length -2];
+    boardObj.pathChar = boardSettings[boardSettingsArr.length -3];
+    boardObj.voidChar = boardSettings[boardSettingsArr.length -4];
+    boardObj.fillChar = boardSettings[boardSettingsArr.length -5];
 
     console.log(boardObj);
 
