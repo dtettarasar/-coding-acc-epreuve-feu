@@ -60,7 +60,8 @@ const argTester = () => {
    
     const boardLine = parseInt(lineNumArr.join(''));
     boardObj.rowNum = boardLine;
-
+    
+    // récupérer dans l'objet du plateau les informations pour le lire
     boardObj.voidChar = boardSettings[boardSettingsArr.length -3];
     boardObj.obsChar = boardSettings[boardSettingsArr.length -2];
     boardObj.fillChar = boardSettings[boardSettingsArr.length -1];
@@ -87,7 +88,8 @@ const argTester = () => {
         } else {
 
             for (let j = 0; j < fileValue[i].length; j++) {
-
+                
+                // création des objets pour chaque case du plateau
                 const caseObj = {
                     id: caseId,
                     row: i - 1,
@@ -114,9 +116,11 @@ const argTester = () => {
     }
 
     // création de méthodes pour manipuler des données dans l'objet du plateau
-
+    
+    // retourne l'objet d'une case du plateau, en fonction de son ID
     boardObj.getCaseObj = (caseId) => {return boardObj.value[caseId]};
-
+    
+    // retourne l'ID de la dernière case d'un carré, en fonction de l'ID de la première case, et la taille du carré
     boardObj.getSqrEndId = (sqrStartId, dimension) => {
 
         if (dimension === 0) {
@@ -136,7 +140,8 @@ const argTester = () => {
         }
 
     }
-
+    
+    // retourne la liste des ID des cases composant un carré, en fonction de l'ID de la première case et la taille du carré
     boardObj.getSqrCasesId = (sqrStartId, dimension) => {
 
         const sqrEndId = boardObj.getSqrEndId(sqrStartId, dimension);
@@ -163,7 +168,8 @@ const argTester = () => {
         return caseIdArr;
 
     }
-
+    
+    // vérifie qu'un carré est valide (aucune case ne comporte d'obstacle)
     boardObj.isValidSquare = (sqrStartId, dimension) => {
 
         const sqrCasesIds = boardObj.getSqrCasesId(sqrStartId, dimension);
@@ -185,7 +191,9 @@ const argTester = () => {
         return true;
 
     }
-
+    
+    // évalue la taille maximal du carré que l'on peut obtenir
+    // La méthode prend en argument, l'ID d'une case (supposée être la première case du carré)
     boardObj.getMaxDimension = (caseId) => {
 
         const caseToCheck = boardObj.getCaseObj(caseId);
@@ -206,7 +214,8 @@ const argTester = () => {
         return 0;
 
     }
-
+    
+    // calcule pour chaque case, le plus grand carré que l'on puisse obtenir
     boardObj.getAllMaxDimension = () => {
 
         for (let i = 0; i < boardObj.value.length; i++) {
@@ -216,7 +225,8 @@ const argTester = () => {
         }
 
     }
-
+    
+    // affiche le plateau dans la console
     boardObj.printBoard = () => {
 
         const mainArr = [];
@@ -248,7 +258,8 @@ const argTester = () => {
         }
 
     }
-
+    
+    // affiche tous les objets case composant le plateau
     boardObj.printAllData = () => {
 
         boardObj.getAllMaxDimension();
@@ -258,7 +269,8 @@ const argTester = () => {
         }
 
     }
-
+    
+    // recherche dans le plateau le premier carré que l'on puisse trouver, en fonction de sa taille
     boardObj.getFirstSquare = (dimensionToTest) => {
 
         boardObj.getAllMaxDimension();
@@ -276,7 +288,8 @@ const argTester = () => {
         return false;
 
     }
-
+    
+    // recherche dans le plateau le plus grand carré que l'on puisse trouver
     boardObj.getBiggestSquare = () => {
 
         for (let i = boardObj.maxDimension; i !== 0; i--) {
@@ -291,7 +304,8 @@ const argTester = () => {
         return false;
 
     }
-
+    
+    // écrit sur le plateau le plus grand carré 
     boardObj.writeBiggestSquare = () => {
 
         const firstCaseId = boardObj.getBiggestSquare();
