@@ -71,6 +71,7 @@ const argTester = () => {
     boardObj.pathChar = boardSettings[boardSettingsArr.length -3];
     boardObj.voidChar = boardSettings[boardSettingsArr.length -4];
     boardObj.fillChar = boardSettings[boardSettingsArr.length -5];
+    boardObj.value = [];
 
     if (fileValue.length - 1 !== boardObj.rowNum) {
         console.log("Erreur: le nombre de lignes du plateau ne correspond pas à celui spécifié dans les informations en première ligne du fichier.");
@@ -88,7 +89,6 @@ const argTester = () => {
 
         } else {
 
-            /*
             for (let j = 0; j < fileValue[i].length; j++) {
                 
                 // création des objets pour chaque case du plateau
@@ -103,7 +103,6 @@ const argTester = () => {
 
                 caseId++;
             }
-            */
 
         }   
 
