@@ -77,6 +77,38 @@ const argTester = () => {
         return false;
     }
 
+    let caseId = 0;
+
+    for (let i = 1; i < fileValue.length; i++) {
+
+        if (fileValue[i].length !== boardObj.colNum) {
+            
+            console.log("Erreur : les lignes du plateau ne sont pas de la même longueur.");
+            return false;
+
+        } else {
+
+            /*
+            for (let j = 0; j < fileValue[i].length; j++) {
+                
+                // création des objets pour chaque case du plateau
+                const caseObj = {
+                    id: caseId,
+                    row: i - 1,
+                    col: j,
+                    caseValue: fileValue[i][j]
+                };
+
+                boardObj.value.push(caseObj);
+
+                caseId++;
+            }
+            */
+
+        }   
+
+    }
+
     console.log(boardObj);
 
 
