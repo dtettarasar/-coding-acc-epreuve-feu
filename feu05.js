@@ -143,7 +143,18 @@ const argTester = () => {
 
     }
 
+    // affiche tous les objets case composant le plateau
+    boardObj.printAllData = () => {
+
+        for (let i = 0; i < boardObj.value.length; i++) {
+            console.log(boardObj.value[i]);
+        }
+
+    }
+
     boardObj.printBoard();
+    console.log("-----------------");
+    boardObj.printAllData();
 
     //console.log(boardObj);
 
