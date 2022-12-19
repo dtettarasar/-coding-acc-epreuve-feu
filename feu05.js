@@ -37,7 +37,7 @@ const argTester = () => {
 
     }
 
-    console.log(fileValue);
+    //console.log(fileValue);
     const boardSettings = fileValue[0];
 
     // checker les infos du plateau
@@ -52,7 +52,7 @@ const argTester = () => {
         return false;
     }
     
-    console.log(boardSettings);
+    //console.log(boardSettings);
     //console.log(testBoardInfos);
 
     const boardSettingsArr = boardSettings.split('');
@@ -108,7 +108,44 @@ const argTester = () => {
 
     }
 
-    console.log(boardObj);
+    // création de méthodes pour manipuler des données dans l'objet du plateau
+
+    // affiche le plateau dans la console
+    boardObj.printBoard = () => {
+
+        const mainArr = [];
+        let rowTracker = boardObj.value[0].row;
+        let rowArr = [];
+
+        for (let i = 0; i < boardObj.value.length; i++) {
+            
+
+            if (rowTracker !== boardObj.value[i].row) {
+
+                mainArr.push(rowArr);
+                rowArr = [];
+
+                rowTracker++;
+            }
+
+            rowArr.push(boardObj.value[i].caseValue);
+
+        }
+
+        mainArr.push(rowArr);
+        rowArr = [];
+
+        for (let i = 0; i < mainArr.length; i++) {
+
+            console.log(mainArr[i].join(''));
+            
+        }
+
+    }
+
+    boardObj.printBoard();
+
+    //console.log(boardObj);
 
 
 }
