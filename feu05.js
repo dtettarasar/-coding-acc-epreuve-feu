@@ -117,7 +117,7 @@ const argTester = () => {
 
         if (notValidChar) {
 
-            console.log("Erreur: le plateau ne doit être composé que des caractères vides et obstacles, spécifiés en première ligne");
+            console.log("Erreur: le plateau ne doit être composé que des caractères vides, obstacles, entrée et sortie, spécifiés en première ligne");
             return false;
 
         }
