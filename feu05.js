@@ -108,6 +108,33 @@ const argTester = () => {
 
     }
 
+    let startCaseFound = false;
+    
+    for (let i = 0; i < boardObj.value.length; i++) {
+
+        const testCase = boardObj.value[i].caseValue;
+        const notValidChar = testCase !== boardObj.voidChar && testCase !== boardObj.fillChar && testCase !== boardObj.endChar && testCase !== boardObj.startChar;
+
+        if (notValidChar) {
+
+            console.log("Erreur: le plateau ne doit être composé que des caractères vides et obstacles, spécifiés en première ligne");
+            return false;
+
+        }
+        
+        if (testCase === boardObj.startChar && !startCaseFound) {
+
+            startCaseFound = true;
+
+        } else if (testCase === boardObj.startChar && startCaseFound) {
+
+            console.log("le plateau ne doit comporter qu'une seule entrée");
+            return false;
+
+        }
+
+    }
+
     // création de méthodes pour manipuler des données dans l'objet du plateau
 
     // affiche le plateau dans la console
@@ -152,11 +179,13 @@ const argTester = () => {
 
     }
 
+    /*
     boardObj.printBoard();
     console.log("-----------------");
     boardObj.printAllData();
+    */
 
-    //console.log(boardObj);
+    console.log(boardObj);
 
 
 }
