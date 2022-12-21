@@ -179,6 +179,11 @@ const argTester = () => {
 
     }
 
+    // identifier chaque case possible autour d’une case donnée
+    boardObj.findFreeCases = () => {
+        
+    }
+
     /*
     boardObj.printBoard();
     console.log("-----------------");
