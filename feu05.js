@@ -190,7 +190,7 @@ const argTester = () => {
     boardObj.printAllData();
     */
 
-    console.log(boardObj);
+    return boardObj;
 
 
 }
@@ -240,4 +240,16 @@ const getTxtArr = (file) => {
 }
 
 
-argTester();
+const main = () => {
+
+    const board = argTester();
+
+    //console.log(board);
+
+    board.printBoard();
+    console.log("----------");
+    board.printAllData();
+
+}
+
+main();
