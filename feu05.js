@@ -187,7 +187,27 @@ const argTester = () => {
 
         const caseToCheck = boardObj.getCaseObj(caseId);
 
+        // Calcul des coordonnées des case autour de la caseToCheck
+        const rowUpcase = caseToCheck.row - 1;
+        const colUpCase = caseToCheck.col;
+
+        const rowDwnCase = null;
+        const colDwnCase = null;
+
+        const rowLftCase = null;
+        const colLftCase = null;
+
+        const rowRgtCase = null;
+        const colRgtCase = null;
+
         console.log(caseToCheck);
+
+        console.log("upCase");
+        console.log("row: " + rowUpcase);
+        console.log("col: " + colUpCase);
+
+        // TODO 
+        /* checker que les coordonnées calculé ne sont pas hors du plateau (valeur inf à 0 ou sup au nombre de col et de row) */
         
     }
 
@@ -251,6 +271,7 @@ const main = () => {
     console.log("----------");
     board.printAllData();
     console.log("----------");
+    board.findFreeCases(13);
 
 }
 
