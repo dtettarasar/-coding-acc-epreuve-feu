@@ -135,7 +135,7 @@ const argTester = () => {
 
     }
 
-    // création de méthodes pour manipuler des données dans l'objet du plateau
+    // création des méthodes pour manipuler des données dans l'objet du plateau
 
     // affiche le plateau dans la console
     boardObj.printBoard = () => {
@@ -170,6 +170,9 @@ const argTester = () => {
 
     }
 
+    // retourne l'objet d'une case du plateau, en fonction de son ID
+    boardObj.getCaseObj = (caseId) => {return boardObj.value[caseId]};
+
     // affiche tous les objets case composant le plateau
     boardObj.printAllData = () => {
 
@@ -180,15 +183,13 @@ const argTester = () => {
     }
 
     // identifier chaque case possible autour d’une case donnée
-    boardObj.findFreeCases = () => {
+    boardObj.findFreeCases = (caseId) => {
+
+        const caseToCheck = boardObj.getCaseObj(caseId);
+
+        console.log(caseToCheck);
         
     }
-
-    /*
-    boardObj.printBoard();
-    console.log("-----------------");
-    boardObj.printAllData();
-    */
 
     return boardObj;
 
@@ -249,6 +250,7 @@ const main = () => {
     board.printBoard();
     console.log("----------");
     board.printAllData();
+    console.log("----------");
 
 }
 
