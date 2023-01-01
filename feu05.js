@@ -188,15 +188,19 @@ const argTester = () => {
         const caseToCheck = boardObj.getCaseObj(caseId);
 
         // Calcul des coordonnées des case autour de la caseToCheck
+        let upCaseId = null;
         const rowUpCase = caseToCheck.row - 1;
         const colUpCase = caseToCheck.col;
 
+        let dwnCaseId = null;
         const rowDwnCase = caseToCheck.row + 1;
         const colDwnCase = caseToCheck.col;
 
+        let lftCaseId = null;
         const rowLftCase = caseToCheck.row;
         const colLftCase = caseToCheck.col - 1;
 
+        let rgtCaseId = null;
         const rowRgtCase = caseToCheck.row;
         const colRgtCase = caseToCheck.col + 1;
 
@@ -223,6 +227,26 @@ const argTester = () => {
         console.log("rightCase");
         console.log("row: " + rowRgtCase);
         console.log("col: " + colRgtCase);
+
+        console.log("--------------");
+
+        for (let i = 0; i < boardObj.value.length; i++) {
+            
+            const caseObj = boardObj.getCaseObj(i);
+            //console.log(caseObj);
+
+            const isUpCase = caseObj.col === colUpCase && caseObj.row === rowUpCase;
+            const isDwnCase = caseObj.col === colDwnCase && caseObj.row === rowDwnCase;
+
+            if (isUpCase) {
+                console.log("found upCase");
+                console.log(caseObj);
+            } else if (isDwnCase) {
+                console.log("found dwnCase");
+                console.log(caseObj);
+            }
+
+        }
 
 
         // TODO 
@@ -287,10 +311,10 @@ const main = () => {
     //console.log(board);
 
     board.printBoard();
+    //console.log("----------");
+    //board.printAllData();
     console.log("----------");
-    board.printAllData();
-    console.log("----------");
-    board.findFreeCases(83);
+    board.findFreeCases(25);
 
 }
 
