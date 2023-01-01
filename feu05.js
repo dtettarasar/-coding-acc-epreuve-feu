@@ -237,12 +237,20 @@ const argTester = () => {
 
             const isUpCase = caseObj.col === colUpCase && caseObj.row === rowUpCase;
             const isDwnCase = caseObj.col === colDwnCase && caseObj.row === rowDwnCase;
+            const isLftCase = caseObj.col === colLftCase && caseObj.row === rowLftCase;
+            const isRgtCase = caseObj.col === colRgtCase && caseObj.row === rowRgtCase;
 
             if (isUpCase) {
                 console.log("found upCase");
                 console.log(caseObj);
             } else if (isDwnCase) {
                 console.log("found dwnCase");
+                console.log(caseObj);
+            } else if (isLftCase) {
+                console.log("found lftCase");
+                console.log(caseObj);
+            } else if (isRgtCase) {
+                console.log("found rgtCase");
                 console.log(caseObj);
             }
 
@@ -314,7 +322,7 @@ const main = () => {
     //console.log("----------");
     //board.printAllData();
     console.log("----------");
-    board.findFreeCases(25);
+    board.findFreeCases(0);
 
 }
 
