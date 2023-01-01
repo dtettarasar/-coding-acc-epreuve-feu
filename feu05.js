@@ -37,7 +37,6 @@ const argTester = () => {
 
     }
 
-    //console.log(fileValue);
     const boardSettings = fileValue[0];
 
     // checker les infos du plateau
@@ -51,9 +50,6 @@ const argTester = () => {
         console.log("Exemple: 10x10* o12");
         return false;
     }
-    
-    //console.log(boardSettings);
-    //console.log(testBoardInfos);
 
     const boardSettingsArr = boardSettings.split('');
 
@@ -188,6 +184,7 @@ const argTester = () => {
         const caseToCheck = boardObj.getCaseObj(caseId);
 
         // Calcul des coordonnées des case autour de la caseToCheck
+        // Création des variables pour stocker les id des cases autour de la caseToCheck
         let upCaseId = null;
         const rowUpCase = caseToCheck.row - 1;
         const colUpCase = caseToCheck.col;
@@ -206,6 +203,7 @@ const argTester = () => {
 
         console.log(caseToCheck);
 
+        /*
         console.log("upCase");
         console.log("row: " + rowUpCase);
         console.log("col: " + colUpCase);
@@ -229,29 +227,46 @@ const argTester = () => {
         console.log("col: " + colRgtCase);
 
         console.log("--------------");
+        */
 
         for (let i = 0; i < boardObj.value.length; i++) {
             
             const caseObj = boardObj.getCaseObj(i);
-            //console.log(caseObj);
 
+            // Conditions pour identifier les cases autour de caseToCheck, selon les coordonnées calculées en amont
             const isUpCase = caseObj.col === colUpCase && caseObj.row === rowUpCase;
             const isDwnCase = caseObj.col === colDwnCase && caseObj.row === rowDwnCase;
             const isLftCase = caseObj.col === colLftCase && caseObj.row === rowLftCase;
             const isRgtCase = caseObj.col === colRgtCase && caseObj.row === rowRgtCase;
 
             if (isUpCase) {
+
                 console.log("found upCase");
                 console.log(caseObj);
+                upCaseId = caseObj.id;
+                //console.log(upCaseId);
+
             } else if (isDwnCase) {
+
                 console.log("found dwnCase");
                 console.log(caseObj);
+                dwnCaseId = caseObj.id;
+                //console.log(dwnCaseId);
+
+
             } else if (isLftCase) {
+
                 console.log("found lftCase");
                 console.log(caseObj);
+                lftCaseId = caseObj.id;
+                //console.log(lftCaseId);
+
             } else if (isRgtCase) {
+
                 console.log("found rgtCase");
                 console.log(caseObj);
+                rgtCaseId = caseObj.id;
+                //console.log(rgtCaseId);
             }
 
         }
@@ -322,7 +337,7 @@ const main = () => {
     //console.log("----------");
     //board.printAllData();
     console.log("----------");
-    board.findFreeCases(0);
+    board.findFreeCases(8);
 
 }
 
