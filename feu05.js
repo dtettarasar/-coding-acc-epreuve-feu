@@ -188,26 +188,45 @@ const argTester = () => {
         const caseToCheck = boardObj.getCaseObj(caseId);
 
         // Calcul des coordonnées des case autour de la caseToCheck
-        const rowUpcase = caseToCheck.row - 1;
+        const rowUpCase = caseToCheck.row - 1;
         const colUpCase = caseToCheck.col;
 
-        const rowDwnCase = null;
-        const colDwnCase = null;
+        const rowDwnCase = caseToCheck.row + 1;
+        const colDwnCase = caseToCheck.col;
 
-        const rowLftCase = null;
-        const colLftCase = null;
+        const rowLftCase = caseToCheck.row;
+        const colLftCase = caseToCheck.col - 1;
 
-        const rowRgtCase = null;
-        const colRgtCase = null;
+        const rowRgtCase = caseToCheck.row;
+        const colRgtCase = caseToCheck.col + 1;
 
         console.log(caseToCheck);
 
         console.log("upCase");
-        console.log("row: " + rowUpcase);
+        console.log("row: " + rowUpCase);
         console.log("col: " + colUpCase);
 
+        console.log("--------------");
+
+        console.log("downCase");
+        console.log("row: " + rowDwnCase);
+        console.log("col: " + colDwnCase);
+
+        console.log("--------------");
+
+        console.log("leftCase");
+        console.log("row: " + rowLftCase);
+        console.log("col: " + colLftCase);
+
+        console.log("--------------");
+
+        console.log("rightCase");
+        console.log("row: " + rowRgtCase);
+        console.log("col: " + colRgtCase);
+
+
         // TODO 
-        /* checker que les coordonnées calculé ne sont pas hors du plateau (valeur inf à 0 ou sup au nombre de col et de row) */
+        /* checker que les coordonnées calculées ne sont pas hors du plateau (valeur inf à 0 ou sup au nombre de col et de row) */
         
     }
 
@@ -271,7 +290,7 @@ const main = () => {
     console.log("----------");
     board.printAllData();
     console.log("----------");
-    board.findFreeCases(13);
+    board.findFreeCases(83);
 
 }
 
