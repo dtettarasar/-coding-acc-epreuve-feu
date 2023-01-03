@@ -182,6 +182,7 @@ const argTester = () => {
     boardObj.findFreeCases = (caseId) => {
 
         const caseToCheck = boardObj.getCaseObj(caseId);
+        const freeCasesArr = [];
 
         // Calcul des coordonnées des case autour de la caseToCheck
         // Création des variables pour stocker les id des cases autour de la caseToCheck
@@ -246,12 +247,21 @@ const argTester = () => {
                 upCaseId = caseObj.id;
                 //console.log(upCaseId);
 
+                if (boardObj.caseValueEqVoidChar(upCaseId)) {
+                    freeCasesArr.push(upCaseId);
+                }
+
+
             } else if (isDwnCase) {
 
                 console.log("found dwnCase");
                 console.log(caseObj);
                 dwnCaseId = caseObj.id;
                 //console.log(dwnCaseId);
+
+                if (boardObj.caseValueEqVoidChar(dwnCaseId)) {
+                    freeCasesArr.push(dwnCaseId);
+                }
 
 
             } else if (isLftCase) {
@@ -261,20 +271,60 @@ const argTester = () => {
                 lftCaseId = caseObj.id;
                 //console.log(lftCaseId);
 
+                if (boardObj.caseValueEqVoidChar(lftCaseId)) {
+                    freeCasesArr.push(lftCaseId);
+                }
+
+
             } else if (isRgtCase) {
 
                 console.log("found rgtCase");
                 console.log(caseObj);
                 rgtCaseId = caseObj.id;
                 //console.log(rgtCaseId);
+
+                if (boardObj.caseValueEqVoidChar(rgtCaseId)) {
+                    freeCasesArr.push(rgtCaseId);
+                }
+
             }
 
         }
+
+        
+        console.log("ID Cases");
+        console.log("upCaseID: " + upCaseId);
+        console.log("----------");
+        console.log("dwnCaseId: " + dwnCaseId);
+        console.log("----------");
+        console.log("lftCaseId: " + lftCaseId);
+        console.log("----------");
+        console.log("rgtCaseId: " + rgtCaseId);
+        console.log("--------------");
+        console.log("freeCasesArr");
+        console.log(freeCasesArr);
 
 
         // TODO 
         /* checker que les coordonnées calculées ne sont pas hors du plateau (valeur inf à 0 ou sup au nombre de col et de row) */
         
+    }
+
+    // Checker si une case est égale au caractère vide
+    boardObj.caseValueEqVoidChar = (caseId) => {
+
+        const caseToCheck = boardObj.getCaseObj(caseId);
+        
+        if (caseToCheck.caseValue === boardObj.voidChar) {
+
+            return true;
+
+        } else {
+
+            return false
+
+        }
+
     }
 
     return boardObj;
@@ -337,7 +387,7 @@ const main = () => {
     //console.log("----------");
     //board.printAllData();
     console.log("----------");
-    board.findFreeCases(8);
+    board.findFreeCases(1);
 
 }
 
