@@ -269,7 +269,7 @@ const argTester = () => {
 
         } else {
 
-            return false
+            return false;
 
         }
 
@@ -286,8 +286,6 @@ const argTester = () => {
                 caseObj.freeCases = boardObj.findFreeCases(caseObj.id);
             }
 
-            //console.log(caseObj);
-
         }
 
     }
@@ -301,7 +299,7 @@ const argTester = () => {
 
             if (caseObj.caseValue === boardObj.startChar) {
 
-                console.log(caseObj);
+                return caseObj.id;
 
             }
 
@@ -365,8 +363,7 @@ const main = () => {
     board.loadAllFreeCases();
 
     //console.log(board);
-
-    board.getStartCaseId();
+    console.log(board.getStartCaseId());
 
     /*
     board.printBoard();
