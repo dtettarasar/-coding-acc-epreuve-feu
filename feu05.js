@@ -336,7 +336,17 @@ const argTester = () => {
     // Récupérer pour chaque case, les cases disponibles autour
     boardObj.loadAllFreeCases = () => {
 
+        for (let i = 0; i < boardObj.value.length; i++) {
 
+            const caseObj = boardObj.getCaseObj(i);
+            
+            if (caseObj.caseValue !== boardObj.fillChar) {
+                caseObj.freeCases = boardObj.findFreeCases(caseObj.id);
+            }
+
+            console.log(caseObj);
+
+        }
 
     }
 
@@ -393,13 +403,16 @@ const getTxtArr = (file) => {
 const main = () => {
 
     const board = argTester();
+    board.loadAllFreeCases();
 
     //console.log(board);
 
+    
     board.printBoard();
     console.log("----------");
     board.printAllData();
     console.log("----------");
+    
     //board.findFreeCases(1);
 
 }
