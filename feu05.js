@@ -286,7 +286,24 @@ const argTester = () => {
                 caseObj.freeCases = boardObj.findFreeCases(caseObj.id);
             }
 
-            console.log(caseObj);
+            //console.log(caseObj);
+
+        }
+
+    }
+
+    // Récupérer l'ID de la case de départ 
+    boardObj.getStartCaseId = () => {
+
+        for (let i = 0; i < boardObj.value.length; i++) {
+
+            const caseObj = boardObj.getCaseObj(i);
+
+            if (caseObj.caseValue === boardObj.startChar) {
+
+                console.log(caseObj);
+
+            }
 
         }
 
@@ -349,11 +366,14 @@ const main = () => {
 
     //console.log(board);
 
-    
+    board.getStartCaseId();
+
+    /*
     board.printBoard();
     console.log("----------");
     board.printAllData();
     console.log("----------");
+    */
 
 
 }
