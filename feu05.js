@@ -205,34 +205,6 @@ const argTester = () => {
         const rowRgtCase = caseToCheck.row;
         const colRgtCase = caseToCheck.col + 1;
 
-        //console.log(caseToCheck);
-
-        /*
-        console.log("upCase");
-        console.log("row: " + rowUpCase);
-        console.log("col: " + colUpCase);
-
-        console.log("--------------");
-
-        console.log("downCase");
-        console.log("row: " + rowDwnCase);
-        console.log("col: " + colDwnCase);
-
-        console.log("--------------");
-
-        console.log("leftCase");
-        console.log("row: " + rowLftCase);
-        console.log("col: " + colLftCase);
-
-        console.log("--------------");
-
-        console.log("rightCase");
-        console.log("row: " + rowRgtCase);
-        console.log("col: " + colRgtCase);
-
-        console.log("--------------");
-        */
-
         for (let i = 0; i < boardObj.value.length; i++) {
             
             const caseObj = boardObj.getCaseObj(i);
@@ -245,10 +217,7 @@ const argTester = () => {
 
             if (isUpCase) {
 
-                //console.log("found upCase");
-                //console.log(caseObj);
                 upCaseId = caseObj.id;
-                //console.log(upCaseId);
 
                 if (boardObj.caseValueEqVoidChar(upCaseId)) {
                     freeCasesArr.push(upCaseId);
@@ -257,10 +226,7 @@ const argTester = () => {
 
             } else if (isDwnCase) {
 
-                //console.log("found dwnCase");
-                //console.log(caseObj);
                 dwnCaseId = caseObj.id;
-                //console.log(dwnCaseId);
 
                 if (boardObj.caseValueEqVoidChar(dwnCaseId)) {
                     freeCasesArr.push(dwnCaseId);
@@ -269,10 +235,7 @@ const argTester = () => {
 
             } else if (isLftCase) {
 
-                //console.log("found lftCase");
-                //console.log(caseObj);
                 lftCaseId = caseObj.id;
-                //console.log(lftCaseId);
 
                 if (boardObj.caseValueEqVoidChar(lftCaseId)) {
                     freeCasesArr.push(lftCaseId);
@@ -281,10 +244,7 @@ const argTester = () => {
 
             } else if (isRgtCase) {
 
-                //console.log("found rgtCase");
-                //console.log(caseObj);
                 rgtCaseId = caseObj.id;
-                //console.log(rgtCaseId);
 
                 if (boardObj.caseValueEqVoidChar(rgtCaseId)) {
                     freeCasesArr.push(rgtCaseId);
@@ -294,25 +254,7 @@ const argTester = () => {
 
         }
 
-        /*
-        console.log("ID Cases");
-        console.log("upCaseID: " + upCaseId);
-        console.log("----------");
-        console.log("dwnCaseId: " + dwnCaseId);
-        console.log("----------");
-        console.log("lftCaseId: " + lftCaseId);
-        console.log("----------");
-        console.log("rgtCaseId: " + rgtCaseId);
-        console.log("--------------");
-        console.log("freeCasesArr");
-        console.log(freeCasesArr);
-        */
-
         return freeCasesArr;
-
-
-        // TODO 
-        /* checker que les coordonnées calculées ne sont pas hors du plateau (valeur inf à 0 ou sup au nombre de col et de row) */
         
     }
 
@@ -412,8 +354,7 @@ const main = () => {
     console.log("----------");
     board.printAllData();
     console.log("----------");
-    
-    //board.findFreeCases(1);
+
 
 }
 
