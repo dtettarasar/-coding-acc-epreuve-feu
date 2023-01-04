@@ -173,7 +173,10 @@ const argTester = () => {
     boardObj.printAllData = () => {
 
         for (let i = 0; i < boardObj.value.length; i++) {
-            console.log(boardObj.value[i]);
+
+            const caseObj = boardObj.getCaseObj(i);
+            console.log(caseObj);
+
         }
 
     }
@@ -202,7 +205,7 @@ const argTester = () => {
         const rowRgtCase = caseToCheck.row;
         const colRgtCase = caseToCheck.col + 1;
 
-        console.log(caseToCheck);
+        //console.log(caseToCheck);
 
         /*
         console.log("upCase");
@@ -242,8 +245,8 @@ const argTester = () => {
 
             if (isUpCase) {
 
-                console.log("found upCase");
-                console.log(caseObj);
+                //console.log("found upCase");
+                //console.log(caseObj);
                 upCaseId = caseObj.id;
                 //console.log(upCaseId);
 
@@ -254,8 +257,8 @@ const argTester = () => {
 
             } else if (isDwnCase) {
 
-                console.log("found dwnCase");
-                console.log(caseObj);
+                //console.log("found dwnCase");
+                //console.log(caseObj);
                 dwnCaseId = caseObj.id;
                 //console.log(dwnCaseId);
 
@@ -266,8 +269,8 @@ const argTester = () => {
 
             } else if (isLftCase) {
 
-                console.log("found lftCase");
-                console.log(caseObj);
+                //console.log("found lftCase");
+                //console.log(caseObj);
                 lftCaseId = caseObj.id;
                 //console.log(lftCaseId);
 
@@ -278,8 +281,8 @@ const argTester = () => {
 
             } else if (isRgtCase) {
 
-                console.log("found rgtCase");
-                console.log(caseObj);
+                //console.log("found rgtCase");
+                //console.log(caseObj);
                 rgtCaseId = caseObj.id;
                 //console.log(rgtCaseId);
 
@@ -291,7 +294,7 @@ const argTester = () => {
 
         }
 
-        
+        /*
         console.log("ID Cases");
         console.log("upCaseID: " + upCaseId);
         console.log("----------");
@@ -303,6 +306,9 @@ const argTester = () => {
         console.log("--------------");
         console.log("freeCasesArr");
         console.log(freeCasesArr);
+        */
+
+        return freeCasesArr;
 
 
         // TODO 
@@ -324,6 +330,13 @@ const argTester = () => {
             return false
 
         }
+
+    }
+
+    // Récupérer pour chaque case, les cases disponibles autour
+    boardObj.loadAllFreeCases = () => {
+
+
 
     }
 
@@ -384,10 +397,10 @@ const main = () => {
     //console.log(board);
 
     board.printBoard();
-    //console.log("----------");
-    //board.printAllData();
     console.log("----------");
-    board.findFreeCases(1);
+    board.printAllData();
+    console.log("----------");
+    //board.findFreeCases(1);
 
 }
 
