@@ -219,7 +219,7 @@ const argTester = () => {
 
                 upCaseId = caseObj.id;
 
-                if (boardObj.caseValueEqVoidChar(upCaseId)) {
+                if (boardObj.caseValueEqVoidChar(upCaseId) || boardObj.caseValueEqEndChar(upCaseId)) {
                     freeCasesArr.push(upCaseId);
                 }
 
@@ -228,7 +228,7 @@ const argTester = () => {
 
                 dwnCaseId = caseObj.id;
 
-                if (boardObj.caseValueEqVoidChar(dwnCaseId)) {
+                if (boardObj.caseValueEqVoidChar(dwnCaseId) || boardObj.caseValueEqEndChar(dwnCaseId)) {
                     freeCasesArr.push(dwnCaseId);
                 }
 
@@ -237,7 +237,7 @@ const argTester = () => {
 
                 lftCaseId = caseObj.id;
 
-                if (boardObj.caseValueEqVoidChar(lftCaseId)) {
+                if (boardObj.caseValueEqVoidChar(lftCaseId) || boardObj.caseValueEqEndChar(lftCaseId)) {
                     freeCasesArr.push(lftCaseId);
                 }
 
@@ -246,7 +246,7 @@ const argTester = () => {
 
                 rgtCaseId = caseObj.id;
 
-                if (boardObj.caseValueEqVoidChar(rgtCaseId)) {
+                if (boardObj.caseValueEqVoidChar(rgtCaseId) || boardObj.caseValueEqEndChar(rgtCaseId)) {
                     freeCasesArr.push(rgtCaseId);
                 }
 
@@ -264,6 +264,23 @@ const argTester = () => {
         const caseToCheck = boardObj.getCaseObj(caseId);
         
         if (caseToCheck.caseValue === boardObj.voidChar) {
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+
+    }
+
+    // Checker si une case est égale au caractère sortie
+    boardObj.caseValueEqEndChar = (caseId) => {
+
+        const caseToCheck = boardObj.getCaseObj(caseId);
+        
+        if (caseToCheck.caseValue === boardObj.endChar) {
 
             return true;
 
@@ -309,6 +326,8 @@ const argTester = () => {
 
     // Construire un chemin sur le plateau
     boardObj.buildPath = (caseId, pathArr) => {
+
+        console.log("buildCase func");
         
         let caseObj = null;
 
@@ -337,34 +356,16 @@ const argTester = () => {
             for (let i = 0; i < caseObj.freeCases.length; i++) {
 
                 const nextCase = caseObj.freeCases[i];
-                
-                console.log("nextCase");
-                console.log(nextCase);
 
-                //boardObj.buildPath(testNextCase, pathArr);
+                if (!pathArr.includes(nextCase)) {
 
-            }
-
-        }
-
-        
-        /*
-        while (pathArr.length !== 10) {
-
-            if (caseObj.hasOwnProperty('freeCases')) {
-
-                for (let i = 0; i < caseObj.freeCases.length; i++) {
-
-                    boardObj.buildPath(testNextCase, pathArr);
+                    boardObj.buildPath(nextCase, pathArr);
 
                 }
 
             }
-            
 
         }
-        */
-
 
     }
 
@@ -430,7 +431,9 @@ const main = () => {
     
 
     //console.log(board);
-    //console.log(board.getStartCaseId());
+    console.log("startCase");
+    const startCase = board.getCaseObj(board.getStartCaseId());
+    console.log(startCase);
 
     /*
     board.printBoard();
@@ -438,7 +441,6 @@ const main = () => {
     board.printAllData();
     console.log("----------");
     */
-
     board.buildPath(false, []);
     //board.buildPath(0,[]);
     //board.buildPath(5,[]);
