@@ -326,6 +326,46 @@ const argTester = () => {
 
         console.log(caseObj);
 
+        pathArr.push(caseObj.id);
+
+        console.log("-------");
+        console.log("PathArr");
+        console.log(pathArr);
+
+        if (caseObj.hasOwnProperty('freeCases')) {
+
+            for (let i = 0; i < caseObj.freeCases.length; i++) {
+
+                const nextCase = caseObj.freeCases[i];
+                
+                console.log("nextCase");
+                console.log(nextCase);
+
+                //boardObj.buildPath(testNextCase, pathArr);
+
+            }
+
+        }
+
+        
+        /*
+        while (pathArr.length !== 10) {
+
+            if (caseObj.hasOwnProperty('freeCases')) {
+
+                for (let i = 0; i < caseObj.freeCases.length; i++) {
+
+                    boardObj.buildPath(testNextCase, pathArr);
+
+                }
+
+            }
+            
+
+        }
+        */
+
+
     }
 
     return boardObj;
@@ -400,8 +440,8 @@ const main = () => {
     */
 
     board.buildPath(false, []);
-    board.buildPath(0,[]);
-    board.buildPath(5,[]);
+    //board.buildPath(0,[]);
+    //board.buildPath(5,[]);
     
 
 
