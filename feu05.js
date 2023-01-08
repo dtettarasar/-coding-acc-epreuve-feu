@@ -307,6 +307,16 @@ const argTester = () => {
 
     }
 
+    // Construire un chemin sur le plateau
+    boardObj.buildPath = () => {
+
+        const startCaseObjId = boardObj.getStartCaseId();
+        const startCaseObj =  boardObj.getCaseObj(startCaseObjId);
+
+        console.log(startCaseObj);
+
+    }
+
     return boardObj;
 
 
@@ -360,10 +370,16 @@ const getTxtArr = (file) => {
 const main = () => {
 
     const board = argTester();
-    board.loadAllFreeCases();
+
+    if (board) {
+        board.loadAllFreeCases();
+    } else {
+        return false;
+    }
+    
 
     //console.log(board);
-    console.log(board.getStartCaseId());
+    //console.log(board.getStartCaseId());
 
     /*
     board.printBoard();
@@ -371,6 +387,9 @@ const main = () => {
     board.printAllData();
     console.log("----------");
     */
+
+    board.buildPath();
+    
 
 
 }
