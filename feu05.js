@@ -308,12 +308,23 @@ const argTester = () => {
     }
 
     // Construire un chemin sur le plateau
-    boardObj.buildPath = () => {
+    boardObj.buildPath = (caseId, pathArr) => {
+        
+        let caseObj = null;
 
-        const startCaseObjId = boardObj.getStartCaseId();
-        const startCaseObj =  boardObj.getCaseObj(startCaseObjId);
+        // Si pas de CaseID passé en argument, alors on commence par la case d'entrée du labyrinthe        
+        if (caseId === false && caseId !== 0) {
 
-        console.log(startCaseObj);
+            const startCaseId = boardObj.getStartCaseId();
+            caseObj = boardObj.getCaseObj(startCaseId);
+
+        } else {
+
+            caseObj = boardObj.getCaseObj(caseId);
+
+        }
+
+        console.log(caseObj);
 
     }
 
@@ -388,7 +399,9 @@ const main = () => {
     console.log("----------");
     */
 
-    board.buildPath();
+    board.buildPath(false, []);
+    board.buildPath(0,[]);
+    board.buildPath(5,[]);
     
 
 
