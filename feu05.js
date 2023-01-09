@@ -356,6 +356,7 @@ const argTester = () => {
             for (let i = 0; i < caseObj.freeCases.length; i++) {
 
                 //tester la déclaration de PathArr ici
+                // ou tester pathArr.push ici
 
                 const nextCase = caseObj.freeCases[i];
 
