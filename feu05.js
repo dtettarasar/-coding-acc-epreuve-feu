@@ -327,7 +327,7 @@ const argTester = () => {
     // Construire un chemin sur le plateau
     boardObj.buildPath = (caseId, pathArr) => {
 
-        console.log("buildCase func");
+        console.log("buildPath func");
         
         let caseObj = null;
 
@@ -355,16 +355,23 @@ const argTester = () => {
 
             for (let i = 0; i < caseObj.freeCases.length; i++) {
 
+                const newPathArr = [];
+                newPathArr.push(caseObj.id);
+
                 //tester la déclaration de PathArr ici
                 // ou tester pathArr.push ici
 
-                const nextCase = caseObj.freeCases[i];
+                const nextCaseId = caseObj.freeCases[i];
+                newPathArr.push(nextCaseId)
+                console.log("newPathArr");
+                console.log(newPathArr);
 
+                /*
                 if (!pathArr.includes(nextCase)) {
 
                     boardObj.buildPath(nextCase, pathArr);
 
-                }
+                }*/
 
             }
 
@@ -438,12 +445,12 @@ const main = () => {
     const startCase = board.getCaseObj(board.getStartCaseId());
     console.log(startCase);
 
-    /*
-    board.printBoard();
-    console.log("----------");
-    board.printAllData();
-    console.log("----------");
-    */
+    
+    //board.printBoard();
+    //console.log("----------");
+    //board.printAllData();
+    //console.log("----------");
+    
     board.buildPath(false, []);
     //board.buildPath(0,[]);
     //board.buildPath(5,[]);
