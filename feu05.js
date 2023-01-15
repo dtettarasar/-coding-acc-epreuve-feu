@@ -329,7 +329,7 @@ const argTester = () => {
     // Construire un chemin sur le plateau
     boardObj.buildPath = (pathObj) => {
 
-        console.log("buildPath func");
+        //console.log("buildPath func");
         
         let caseObj = null;
 
@@ -357,7 +357,7 @@ const argTester = () => {
                     pathObj.arr.push(nextCaseId)
                     //console.log("pathObj");
                     //console.log(pathObj);
-    
+                    pathObj.id = boardObj.allPathes.length;
                     boardObj.allPathes.push(pathObj);
     
                     /*
@@ -375,11 +375,21 @@ const argTester = () => {
 
             const arrLastCaseId = pathObj.arr[pathObj.arr.length - 1];
             caseObj = boardObj.getCaseObj(arrLastCaseId);
+            pathObj.endCaseFound = boardObj.caseValueEqEndChar(arrLastCaseId);
+
+            if (pathObj.endCaseFound) {
+                console.log(pathObj);
+            }
+            
+
+            /*
             console.log("pathObj passed in arg:")
             console.log(pathObj);
             console.log("arrLastCase");
             console.log(arrLastCaseId);
             console.log(caseObj);
+            */
+            
 
             if (caseObj.hasOwnProperty('freeCases')) {
 
@@ -392,6 +402,7 @@ const argTester = () => {
                     if (!newPathObj.arr.includes(caseObj.freeCases[i])) {
 
                         newPathObj.arr.push(caseObj.freeCases[i]);
+                        newPathObj.id = boardObj.allPathes.length;
                         boardObj.allPathes.push(newPathObj);
 
                     }
@@ -416,6 +427,29 @@ const argTester = () => {
         */
 
         
+
+    }
+
+    boardObj.getAllPathes = () => {
+
+        if (boardObj.allPathes.length === 0) {
+
+            boardObj.buildPath(false);
+
+        } 
+
+        
+        for (let i = 0; i < boardObj.allPathes.length; i++) {
+
+            if (boardObj.allPathes[i].isChecked === false) {
+
+                boardObj.buildPath(boardObj.allPathes[i]);
+
+            }
+
+        }
+
+        //console.log(boardObj.allPathes);
 
     }
 
@@ -491,14 +525,29 @@ const main = () => {
     //board.printAllData();
     //console.log("----------");
     
-    board.buildPath(false);
+    //board.buildPath(false);
     //board.buildPath(0,[]);
     //board.buildPath(5,[]);
+    /*
     board.buildPath(board.allPathes[0]);
     board.buildPath(board.allPathes[1]);
     board.buildPath(board.allPathes[2]);
 
     console.log(board.allPathes);
+    */
+
+    board.getAllPathes();
+
+    /*
+    for (let i = 0; i < board.allPathes.length; i++) {
+
+        console.log(board.allPathes[i]);
+
+    }
+    */
+    
+    
+    //console.log(board.caseValueEqEndChar(28));
     
 
 
