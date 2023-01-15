@@ -351,6 +351,8 @@ const argTester = () => {
     
                     const nextCaseId = caseObj.freeCases[i];
                     pathObj.endCaseFound = boardObj.caseValueEqEndChar(nextCaseId);
+
+                    pathObj.isChecked = false;
     
                     pathObj.arr.push(nextCaseId)
                     //console.log("pathObj");
@@ -371,7 +373,7 @@ const argTester = () => {
 
         } else {
 
-            const arrLastCaseId = pathObj.arr[1];
+            const arrLastCaseId = pathObj.arr[pathObj.arr.length - 1];
             caseObj = boardObj.getCaseObj(arrLastCaseId);
             console.log("pathObj passed in arg:")
             console.log(pathObj);
@@ -382,26 +384,24 @@ const argTester = () => {
             if (caseObj.hasOwnProperty('freeCases')) {
 
                 for (let i = 0; i < caseObj.freeCases.length; i++) {
-                    /*
-                    const newPathObj = {
-                        ...pathObj
-                    }*/
 
                     // Créer une copie de pathObj passé en arg
                     const newPathObj = JSON.parse(JSON.stringify(pathObj));
 
-                    newPathObj.arr.push(caseObj.freeCases[i]);
+                    // conditions pour s'assurer que l'array de l'objet path ne contient pas deux fois la même case
+                    if (!newPathObj.arr.includes(caseObj.freeCases[i])) {
 
-                    /*
-                    console.log("newPathObj");
-                    console.log(newPathObj)
-                    */
+                        newPathObj.arr.push(caseObj.freeCases[i]);
+                        boardObj.allPathes.push(newPathObj);
 
-                    boardObj.allPathes.push(newPathObj);
+                    }
+
 
                 }
 
             }
+
+            pathObj.isChecked = true;
 
         }
 
@@ -496,6 +496,7 @@ const main = () => {
     //board.buildPath(5,[]);
     board.buildPath(board.allPathes[0]);
     board.buildPath(board.allPathes[1]);
+    board.buildPath(board.allPathes[2]);
 
     console.log(board.allPathes);
     
