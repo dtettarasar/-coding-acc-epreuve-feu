@@ -334,7 +334,7 @@ const argTester = () => {
         let caseObj = null;
 
         // Si pas de pathObj passé en argument, alors on commence par la case d'entrée du labyrinthe        
-        if (pathObj === false) {
+        if (boardObj.allPathes.length === 0) {
 
             const startCaseId = boardObj.getStartCaseId();
             caseObj = boardObj.getCaseObj(startCaseId);
@@ -425,6 +425,32 @@ const argTester = () => {
         console.log("PathArr");
         console.log(pathArr);
         */
+        /*
+        if () {
+
+            boardObj.buildPath(false);
+
+        }*/
+
+        for (let i = 0; i < boardObj.allPathes.length; i++) {
+
+            console.log(boardObj.allPathes[i]);
+
+            /*
+            if (boardObj.allPathes[i].endCaseFound) {
+                console.log("end case found!");
+                console.log(boardObj.allPathes[i]);
+                return true;
+            }
+
+            else if (boardObj.allPathes[i].isChecked === false) {
+
+                boardObj.buildPath(boardObj.allPathes[i]);
+
+            }
+            */
+
+        }
 
         
 
@@ -438,8 +464,12 @@ const argTester = () => {
 
         } 
 
+        const lastPath = boardObj.allPathes[boardObj.allPathes.length - 1];
+        console.log("last Path");
+        console.log(lastPath);
+
         
-        for (let i = 0; i < boardObj.allPathes.length; i++) {
+        /*for (let i = 0; i < boardObj.allPathes.length; i++) {
 
             if (boardObj.allPathes[i].isChecked === false) {
 
@@ -447,9 +477,9 @@ const argTester = () => {
 
             }
 
-        }
+        }*/
 
-        //console.log(boardObj.allPathes);
+        console.log(boardObj.allPathes);
 
     }
 
@@ -536,15 +566,16 @@ const main = () => {
     console.log(board.allPathes);
     */
 
-    board.getAllPathes();
+    //board.getAllPathes();
+
+    board.buildPath(false);
 
     /*
     for (let i = 0; i < board.allPathes.length; i++) {
 
         console.log(board.allPathes[i]);
 
-    }
-    */
+    }*/
     
     
     //console.log(board.caseValueEqEndChar(28));
