@@ -324,58 +324,98 @@ const argTester = () => {
 
     }
 
+    boardObj.allPathes = [];
+
     // Construire un chemin sur le plateau
-    boardObj.buildPath = (caseId, pathArr) => {
+    boardObj.buildPath = (pathObj) => {
 
         console.log("buildPath func");
         
         let caseObj = null;
 
-        // Si pas de CaseID passé en argument, alors on commence par la case d'entrée du labyrinthe        
-        if (caseId === false && caseId !== 0) {
+        // Si pas de pathObj passé en argument, alors on commence par la case d'entrée du labyrinthe        
+        if (pathObj === false) {
 
             const startCaseId = boardObj.getStartCaseId();
             caseObj = boardObj.getCaseObj(startCaseId);
 
+            if (caseObj.hasOwnProperty('freeCases')) {
+
+                for (let i = 0; i < caseObj.freeCases.length; i++) {
+    
+                    const pathObj = {};
+                    pathObj.arr = [];
+    
+                    const newPathArr = [];
+                    pathObj.arr.push(caseObj.id);
+    
+                    const nextCaseId = caseObj.freeCases[i];
+                    pathObj.endCaseFound = boardObj.caseValueEqEndChar(nextCaseId);
+    
+                    pathObj.arr.push(nextCaseId)
+                    //console.log("pathObj");
+                    //console.log(pathObj);
+    
+                    boardObj.allPathes.push(pathObj);
+    
+                    /*
+                    if (!pathArr.includes(nextCase)) {
+    
+                        boardObj.buildPath(nextCase, pathArr);
+    
+                    }*/
+    
+                }
+    
+            }
+
         } else {
 
-            caseObj = boardObj.getCaseObj(caseId);
+            const arrLastCaseId = pathObj.arr[1];
+            caseObj = boardObj.getCaseObj(arrLastCaseId);
+            console.log("pathObj passed in arg:")
+            console.log(pathObj);
+            console.log("arrLastCase");
+            console.log(arrLastCaseId);
+            console.log(caseObj);
 
-        }
+            if (caseObj.hasOwnProperty('freeCases')) {
 
-        console.log(caseObj);
+                for (let i = 0; i < caseObj.freeCases.length; i++) {
+                    /*
+                    const newPathObj = {
+                        ...pathObj
+                    }*/
 
-        pathArr.push(caseObj.id);
+                    // Créer une copie de pathObj passé en arg
+                    const newPathObj = JSON.parse(JSON.stringify(pathObj));
 
-        console.log("-------");
-        console.log("PathArr");
-        console.log(pathArr);
+                    newPathObj.arr.push(caseObj.freeCases[i]);
 
-        if (caseObj.hasOwnProperty('freeCases')) {
+                    /*
+                    console.log("newPathObj");
+                    console.log(newPathObj)
+                    */
 
-            for (let i = 0; i < caseObj.freeCases.length; i++) {
+                    boardObj.allPathes.push(newPathObj);
 
-                const newPathArr = [];
-                newPathArr.push(caseObj.id);
-
-                //tester la déclaration de PathArr ici
-                // ou tester pathArr.push ici
-
-                const nextCaseId = caseObj.freeCases[i];
-                newPathArr.push(nextCaseId)
-                console.log("newPathArr");
-                console.log(newPathArr);
-
-                /*
-                if (!pathArr.includes(nextCase)) {
-
-                    boardObj.buildPath(nextCase, pathArr);
-
-                }*/
+                }
 
             }
 
         }
+
+        //console.log(caseObj);
+
+        /*
+        pathArr.push(caseObj.id);
+        
+        console.log("-------");
+        console.log("PathArr");
+        console.log(pathArr);
+        */
+
+        
 
     }
 
@@ -451,9 +491,13 @@ const main = () => {
     //board.printAllData();
     //console.log("----------");
     
-    board.buildPath(false, []);
+    board.buildPath(false);
     //board.buildPath(0,[]);
     //board.buildPath(5,[]);
+    board.buildPath(board.allPathes[0]);
+    board.buildPath(board.allPathes[1]);
+
+    console.log(board.allPathes);
     
 
 
