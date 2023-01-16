@@ -381,8 +381,10 @@ const argTester = () => {
             if (pathObj.endCaseFound) {
                 console.log("end case found")
                 console.log(pathObj);
+                return true;
             }
             */
+            
             
 
             /*
@@ -439,6 +441,7 @@ const argTester = () => {
         // On refait parcourir l'intégralité de l'array allPathes.
         // Trouver un moyen d'isoler les pathObj déjà checké de ceux à faire passer dans BuildPath
         // Sinon Trouver un moyen de supprimer les pathObj dont on a plus besoin au fur et à mesure
+        /*
         for (let i = 0; i < boardObj.allPathes.length; i++) {
 
             //console.log(boardObj.allPathes[i]);
@@ -458,35 +461,53 @@ const argTester = () => {
             
 
         }
+        */
 
         
 
     }
 
-    boardObj.getAllPathes = () => {
+    boardObj.buildPathVerTwo = (pathArrVerTwo) => {
 
-        if (boardObj.allPathes.length === 0) {
+        let caseObj = null; 
 
-            boardObj.buildPath(false);
+        if (pathArrVerTwo.length === 0) {
 
-        } 
+            const startCaseId = boardObj.getStartCaseId();
+            caseObj = boardObj.getCaseObj(startCaseId);
+            console.log(caseObj);
 
-        const lastPath = boardObj.allPathes[boardObj.allPathes.length - 1];
-        console.log("last Path");
-        console.log(lastPath);
+            if (caseObj.hasOwnProperty('freeCases')) {
 
-        
-        /*for (let i = 0; i < boardObj.allPathes.length; i++) {
+                for (let i = 0; i < caseObj.freeCases.length; i++) {
+    
+                    const pathObj = {};
+                    pathObj.arr = [];
+    
+                    const newPathArr = [];
+                    pathObj.arr.push(caseObj.id);
+    
+                    const nextCaseId = caseObj.freeCases[i];
+                    pathObj.endCaseFound = boardObj.caseValueEqEndChar(nextCaseId);
 
-            if (boardObj.allPathes[i].isChecked === false) {
+                    pathObj.isChecked = false;
+    
+                    pathObj.arr.push(nextCaseId)
+                    //console.log("pathObj");
+                    //console.log(pathObj);
+                    pathObj.id = boardObj.allPathes.length;
+                    pathArrVerTwo.push(pathObj);
 
-                boardObj.buildPath(boardObj.allPathes[i]);
 
+    
+                }
+    
             }
 
-        }*/
+            console.log("pathArrVerTwo");
+            console.log(pathArrVerTwo);
 
-        console.log(boardObj.allPathes);
+        }
 
     }
 
@@ -574,15 +595,21 @@ const main = () => {
     */
 
     //board.getAllPathes();
-
-    console.log(board.buildPath(false));
-
     /*
+    console.log(board.buildPath(false));
+    console.log("amount of pathes:");
+    console.log(board.allPathes.length);
+
+    
     for (let i = 0; i < board.allPathes.length; i++) {
 
         console.log(board.allPathes[i]);
 
-    }*/
+    }
+    */
+
+    console.log('start buildPathVerTwo');
+    board.buildPathVerTwo([]);
     
     
     //console.log(board.caseValueEqEndChar(28));
