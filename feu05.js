@@ -377,9 +377,12 @@ const argTester = () => {
             caseObj = boardObj.getCaseObj(arrLastCaseId);
             pathObj.endCaseFound = boardObj.caseValueEqEndChar(arrLastCaseId);
 
+            /*
             if (pathObj.endCaseFound) {
+                console.log("end case found")
                 console.log(pathObj);
             }
+            */
             
 
             /*
@@ -432,15 +435,19 @@ const argTester = () => {
 
         }*/
 
+
+        // On refait parcourir l'intégralité de l'array allPathes.
+        // Trouver un moyen d'isoler les pathObj déjà checké de ceux à faire passer dans BuildPath
+        // Sinon Trouver un moyen de supprimer les pathObj dont on a plus besoin au fur et à mesure
         for (let i = 0; i < boardObj.allPathes.length; i++) {
 
-            console.log(boardObj.allPathes[i]);
+            //console.log(boardObj.allPathes[i]);
 
-            /*
+            
             if (boardObj.allPathes[i].endCaseFound) {
-                console.log("end case found!");
-                console.log(boardObj.allPathes[i]);
-                return true;
+                //console.log("end case found!");
+                //console.log(boardObj.allPathes[i]);
+                return boardObj.allPathes[i];
             }
 
             else if (boardObj.allPathes[i].isChecked === false) {
@@ -448,7 +455,7 @@ const argTester = () => {
                 boardObj.buildPath(boardObj.allPathes[i]);
 
             }
-            */
+            
 
         }
 
@@ -568,7 +575,7 @@ const main = () => {
 
     //board.getAllPathes();
 
-    board.buildPath(false);
+    console.log(board.buildPath(false));
 
     /*
     for (let i = 0; i < board.allPathes.length; i++) {
