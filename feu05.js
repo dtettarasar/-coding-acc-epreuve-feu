@@ -593,6 +593,14 @@ const argTester = () => {
         console.log("pathArr after loop");
         console.log(pathArrVerTwo);
 
+        // TODO : 
+
+        /* 
+            créer for loop qui va itérer sur tout le pathArr : 
+            si l'un des path.endCaseFound === true : retourner le pathArr
+            else : on execute buildPath(pathArrVerTwo)
+        */
+
         return pathArrVerTwo;
 
     }
