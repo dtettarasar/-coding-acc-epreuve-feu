@@ -515,7 +515,9 @@ const argTester = () => {
             console.log("pathArrVerTwo after 1st exec of method");
             console.log(pathArrVerTwo);
 
-            return pathArrVerTwo;
+            boardObj.buildPathVerTwo(pathArrVerTwo);
+
+            //return pathArrVerTwo;
 
         } else {
 
@@ -721,8 +723,8 @@ const main = () => {
     */
 
     const test = board.buildPathVerTwo([]);
-    const sndTest = board.buildPathVerTwo([...test]);
-    const thrdTest = board.buildPathVerTwo([...sndTest]);
+    //const sndTest = board.buildPathVerTwo([...test]);
+    //const thrdTest = board.buildPathVerTwo([...sndTest]);
     /*
     console.log("test");
     console.log(test);

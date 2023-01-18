@@ -7,7 +7,7 @@ bXXX___XXXXX
 XX_________X
 _XXX__XXX__X
 ___XXXX___X_
-XXXXX_______
+XXXXX___X___
 a___X__XXXXX
-__X_________
+XXX___XXXXXX
 XXXXXXXXXXXX

@@ -1,4 +1,4 @@
-20x15x_oaz
+18x15x_oaz
 xxxxx___z______
 ___xx_xxxxx____
 ____x_x_____x__
@@ -8,14 +8,12 @@ ________x_xx___
 xxxxxxxxx_xxxxx
 xxxxxxxxx_xxxxx
 xxx___________x
-xxxx__xxx______
-_________xxxxxx
+xxxx__xxxxxxxxx
+xxxx___xxxxxxxx
 xxxxx_x________
 xxxx___x_______
 xxx__xxxxxx____
 x______xxxxxxxx
 xxxxxx__xxxxxxx
-xxxx___xxxxxx__
+xx_____xxxxxx__
 a__x_____xxx___
-xx____xxxxxxxxx
-xxx_____xxxxxxx
