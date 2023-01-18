@@ -590,8 +590,10 @@ const argTester = () => {
 
         }
 
+        /*
         console.log("pathArr after loop");
         console.log(pathArrVerTwo);
+        */
 
         // TODO : 
 
@@ -600,6 +602,22 @@ const argTester = () => {
             si l'un des path.endCaseFound === true : retourner le pathArr
             else : on execute buildPath(pathArrVerTwo)
         */
+
+        console.log("------------------------");
+
+        console.log("for loop on pathArr;");
+
+        for (let i = 0; i < pathArrVerTwo.length; i++) {
+            console.log(pathArrVerTwo[i]);
+
+            if (pathArrVerTwo[i].endCaseFound === true) {
+                console.log("end case found");
+                return pathArrVerTwo[i];
+            }
+
+        }
+
+        boardObj.buildPathVerTwo(pathArrVerTwo);
 
         return pathArrVerTwo;
 
@@ -705,12 +723,14 @@ const main = () => {
     const test = board.buildPathVerTwo([]);
     const sndTest = board.buildPathVerTwo([...test]);
     const thrdTest = board.buildPathVerTwo([...sndTest]);
+    /*
     console.log("test");
     console.log(test);
     console.log("second test");
     console.log(sndTest);
     console.log("third Test")
     console.log(thrdTest);
+    */
     
     
     //console.log(board.caseValueEqEndChar(28));
