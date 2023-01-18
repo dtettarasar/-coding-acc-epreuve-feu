@@ -469,9 +469,12 @@ const argTester = () => {
 
     boardObj.buildPathVerTwo = (pathArrVerTwo) => {
 
+        console.log("start BuildPath Ver Two");
         let caseObj = null; 
 
         if (pathArrVerTwo.length === 0) {
+
+            console.log("pathArr is empty");
 
             const startCaseId = boardObj.getStartCaseId();
             caseObj = boardObj.getCaseObj(startCaseId);
@@ -495,7 +498,7 @@ const argTester = () => {
                     pathObj.arr.push(nextCaseId)
                     //console.log("pathObj");
                     //console.log(pathObj);
-                    pathObj.id = boardObj.allPathes.length;
+                    pathObj.id = pathArrVerTwo.length;
                     pathArrVerTwo.push(pathObj);
 
 
@@ -504,10 +507,93 @@ const argTester = () => {
     
             }
 
+            /*
             console.log("pathArrVerTwo");
             console.log(pathArrVerTwo);
+            */
+
+            console.log("pathArrVerTwo after 1st exec of method");
+            console.log(pathArrVerTwo);
+
+            return pathArrVerTwo;
+
+        } else {
+
+            console.log("pathArr has values");
+            console.log(pathArrVerTwo);
+            console.log("-------------");
+
+            const newPathToAdd = [];
+
+            for (let i = 0; i < pathArrVerTwo.length; i++) {
+
+                if (pathArrVerTwo[i].isChecked === false) {
+
+                    console.log(pathArrVerTwo[i]);
+                    const arrLastCaseId = pathArrVerTwo[i].arr[pathArrVerTwo[i].arr.length - 1];
+
+                    console.log("arrLastCaseId:");
+                    console.log(arrLastCaseId);
+
+                    console.log("--------");
+                    console.log("check caseObj from lastID");
+                    caseObj = boardObj.getCaseObj(arrLastCaseId);
+                    pathArrVerTwo[i].endCaseFound = boardObj.caseValueEqEndChar(arrLastCaseId);
+                    console.log(caseObj);
+                    console.log("--------")
+
+                    if (caseObj.hasOwnProperty('freeCases')) {
+
+                        console.log("case obj freecase");
+
+                        for (let j = 0; j < caseObj.freeCases.length; j++) {
+
+                            console.log(caseObj.freeCases[j]);
+
+                            
+                            // Créer une copie de pathObj passé en arg
+                            const newPathObj = JSON.parse(JSON.stringify(pathArrVerTwo[i]));
+
+                            // conditions pour s'assurer que l'array de l'objet path ne contient pas deux fois la même case
+                            if (!newPathObj.arr.includes(caseObj.freeCases[j])) {
+
+                                console.log("newPath Obj");
+
+                                newPathObj.arr.push(caseObj.freeCases[j]);
+                                newPathObj.id = boardObj.allPathes.length;
+                                console.log(newPathObj);
+                                newPathToAdd.push(newPathObj);
+
+                            }
+                            
+
+                        }
+
+                    }
+
+                    pathArrVerTwo[i].isChecked = true;
+
+                }
+
+            }
+
+            console.log("newPathToAdd");
+            console.log(newPathToAdd);
+            console.log("-------");
+            
+            for (let i = 0; i < newPathToAdd.length; i++) {
+
+                newPathToAdd[i].id = pathArrVerTwo.length;
+
+                pathArrVerTwo.push(newPathToAdd[i]);
+            }
 
         }
+
+        console.log("pathArr after loop");
+        console.log(pathArrVerTwo);
+
+        return pathArrVerTwo;
 
     }
 
@@ -608,8 +694,15 @@ const main = () => {
     }
     */
 
-    console.log('start buildPathVerTwo');
-    board.buildPathVerTwo([]);
+    const test = board.buildPathVerTwo([]);
+    const sndTest = board.buildPathVerTwo([...test]);
+    const thrdTest = board.buildPathVerTwo([...sndTest]);
+    console.log("test");
+    console.log(test);
+    console.log("second test");
+    console.log(sndTest);
+    console.log("third Test")
+    console.log(thrdTest);
     
     
     //console.log(board.caseValueEqEndChar(28));
