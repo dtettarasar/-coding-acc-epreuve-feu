@@ -325,12 +325,12 @@ const argTester = () => {
     }
 
     // Construire un chemin sur le plateau
-    boardObj.buildPath = (pathArrVerTwo) => {
+    boardObj.buildPath = (pathArr) => {
 
         //console.log("start BuildPath Ver Two");
         let caseObj = null; 
 
-        if (pathArrVerTwo.length === 0) {
+        if (pathArr.length === 0) {
 
             //console.log("pathArr is empty");
 
@@ -356,8 +356,8 @@ const argTester = () => {
                     pathObj.arr.push(nextCaseId)
                     //console.log("pathObj");
                     //console.log(pathObj);
-                    pathObj.id = pathArrVerTwo.length;
-                    pathArrVerTwo.push(pathObj);
+                    pathObj.id = pathArr.length;
+                    pathArr.push(pathObj);
 
 
     
@@ -366,31 +366,31 @@ const argTester = () => {
             }
 
             /*
-            console.log("pathArrVerTwo");
-            console.log(pathArrVerTwo);
+            console.log("pathArr");
+            console.log(pathArr);
             */
 
-            //console.log("pathArrVerTwo after 1st exec of method");
-            //console.log(pathArrVerTwo);
+            //console.log("pathArr after 1st exec of method");
+            //console.log(pathArr);
 
-            boardObj.buildPath(pathArrVerTwo);
+            boardObj.buildPath(pathArr);
 
-            //return pathArrVerTwo;
+            //return pathArr;
 
         } else {
 
             //console.log("pathArr has values");
-            //console.log(pathArrVerTwo);
+            //console.log(pathArr);
             //console.log("-------------");
 
             const newPathToAdd = [];
 
-            for (let i = 0; i < pathArrVerTwo.length; i++) {
+            for (let i = 0; i < pathArr.length; i++) {
 
-                if (pathArrVerTwo[i].isChecked === false) {
+                if (pathArr[i].isChecked === false) {
 
-                    //console.log(pathArrVerTwo[i]);
-                    const arrLastCaseId = pathArrVerTwo[i].arr[pathArrVerTwo[i].arr.length - 1];
+                    //console.log(pathArr[i]);
+                    const arrLastCaseId = pathArr[i].arr[pathArr[i].arr.length - 1];
                     /*
                     console.log("arrLastCaseId:");
                     console.log(arrLastCaseId);
@@ -399,7 +399,7 @@ const argTester = () => {
                     */                  
 
                     caseObj = boardObj.getCaseObj(arrLastCaseId);
-                    pathArrVerTwo[i].endCaseFound = boardObj.caseValueEqEndChar(arrLastCaseId);
+                    pathArr[i].endCaseFound = boardObj.caseValueEqEndChar(arrLastCaseId);
                     /*
                     console.log(caseObj);
                     console.log("--------");
@@ -415,7 +415,7 @@ const argTester = () => {
 
                             
                             // Créer une copie de pathObj passé en arg
-                            const newPathObj = JSON.parse(JSON.stringify(pathArrVerTwo[i]));
+                            const newPathObj = JSON.parse(JSON.stringify(pathArr[i]));
 
                             // conditions pour s'assurer que l'array de l'objet path ne contient pas deux fois la même case
                             if (!newPathObj.arr.includes(caseObj.freeCases[j])) {
@@ -423,7 +423,7 @@ const argTester = () => {
                                 //console.log("newPath Obj");
 
                                 newPathObj.arr.push(caseObj.freeCases[j]);
-                                newPathObj.id = pathArrVerTwo.length + j;
+                                newPathObj.id = pathArr.length + j;
                                 //console.log(newPathObj);
                                 newPathToAdd.push(newPathObj);
 
@@ -434,7 +434,7 @@ const argTester = () => {
 
                     }
 
-                    pathArrVerTwo[i].isChecked = true;
+                    pathArr[i].isChecked = true;
 
                 }
 
@@ -448,16 +448,16 @@ const argTester = () => {
             
             for (let i = 0; i < newPathToAdd.length; i++) {
 
-                newPathToAdd[i].id = pathArrVerTwo.length;
+                newPathToAdd[i].id = pathArr.length;
 
-                pathArrVerTwo.push(newPathToAdd[i]);
+                pathArr.push(newPathToAdd[i]);
             }
 
         }
 
         /*
         console.log("pathArr after loop");
-        console.log(pathArrVerTwo);
+        console.log(pathArr);
         */
 
         // TODO : 
@@ -465,7 +465,7 @@ const argTester = () => {
         /* 
             créer for loop qui va itérer sur tout le pathArr : 
             si l'un des path.endCaseFound === true : retourner le pathArr
-            else : on execute buildPath(pathArrVerTwo)
+            else : on execute buildPath(pathArr)
         */
 
         /*
@@ -473,19 +473,19 @@ const argTester = () => {
         console.log("for loop on pathArr;");
         */
 
-        for (let i = 0; i < pathArrVerTwo.length; i++) {
-            //console.log(pathArrVerTwo[i]);
+        for (let i = 0; i < pathArr.length; i++) {
+            //console.log(pathArr[i]);
 
-            if (pathArrVerTwo[i].endCaseFound === true) {
+            if (pathArr[i].endCaseFound === true) {
                 //console.log("end case found");
-                return pathArrVerTwo[i];
+                return pathArr[i];
             }
 
         }
 
-        boardObj.buildPath(pathArrVerTwo);
+        boardObj.buildPath(pathArr);
 
-        return pathArrVerTwo;
+        return pathArr;
 
     }
 
@@ -588,6 +588,11 @@ const main = () => {
 
     const test = board.buildPath([]);
     console.log(test);
+
+    const lastCaseID = test.arr[test.arr.length - 1];
+    //console.log(lastCaseID);
+    console.log("endCase");
+    console.log(board.getCaseObj(lastCaseID));
     //const sndTest = board.buildPathVerTwo([...test]);
     //const thrdTest = board.buildPathVerTwo([...sndTest]);
     /*
