@@ -324,149 +324,7 @@ const argTester = () => {
 
     }
 
-    boardObj.allPathes = [];
-
     // Construire un chemin sur le plateau
-    boardObj.buildPath = (pathObj) => {
-
-        //console.log("buildPath func");
-        
-        let caseObj = null;
-
-        // Si pas de pathObj passé en argument, alors on commence par la case d'entrée du labyrinthe        
-        if (boardObj.allPathes.length === 0) {
-
-            const startCaseId = boardObj.getStartCaseId();
-            caseObj = boardObj.getCaseObj(startCaseId);
-
-            if (caseObj.hasOwnProperty('freeCases')) {
-
-                for (let i = 0; i < caseObj.freeCases.length; i++) {
-    
-                    const pathObj = {};
-                    pathObj.arr = [];
-    
-                    const newPathArr = [];
-                    pathObj.arr.push(caseObj.id);
-    
-                    const nextCaseId = caseObj.freeCases[i];
-                    pathObj.endCaseFound = boardObj.caseValueEqEndChar(nextCaseId);
-
-                    pathObj.isChecked = false;
-    
-                    pathObj.arr.push(nextCaseId)
-                    //console.log("pathObj");
-                    //console.log(pathObj);
-                    pathObj.id = boardObj.allPathes.length;
-                    boardObj.allPathes.push(pathObj);
-    
-                    /*
-                    if (!pathArr.includes(nextCase)) {
-    
-                        boardObj.buildPath(nextCase, pathArr);
-    
-                    }*/
-    
-                }
-    
-            }
-
-        } else {
-
-            const arrLastCaseId = pathObj.arr[pathObj.arr.length - 1];
-            caseObj = boardObj.getCaseObj(arrLastCaseId);
-            pathObj.endCaseFound = boardObj.caseValueEqEndChar(arrLastCaseId);
-
-            /*
-            if (pathObj.endCaseFound) {
-                console.log("end case found")
-                console.log(pathObj);
-                return true;
-            }
-            */
-            
-            
-
-            /*
-            console.log("pathObj passed in arg:")
-            console.log(pathObj);
-            console.log("arrLastCase");
-            console.log(arrLastCaseId);
-            console.log(caseObj);
-            */
-            
-
-            if (caseObj.hasOwnProperty('freeCases')) {
-
-                for (let i = 0; i < caseObj.freeCases.length; i++) {
-
-                    // Créer une copie de pathObj passé en arg
-                    const newPathObj = JSON.parse(JSON.stringify(pathObj));
-
-                    // conditions pour s'assurer que l'array de l'objet path ne contient pas deux fois la même case
-                    if (!newPathObj.arr.includes(caseObj.freeCases[i])) {
-
-                        newPathObj.arr.push(caseObj.freeCases[i]);
-                        newPathObj.id = boardObj.allPathes.length;
-                        boardObj.allPathes.push(newPathObj);
-
-                    }
-
-
-                }
-
-            }
-
-            pathObj.isChecked = true;
-
-        }
-
-        //console.log(caseObj);
-
-        /*
-        pathArr.push(caseObj.id);
-        
-        console.log("-------");
-        console.log("PathArr");
-        console.log(pathArr);
-        */
-        /*
-        if () {
-
-            boardObj.buildPath(false);
-
-        }*/
-
-
-        // On refait parcourir l'intégralité de l'array allPathes.
-        // Trouver un moyen d'isoler les pathObj déjà checké de ceux à faire passer dans BuildPath
-        // Sinon Trouver un moyen de supprimer les pathObj dont on a plus besoin au fur et à mesure
-        /*
-        for (let i = 0; i < boardObj.allPathes.length; i++) {
-
-            //console.log(boardObj.allPathes[i]);
-
-            
-            if (boardObj.allPathes[i].endCaseFound) {
-                //console.log("end case found!");
-                //console.log(boardObj.allPathes[i]);
-                return boardObj.allPathes[i];
-            }
-
-            else if (boardObj.allPathes[i].isChecked === false) {
-
-                boardObj.buildPath(boardObj.allPathes[i]);
-
-            }
-            
-
-        }
-        */
-
-        
-
-    }
-
     boardObj.buildPathVerTwo = (pathArrVerTwo) => {
 
         //console.log("start BuildPath Ver Two");
@@ -565,7 +423,7 @@ const argTester = () => {
                                 //console.log("newPath Obj");
 
                                 newPathObj.arr.push(caseObj.freeCases[j]);
-                                newPathObj.id = boardObj.allPathes.length;
+                                newPathObj.id = pathArrVerTwo.length + j;
                                 //console.log(newPathObj);
                                 newPathToAdd.push(newPathObj);
 
