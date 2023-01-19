@@ -349,7 +349,7 @@ const argTester = () => {
 
                     pathObj.isChecked = false;
     
-                    pathObj.arr.push(nextCaseId)
+                    pathObj.arr.push(nextCaseId);
                     pathObj.id = pathArr.length;
                     pathArr.push(pathObj);
 
