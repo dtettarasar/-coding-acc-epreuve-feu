@@ -325,7 +325,7 @@ const argTester = () => {
     }
 
     // Construire un chemin sur le plateau
-    boardObj.buildPathVerTwo = (pathArrVerTwo) => {
+    boardObj.buildPath = (pathArrVerTwo) => {
 
         //console.log("start BuildPath Ver Two");
         let caseObj = null; 
@@ -373,7 +373,7 @@ const argTester = () => {
             //console.log("pathArrVerTwo after 1st exec of method");
             //console.log(pathArrVerTwo);
 
-            boardObj.buildPathVerTwo(pathArrVerTwo);
+            boardObj.buildPath(pathArrVerTwo);
 
             //return pathArrVerTwo;
 
@@ -483,7 +483,7 @@ const argTester = () => {
 
         }
 
-        boardObj.buildPathVerTwo(pathArrVerTwo);
+        boardObj.buildPath(pathArrVerTwo);
 
         return pathArrVerTwo;
 
@@ -586,7 +586,7 @@ const main = () => {
     }
     */
 
-    const test = board.buildPathVerTwo([]);
+    const test = board.buildPath([]);
     console.log(test);
     //const sndTest = board.buildPathVerTwo([...test]);
     //const thrdTest = board.buildPathVerTwo([...sndTest]);
