@@ -432,6 +432,26 @@ const argTester = () => {
 
     }
 
+    boardObj.writePath = () => {
+
+        const pathObj = boardObj.buildPath([]);
+
+        for (let i = 0; i < pathObj.arr.length; i++) {
+
+            const caseObj = boardObj.getCaseObj(pathObj.arr[i]);
+
+            const isVoidChar = boardObj.caseValueEqVoidChar(caseObj.id);
+
+            if (isVoidChar) {
+
+                caseObj.caseValue = boardObj.pathChar;
+
+            }
+
+        }
+
+    }
+
     return boardObj;
 
 
@@ -496,14 +516,22 @@ const main = () => {
     const startCase = board.getCaseObj(board.getStartCaseId());
     console.log(startCase);
 
+    console.log("start buildPath method");
     const path = board.buildPath([]);
     console.log(path);
 
     const lastCaseID = path.arr[path.arr.length - 1];
     console.log("endCase");
     console.log(board.getCaseObj(lastCaseID));
-   
+    console.log("--------------");
 
+    console.log("start writePath method");
+    
+    board.writePath();
+
+    console.log("--------------");
+    console.log("result");
+    board.printBoard();
 }
 
 main();
