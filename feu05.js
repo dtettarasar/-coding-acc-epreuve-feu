@@ -37,11 +37,11 @@ const argTester = () => {
 
     }
 
-    const boardSettings = fileValue[0];
+    boardObj.settings = fileValue[0];
 
     // checker les infos du plateau
     const boardInfoPattern = /^[1-9][0-9]*x[1-9][0-9]*.{5}$/g;
-    const testBoardInfos = boardInfoPattern.test(boardSettings);
+    const testBoardInfos = boardInfoPattern.test(boardObj.settings);
     
     if (!testBoardInfos) {
         console.log("Assurez-vous que la première ligne du fichier contienne les informations, en respectant le format demandé.");
@@ -51,7 +51,7 @@ const argTester = () => {
         return false;
     }
 
-    const boardSettingsArr = boardSettings.split('');
+    const boardSettingsArr = boardObj.settings.split('');
 
     const lineNumArr = [];
 
@@ -62,11 +62,11 @@ const argTester = () => {
     const dimensionArr = lineNumArr.join('').split("x");
     boardObj.rowNum = parseInt(dimensionArr[0]);
     boardObj.colNum = parseInt(dimensionArr[1]);
-    boardObj.endChar = boardSettings[boardSettingsArr.length -1];
-    boardObj.startChar = boardSettings[boardSettingsArr.length -2];
-    boardObj.pathChar = boardSettings[boardSettingsArr.length -3];
-    boardObj.voidChar = boardSettings[boardSettingsArr.length -4];
-    boardObj.fillChar = boardSettings[boardSettingsArr.length -5];
+    boardObj.endChar = boardObj.settings[boardSettingsArr.length -1];
+    boardObj.startChar = boardObj.settings[boardSettingsArr.length -2];
+    boardObj.pathChar = boardObj.settings[boardSettingsArr.length -3];
+    boardObj.voidChar = boardObj.settings[boardSettingsArr.length -4];
+    boardObj.fillChar = boardObj.settings[boardSettingsArr.length -5];
     boardObj.value = [];
 
     if (fileValue.length - 1 !== boardObj.rowNum) {
@@ -157,6 +157,8 @@ const argTester = () => {
 
         mainArr.push(rowArr);
         rowArr = [];
+
+        console.log(boardObj.settings);
 
         for (let i = 0; i < mainArr.length; i++) {
 
