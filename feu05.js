@@ -413,7 +413,7 @@ const argTester = () => {
 
         /* 
             for loop qui va itérer sur tout le pathArr : 
-            si l'un des path.endCaseFound === true (un char correspondant à la sortie est identifié) : retourner le pathArr
+            si l'un des path.endCaseFound === true (un char correspondant à la sortie est identifié) : retourner l'objet path
             else : on execute buildPath(pathArr)
         */
 
