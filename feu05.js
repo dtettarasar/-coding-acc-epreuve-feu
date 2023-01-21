@@ -454,6 +454,8 @@ const argTester = () => {
 
     boardObj.showSolution = () => {
 
+        boardObj.loadAllFreeCases();
+
         const pathObj = boardObj.buildPath([]);
         const movesCount = pathObj.arr.length - 2;
 
@@ -519,35 +521,14 @@ const main = () => {
     const board = argTester();
 
     if (board) {
-        board.loadAllFreeCases();
+
+        board.showSolution();
+
     } else {
+
         return false;
-    }
-    
-    /*
-    console.log("startCase");
-    const startCase = board.getCaseObj(board.getStartCaseId());
-    console.log(startCase);
 
-    console.log("start buildPath method");
-    const path = board.buildPath([]);
-    console.log(path);
-
-    const lastCaseID = path.arr[path.arr.length - 1];
-    console.log("endCase");
-    console.log(board.getCaseObj(lastCaseID));
-    console.log("--------------");
-
-    console.log("start writePath method");
-    
-    board.writePath();
-
-    console.log("--------------");
-    console.log("result");
-    board.printBoard();
-    */
-
-    board.showSolution();
+    }    
 
 }
 
