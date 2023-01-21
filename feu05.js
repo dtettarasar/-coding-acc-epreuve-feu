@@ -434,9 +434,7 @@ const argTester = () => {
 
     }
 
-    boardObj.writePath = () => {
-
-        const pathObj = boardObj.buildPath([]);
+    boardObj.writePath = (pathObj) => {
 
         for (let i = 0; i < pathObj.arr.length; i++) {
 
@@ -451,6 +449,18 @@ const argTester = () => {
             }
 
         }
+
+    }
+
+    boardObj.showSolution = () => {
+
+        const pathObj = boardObj.buildPath([]);
+        const movesCount = pathObj.arr.length - 2;
+
+        boardObj.writePath(pathObj);
+        boardObj.printBoard();
+
+        console.log("=> SORTIE ATTEINTE EN " + movesCount + " COUPS !");
 
     }
 
@@ -514,6 +524,7 @@ const main = () => {
         return false;
     }
     
+    /*
     console.log("startCase");
     const startCase = board.getCaseObj(board.getStartCaseId());
     console.log(startCase);
@@ -534,6 +545,10 @@ const main = () => {
     console.log("--------------");
     console.log("result");
     board.printBoard();
+    */
+
+    board.showSolution();
+
 }
 
 main();
