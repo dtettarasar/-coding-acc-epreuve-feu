@@ -90,7 +90,13 @@ const getTxtArr = (file) => {
         const fs = require('fs');
         const data = fs.readFileSync(file, 'utf8');
 
-        // split the contents by new line
+        // regex to split the contents by new line
+        /*
+            \r
+            matches a carriage return (ASCII 13)
+            ? matches the previous token between zero and one times, as many times as possible, giving back as needed (greedy)
+            \n matches a line-feed (newline) character (ASCII 10)
+        */
         const lines = data.split(/\r?\n/);
 
         lines.forEach((line) => {
