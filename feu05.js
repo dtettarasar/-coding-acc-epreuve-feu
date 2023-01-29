@@ -216,41 +216,10 @@ const argTester = () => {
             const isDwnCase = caseObj.col === colDwnCase && caseObj.row === rowDwnCase;
             const isLftCase = caseObj.col === colLftCase && caseObj.row === rowLftCase;
             const isRgtCase = caseObj.col === colRgtCase && caseObj.row === rowRgtCase;
+           
+            if (isUpCase || isDwnCase || isLftCase || isRgtCase) {
 
-            if (isUpCase) {
-
-                upCaseId = caseObj.id;
-
-                if (boardObj.caseValueEqVoidChar(upCaseId) || boardObj.caseValueEqEndChar(upCaseId)) {
-                    freeCasesArr.push(upCaseId);
-                }
-
-
-            } else if (isDwnCase) {
-
-                dwnCaseId = caseObj.id;
-
-                if (boardObj.caseValueEqVoidChar(dwnCaseId) || boardObj.caseValueEqEndChar(dwnCaseId)) {
-                    freeCasesArr.push(dwnCaseId);
-                }
-
-
-            } else if (isLftCase) {
-
-                lftCaseId = caseObj.id;
-
-                if (boardObj.caseValueEqVoidChar(lftCaseId) || boardObj.caseValueEqEndChar(lftCaseId)) {
-                    freeCasesArr.push(lftCaseId);
-                }
-
-
-            } else if (isRgtCase) {
-
-                rgtCaseId = caseObj.id;
-
-                if (boardObj.caseValueEqVoidChar(rgtCaseId) || boardObj.caseValueEqEndChar(rgtCaseId)) {
-                    freeCasesArr.push(rgtCaseId);
-                }
+                boardObj.pushFreeCases(caseObj, freeCasesArr);
 
             }
 
@@ -258,6 +227,15 @@ const argTester = () => {
 
         return freeCasesArr;
         
+    }
+
+    // ajoute l'iD d'une case dans freeCasesArr si c'est une case vide ou une case de sortie
+    boardObj.pushFreeCases = (caseObj, freeCasesArr) => {
+
+        if (boardObj.caseValueEqVoidChar(caseObj.id) || boardObj.caseValueEqEndChar(caseObj.id)) {
+            freeCasesArr.push(caseObj.id);
+        }
+
     }
 
     // Checker si une case est égale au caractère vide
