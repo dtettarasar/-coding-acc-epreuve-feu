@@ -33,6 +33,14 @@ $> node feu01.js “4 + 21 * (1 - 2 / 2) + 38”
 Programme qui affiche la position de l’élément le plus en haut à droite (dans l’ordre) d’une forme au sein d’un plateau.
 
 ~~~
+$> node feu02.js feu02_files/bg1.txt feu02_files/sm1.txt
+Trouvé !
+Coordonnées : 2,1
+------
+--123-
+--321-
+--123-
+------
 ~~~
 
 ## feu03.js - Sudoku
@@ -40,6 +48,16 @@ Programme qui affiche la position de l’élément le plus en haut à droite (da
 Programme qui trouve et affiche la solution d’un Sudoku.
 
 ~~~
+$> node feu03.js feu03_files/board1.txt
+195784263
+386529147
+472163985
+637852419
+859641732
+214397658
+923418576
+548976321
+761235894
 ~~~
 
 ## feu04.js - Trouver le plus grand carré
@@ -48,6 +66,16 @@ Programme qui remplace les caractères vides par des caractères plein pour repr
 Le plateau sera transmis dans un fichier. La première ligne du fichier contient les informations pour lire la carte : nombre de lignes du plateau, caractères pour “vide”, “obstacle” et “plein”.
 
 ~~~
+$> node feu04.js feu04_files/board1.txt
+.....ooooooo...............
+....xooooooo...............
+.....ooooooox..............
+.....ooooooo...............
+....xooooooo...............
+.....ooooooo...x...........
+.....ooooooo...............
+......x..............x.....
+..x.......x................
 ~~~
 
 ## feu05.js - Labyrinthe
@@ -59,5 +87,18 @@ Le labyrinthe est transmis en argument du programme. La première ligne du labyr
 Le but du programme est de remplacer les caractères “vide” par des caractères “chemin” pour représenter le plus court chemin pour traverser le labyrinthe. Un déplacement ne peut se faire que vers le haut, le bas, la droite ou la gauche.
 
 ~~~
+$> node feu05.js feu05_files/board1.txt
+10x10* o12
+*****2****
+* *   ****
+*   **** *
+* ****   *
+*  * oooo2
+*  **o*  *
+*  ooo* **
+***o **  *
+1ooo  ****
+**********
+=> SORTIE ATTEINTE EN 12 COUPS !
 ~~~
 
