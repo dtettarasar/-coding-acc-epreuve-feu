@@ -19,7 +19,8 @@ const argTester = () => {
 
     if (argument.length !== 1) {
 
-        console.log(errorMsg);
+        console.log("Erreur : veuillez passer le chemin du fichier en argument");
+        console.log("Exemple : node feu03.js feu03_files/board1.txt");
         return false;
 
     } else {
